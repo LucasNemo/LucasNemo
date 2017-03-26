@@ -6,4 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/ARTest/Scene/ARTest.unity
+  - enabled: 1
     path: Assets/ReadQRCodeTest/Scenes/QRCodeTest.unity

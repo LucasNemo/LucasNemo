@@ -27,6 +27,7 @@ public class QRCodeTesting : MonoBehaviour
         camTexture = new WebCamTexture();
         camTexture.requestedHeight = Screen.height;
         camTexture.requestedWidth = Screen.width;
+
         if (camTexture != null)
         {
             camTexture.Play();

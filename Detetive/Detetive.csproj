@@ -84,6 +84,7 @@
     <Compile Include="Assets\ReadQRCodeTest\Scripts\GenerateQRCode.cs" />
     <Compile Include="Assets\ReadQRCodeTest\Scripts\QRCodeTesting.cs" />
     <Compile Include="Assets\ReadQRCodeTest\Scripts\ReadQRCode.cs" />
+    <Compile Include="Assets\TestManager\TestManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

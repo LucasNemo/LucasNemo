@@ -30,19 +30,24 @@ public class GyroCamera : MonoBehaviour
 
     public void CalibrateYAngle()
     {
-        calibrationYAngle = appliedGyroYAngle - initialYAngle; // Offsets the y angle in case it wasn't 0 at edit time.
+        // Offsets the y angle in case it wasn't 0 at edit time.
+        calibrationYAngle = appliedGyroYAngle - initialYAngle; 
     }
 
     void ApplyGyroRotation()
     {
         transform.rotation = Input.gyro.attitude;
-        transform.Rotate(0f, 0f, 180f, Space.Self); // Swap "handedness" of quaternion from gyro.
-        transform.Rotate(90f, 180f, 0f, Space.World); // Rotate to make sense as a camera pointing out the back of your device.
-        appliedGyroYAngle = transform.eulerAngles.y; // Save the angle around y axis for use in calibration.
+        // Swap "handedness" of quaternion from gyro.
+        transform.Rotate(0f, 0f, 180f, Space.Self);
+        // Rotate to make sense as a camera pointing out the back of your device.
+        transform.Rotate(90f, 180f, 0f, Space.World);
+        // Save the angle around y axis for use in calibration.
+        appliedGyroYAngle = transform.eulerAngles.y; 
     }
 
     void ApplyCalibration()
     {
-        transform.Rotate(0f, -calibrationYAngle, 0f, Space.World); // Rotates y angle back however much it deviated when calibrationYAngle was saved.
+        // Rotates y angle back however much it deviated when calibrationYAngle was saved.
+        transform.Rotate(0f, -calibrationYAngle, 0f, Space.World);
     }
 }

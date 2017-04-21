@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4468847313663560}
   - component: {fileID: 33392769339019204}
   - component: {fileID: 23062032436388042}
-  m_Layer: 0
+  - component: {fileID: 114675291917714152}
+  m_Layer: 8
   m_Name: Corda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1762817362721704}
-  m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.012102234, y: 0.02510315, z: 0.52275693}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 11.49, y: 0, z: -12.53}
   m_LocalScale: {x: 2.9826677, y: 2.9826677, z: 2.9826677}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!23 &23062032436388042
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -80,3 +81,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1762817362721704}
   m_Mesh: {fileID: 4300002, guid: 2ddbe81b08afcd54d8e6144164aff239, type: 3}
+--- !u!114 &114675291917714152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762817362721704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50466aa091744a14d9f1aff3061def72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

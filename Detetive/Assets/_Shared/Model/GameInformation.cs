@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 
 public class GameInformation  {
-    public List<Room> Rooms { get; set; }
-	public Character Player { get; set; }
+    /// <summary>
+    /// Game Rooms created by Sheriff
+    /// </summary>
+    public List<Room> Rs { get; set; }
+    /// <summary>
+    /// Player choosed
+    /// </summary>
+	public Character P { get; set; }
 
     public GameInformation()
     {
-        Rooms = new List<Room>();
+        Rs = new List<Room>();
     }
 }

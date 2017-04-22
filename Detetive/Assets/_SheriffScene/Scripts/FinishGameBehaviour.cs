@@ -18,10 +18,10 @@ public class FinishGameBehaviour : MonoBehaviour {
 	
     private void FinishGame()
     {
-        m_finishText.text ="Quem acertou foi o " +m_playerHunch.Player +
-            "O crime ocorreu no " + m_playerHunch.MyHunch.HunchRoom.Place + 
-            "Utilizando a arma" + m_playerHunch.MyHunch.HunchRoom.Weapon + 
-            "e que matou foi " + m_playerHunch.MyHunch.HunchCharacter;
+        m_finishText.text ="Quem acertou foi o " +m_playerHunch.P +
+            "O crime ocorreu no " + m_playerHunch.MH.HR.P + 
+            "Utilizando a arma" + m_playerHunch.MH.HR.W + 
+            "e que matou foi " + m_playerHunch.MH.HC;
     } 
 
 }

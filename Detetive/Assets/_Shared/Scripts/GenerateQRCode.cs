@@ -6,8 +6,13 @@ using ZXing.QrCode;
 
 public class GenerateQRCode {
 
-    private static Color32[] Encode(string textForEncoding, int width, int height)
+    private static Color32[] Encode(string textForEncoding, int width, int height, bool zip = true)
     {
+        var newQr = textForEncoding;
+
+        if(zip)
+            newQr = Helper.CompressString(textForEncoding);
+
         var writer = new BarcodeWriter
         {
             Format = BarcodeFormat.QR_CODE,
@@ -17,7 +22,8 @@ public class GenerateQRCode {
                 Width = width
             }
         };
-        return writer.Write(textForEncoding);
+
+        return writer.Write(newQr);
     }
 
     /// <summary>
@@ -32,5 +38,11 @@ public class GenerateQRCode {
         encoded.SetPixels32(color32);
         encoded.Apply();
         return encoded;
+    }
+
+    public static Sprite GenerateQRSprite(string text, int size = 256)
+    {
+        Texture2D qrCode = GenerateQR(text, 256);
+        return Sprite.Create(qrCode, new Rect(0, 0, qrCode.width, qrCode.height), new Vector2(0.5f, 0.5f));
     }
 }

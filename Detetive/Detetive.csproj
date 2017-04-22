@@ -402,6 +402,12 @@
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
     <Compile Include="Assets\ReadQRCodeTest\Scripts\QRCodeTesting.cs" />
     <Compile Include="Assets\TestManager\TestManager.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\DetectiveController.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\DetectiveHunchBehaviour.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\HunchQrCodeBehaviour.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\InvestigateBehaviour.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\PlaceSelectionItem.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\WeaponSelectionItem.cs" />
     <Compile Include="Assets\_MenuScene\Scripts\MenuController.cs" />
     <Compile Include="Assets\_Shared\Model\Character.cs" />
     <Compile Include="Assets\_Shared\Model\GameInformation.cs" />
@@ -410,9 +416,10 @@
     <Compile Include="Assets\_Shared\Model\PlayerHunch.cs" />
     <Compile Include="Assets\_Shared\Model\Room.cs" />
     <Compile Include="Assets\_Shared\Model\Weapon.cs" />
-    <Compile Include="Assets\_Shared\Model\teste.cs" />
     <Compile Include="Assets\_Shared\Scripts\Enums.cs" />
     <Compile Include="Assets\_Shared\Scripts\GenerateQRCode.cs" />
+    <Compile Include="Assets\_Shared\Scripts\GenericSelectItem.cs" />
+    <Compile Include="Assets\_Shared\Scripts\Helper.cs" />
     <Compile Include="Assets\_Shared\Scripts\Manager.cs" />
     <Compile Include="Assets\_Shared\Scripts\ReadQRCode.cs" />
     <Compile Include="Assets\_Shared\Scripts\ReadQRCodeBehaviour.cs" />

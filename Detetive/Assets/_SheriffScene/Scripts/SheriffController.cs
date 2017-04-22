@@ -20,7 +20,7 @@ public class SheriffController : MonoBehaviour {
 
     #region Private Att
     private GameInformation m_gameInformation;
-    private Hunch CorrectHunch;
+    private Hunch m_corretHunch;
     #endregion
     
     public GameInformation GetGameInfo { get { return m_gameInformation; } }
@@ -57,12 +57,15 @@ public class SheriffController : MonoBehaviour {
             var weapon = weapons.OrderBy(x => System.Guid.NewGuid()).FirstOrDefault();
             if (weapon != null)
             {
-                m_gameInformation.Rooms.Add(new Room(item, weapon));
+                m_gameInformation.Rs.Add(new Room(item, weapon));
                 weapons.Remove(weapon);
             }
             else
                 Debug.Log("Weapon is null");
         }
+
+        m_corretHunch = new Hunch(m_gameInformation.Rs[0], Manager.Instance.Characters[0], 0);
+        print("Character " + m_corretHunch.HC.N + " Place " + m_corretHunch.HR.P.N + " Weapon " + m_corretHunch.HR.W.N);
     }
 
     public void OnFinishAddCharacter()
@@ -79,7 +82,7 @@ public class SheriffController : MonoBehaviour {
 
     public PlayerHunch GetBestHunch()
     {
-        return m_hunchBehaviour.GetHunchs.Where(x => x.MyHunch == CorrectHunch).OrderBy(y => y.MyHunch.HunchTime).FirstOrDefault(); 
+        return m_hunchBehaviour.GetHunchs.Where(x => x.MH == m_corretHunch).OrderBy(y => y.MH.HT).FirstOrDefault(); 
     }
 
 }

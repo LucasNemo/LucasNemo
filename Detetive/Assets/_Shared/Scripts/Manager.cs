@@ -33,6 +33,10 @@ public class Manager
     /// All weapons in game
     /// </summary>
     public List<Weapon> Weapons { get; private set; }
+    /// <summary>
+    /// All scenario of player
+    /// </summary>
+    public GameInformation MyGameInformation { get; set; }
 
     public Manager()
     {

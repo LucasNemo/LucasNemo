@@ -13,7 +13,7 @@ public class ReadQRCode
         barcodeReader = new BarcodeReader();
     }
 
-    public void ReadQR(WebCamTexture camTexture, Action<string> callback)
+    public void ReadQR(WebCamTexture camTexture, Action<string> callback, bool zip = true)
     {
         // do the reading — you might want to attempt to read less often than you draw on the screen for performance sake
         try
@@ -22,8 +22,15 @@ public class ReadQRCode
             var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
             if (result != null)
             {
-                if (callback != null) callback.Invoke(result.Text);
-                Debug.Log("DECODED TEXT FROM QR:" + result.Text);
+                var descompressedQr = result.Text;
+
+                if(zip)
+                    descompressedQr = Helper.DecompressString(result.Text);
+
+                if (callback != null)
+                    callback.Invoke(descompressedQr);
+
+                Debug.Log("DECODED TEXT FROM QR:" + descompressedQr);
             }
         }
         catch (Exception ex) { Debug.LogWarning(ex.Message); }

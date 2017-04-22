@@ -1,12 +1,18 @@
 ﻿
 public class Weapon {
-    public string Name { get; set; }
-    public Enums.Weapons MyWeapon { get; set; }
+    /// <summary>
+    /// Name
+    /// </summary>
+    public string N { get; set; }
+    /// <summary>
+    /// MyWeapon
+    /// </summary>
+    public Enums.Weapons MW { get; set; }
 
     public Weapon(string name, Enums.Weapons myweapon)
     {
-        this.Name = name;
-        this.MyWeapon = myweapon;
+        this.N = name;
+        this.MW = myweapon;
     }
 
 }

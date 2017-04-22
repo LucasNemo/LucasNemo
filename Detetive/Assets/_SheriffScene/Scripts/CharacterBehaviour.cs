@@ -30,11 +30,11 @@ public class CharacterBehaviour : MonoBehaviour {
 
     private void OnCharacterClick(Character character)
     {
-        m_gameInformation.Player = character;
+        m_gameInformation.P = character;
         var serialized = Newtonsoft.Json.JsonConvert.SerializeObject(m_gameInformation);
         print(serialized);
-        Texture2D qrCode = GenerateQRCode.GenerateQR(serialized, 256);
-        m_qrcodeImage.sprite = Sprite.Create(qrCode, new Rect(0, 0, qrCode.width, qrCode.height), new Vector2(0.5f, 0.5f));
+        Sprite qrCode = GenerateQRCode.GenerateQRSprite(serialized, 256);
+        m_qrcodeImage.sprite = qrCode;
     }
 
 }

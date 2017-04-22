@@ -1,12 +1,18 @@
 ﻿public class Place {
 
-    public string Name { get; set; }
-    public Enums.Places MyPlace { get; set; }
+    /// <summary>
+    /// Place name
+    /// </summary>
+    public string N { get; set; }
+    /// <summary>
+    /// My Place (Enum)
+    /// </summary>
+    public Enums.Places MP { get; set; }
 
     public Place(string name, Enums.Places myplace)
     {
-        this.Name = name;
-        this.MyPlace = myplace;
+        this.N = name;
+        this.MP = myplace;
     }
 
 }

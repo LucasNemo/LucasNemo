@@ -29,15 +29,15 @@ public class PlaceBehaviour : MonoBehaviour
         FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
         {
             Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
-            m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => x.MyPlace == place);
-            m_inputField.text = m_lastPlace.Name;
+            m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => x.MP == place);
+            m_inputField.text = m_lastPlace.N;
         });
     }
 
     public void OnAddPlaceClick()
     {
         if (m_lastPlace != null)
-            m_places.Add(new Place(m_inputField.text, m_lastPlace.MyPlace));
+            m_places.Add(new Place(m_inputField.text, m_lastPlace.MP));
     }
 
 }

@@ -1,22 +1,41 @@
 ﻿
 public class Hunch  {
     /// <summary>
-    /// Room that murder occurred
+    /// HunchRoom (Room that murder occurred)
     /// </summary>
-    public Room HunchRoom { get; set; }
+    public Room HR { get; set; }
     /// <summary>
-    /// Character that commit the murder
+    /// HunchCharacter (Character that commit the murder)
     /// </summary>
-    public Character HunchCharacter { get; set; }
+    public Character HC { get; set; }
     /// <summary>
-    /// Time that When hunch was made
+    /// HunchTime (Time that When hunch was made)
     /// </summary>
-    public float HunchTime { get; set; }
+    public long HT { get; set; }
 
-    public Hunch(Room room, Character hunchCharacter, float time)
+    public Hunch(Room room, Character hunchCharacter, long time)
     {
-        this.HunchRoom = room;
-        this.HunchCharacter = hunchCharacter;
-        this.HunchTime = time;
+        this.HR = room;
+        this.HC = hunchCharacter;
+        this.HT = time;
     }
+    public override bool Equals(object obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public static bool operator == (Hunch x, Hunch y)
+    {
+        if (x.HC == y.HC && x.HR == y.HR) return true;
+
+        return false;
+    }
+
+    public static bool operator !=(Hunch x, Hunch y)
+    {
+        if (x == y) return false;
+
+        return true;
+    }
+
 }

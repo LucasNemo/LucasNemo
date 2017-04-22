@@ -1,11 +1,17 @@
 ﻿
 public class PlayerHunch {
-    public Character Player { get; set; }
-    public Hunch MyHunch { get; set; }
+    /// <summary>
+    /// Player (Player that give this hunch)
+    /// </summary>
+    public Character P { get; set; }
+    /// <summary>
+    /// MyHunch (Hunch made by player)
+    /// </summary>
+    public Hunch MH { get; set; }
 
     public PlayerHunch(Character player, Hunch hunch)
     {
-        this.Player = player;
-        this.MyHunch = hunch;
+        this.P = player;
+        this.MH = hunch;
     }
 }

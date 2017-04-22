@@ -22,7 +22,6 @@
     /// </summary>
     public enum Weapons
     {
-        None,
         Arma_Quimica = 09,
         Espingarda = 10,
         Faca = 11,

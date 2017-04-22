@@ -17,7 +17,7 @@ public class MenuController : MonoBehaviour {
     public void SelectGameType(int type)
     {
         if (type == 0)
-            SceneManager.LoadScene("SheriffScene");
+            SceneManager.LoadScene("DetectiveScene");
         else
             SceneManager.LoadScene("SheriffScene");
     }

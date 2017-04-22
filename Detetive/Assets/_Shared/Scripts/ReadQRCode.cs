@@ -18,7 +18,10 @@ public class ReadQRCode
         // do the reading — you might want to attempt to read less often than you draw on the screen for performance sake
         try
         {
+            Debug.Log(camTexture.width + " ::: " + camTexture.height);
             // decode the current frame
+            //var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
+         
             var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
             if (result != null)
             {

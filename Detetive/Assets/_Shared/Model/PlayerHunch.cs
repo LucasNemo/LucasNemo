@@ -8,10 +8,15 @@ public class PlayerHunch {
     /// MyHunch (Hunch made by player)
     /// </summary>
     public Hunch MH { get; set; }
+    /// <summary>
+    /// HunchTime (Time that When hunch was made)
+    /// </summary>
+    public long HT { get; set; }
 
-    public PlayerHunch(Character player, Hunch hunch)
+    public PlayerHunch(Character player, Hunch hunch, long time)
     {
         this.P = player;
         this.MH = hunch;
+        this.HT = time;
     }
 }

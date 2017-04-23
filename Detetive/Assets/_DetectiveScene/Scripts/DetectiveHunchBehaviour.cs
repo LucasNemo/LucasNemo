@@ -77,6 +77,6 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         }
         
         m_hunch = new PlayerHunch(Manager.Instance.MyGameInformation.P, 
-            new Hunch(new Room(m_selectedPlace, m_selectedWeapon), m_selectedCharacter, DateTime.Now.Ticks));
+            new Hunch(new Room(m_selectedPlace, m_selectedWeapon), m_selectedCharacter), DateTime.Now.Ticks);
     }
 }

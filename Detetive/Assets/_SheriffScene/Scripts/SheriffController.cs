@@ -23,6 +23,9 @@ public class SheriffController : MonoBehaviour {
     private Hunch m_corretHunch;
     #endregion
     
+    /// <summary>
+    /// Get a game already set information
+    /// </summary>
     public GameInformation GetGameInfo { get { return m_gameInformation; } }
 
     void Start () {
@@ -34,6 +37,9 @@ public class SheriffController : MonoBehaviour {
         SceneManager.LoadScene("MenuScene");
     }
 
+    /// <summary>
+    /// When player finish add all places to play
+    /// </summary>
     public void OnFinishAddPlaces()
     {
         InitializeGameInformation();
@@ -46,13 +52,24 @@ public class SheriffController : MonoBehaviour {
     /// </summary>
     private void InitializeGameInformation()
     {
-        m_gameInformation = new GameInformation();
+        //Make correct hunch
+        m_corretHunch = new Hunch(new Room(Manager.Instance.Places[Helper.Random(0, Manager.Instance.Places.Count)],
+                                           Manager.Instance.Weapons[Helper.Random(0, Manager.Instance.Weapons.Count)]),
+                                           Manager.Instance.Characters[Helper.Random(0, Manager.Instance.Characters.Count)]);
 
+
+        m_gameInformation = new GameInformation(m_corretHunch);
+
+
+        List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT != m_corretHunch.HC.MC).ToList();
+        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W != m_corretHunch.HR.W.MW).ToList();
+        
+        //Get all weapons
         List<Weapon> weapons = new List<Weapon>();
         weapons.AddRange(Manager.Instance.Weapons);
-
-        //foreach (var item in m_placesBehaviour.GetPlaces)
+        
         foreach (var item in Manager.Instance.Places)
+        //foreach (var item in m_placesBehaviour.GetPlaces)
         {
             var weapon = weapons.OrderBy(x => System.Guid.NewGuid()).FirstOrDefault();
             if (weapon != null)
@@ -63,17 +80,20 @@ public class SheriffController : MonoBehaviour {
             else
                 Debug.Log("Weapon is null");
         }
-
-        m_corretHunch = new Hunch(m_gameInformation.Rs[0], Manager.Instance.Characters[0], 0);
-        print("Character " + m_corretHunch.HC.N + " Place " + m_corretHunch.HR.P.N + " Weapon " + m_corretHunch.HR.W.N);
     }
-
+   
+    /// <summary>
+    /// Method called when player finish add detectives
+    /// </summary>
     public void OnFinishAddCharacter()
     {
         m_characterBehaviour.gameObject.SetActive(false);
         m_hunchBehaviour.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Method called when sheriff finish add hunch 
+    /// </summary>
     public void OnFinishAddHunch()
     {
         m_hunchBehaviour.gameObject.SetActive(false);
@@ -82,7 +102,7 @@ public class SheriffController : MonoBehaviour {
 
     public PlayerHunch GetBestHunch()
     {
-        return m_hunchBehaviour.GetHunchs.Where(x => x.MH == m_corretHunch).OrderBy(y => y.MH.HT).FirstOrDefault(); 
+        return m_hunchBehaviour.GetHunchs.Where(x => x.MH == m_corretHunch).OrderBy(y => y.HT).FirstOrDefault(); 
     }
 
 }

@@ -50,4 +50,32 @@
         Prefeitura = 26,
         Restaurante = 27
     }
+
+    public enum TipsSounds
+    {
+        Nao_foi_Arma_Quimica_com_Ruido = 0,
+        Nao_foi_Espingarda_com_Ruido = 1,
+        Nao_foi_Faca_com_Ruido = 2,
+        Nao_foi_Pa_com_Ruido = 3,
+        Nao_foi_Pe_de_Cabra_com_Ruido = 4,
+        Nao_foi_Soco_Ingles_com_Ruido = 5,
+        Nao_foi_Tesoura = 6,
+        Nao_foi_Veneno_com_Ruido = 7,
+        Nao_foi_Advogado2_com_Ruido = 8,
+        Nao_foi_Advogado_com_Ruido = 9,
+        Nao_foi_Chef2_com_Ruido = 10,
+        Nao_foi_Chef_com_Ruido = 11,
+        Nao_foi_Coveiro2_com_Ruido = 12,
+        Nao_foi_Coveiro_com_Ruido = 13,
+        Nao_foi_Dancarina2_com_Ruido = 14,
+        Nao_foi_Dancarina_com_Ruido = 15,
+        Nao_foi_Florista2_com_Ruido = 16,
+        Nao_foi_Florista_com_Ruido = 17,
+        Nao_foi_Medica2_com_Ruido = 18,
+        Nao_foi_Medica_com_Ruido = 19,
+        Nao_foi_Mordomo2_com_Ruido = 20,
+        Nao_foi_Mordomo_com_Ruido = 21,
+        Nao_foi_Sargento2_com_Ruido = 22,
+        Nao_foi_Sargento_com_Ruido = 23
+    }
 }

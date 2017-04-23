@@ -1,7 +1,7 @@
 ﻿public class Place {
 
     /// <summary>
-    /// Place name
+    /// Name
     /// </summary>
     public string N { get; set; }
     /// <summary>

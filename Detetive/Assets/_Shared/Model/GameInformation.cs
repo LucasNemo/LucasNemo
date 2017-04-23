@@ -10,9 +10,14 @@ public class GameInformation  {
     /// Player choosed
     /// </summary>
 	public Character P { get; set; }
+    /// <summary>
+    /// Correct Hunch 
+    /// </summary>
+    public Hunch CH { get; set; }
 
-    public GameInformation()
+    public GameInformation(Hunch correctHunch)
     {
+        this.CH = correctHunch;
         Rs = new List<Room>();
     }
 }

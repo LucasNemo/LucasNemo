@@ -61,4 +61,20 @@ public class Helper
 
     #endregion
 
+    public static int Random(int min, int max)
+    {
+        UpdateRandomSeed();
+        return UnityEngine.Random.Range(min, max);
+    }
+
+    public static float Random(float min, float max)
+    {
+        UpdateRandomSeed();
+        return UnityEngine.Random.Range(min, max);
+    }
+
+    private static void UpdateRandomSeed()
+    {
+        UnityEngine.Random.InitState((int)DateTime.Now.Ticks); 
+    }
 }

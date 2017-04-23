@@ -8,16 +8,12 @@ public class Hunch  {
     /// HunchCharacter (Character that commit the murder)
     /// </summary>
     public Character HC { get; set; }
-    /// <summary>
-    /// HunchTime (Time that When hunch was made)
-    /// </summary>
-    public long HT { get; set; }
 
-    public Hunch(Room room, Character hunchCharacter, long time)
+
+    public Hunch(Room room, Character hunchCharacter)
     {
         this.HR = room;
         this.HC = hunchCharacter;
-        this.HT = time;
     }
     public override bool Equals(object obj)
     {
@@ -26,7 +22,8 @@ public class Hunch  {
 
     public static bool operator == (Hunch x, Hunch y)
     {
-        if (x.HC == y.HC && x.HR == y.HR) return true;
+        //Character/Place/Weapon
+        if (x.HC == y.HC && x.HR.P == y.HR.P && x.HR.W == x.HR.W) return true;
 
         return false;
     }

@@ -19,7 +19,13 @@ public class Manager
         }
     }
     #endregion
-    
+
+    #region Game Settings
+    public int Min_Weapons = 3;
+    public int Min_Weapons_Tips = 3;
+    public int Min_Character_Tips = 3;
+    #endregion
+
     /// <summary>
     /// All characters in game
     /// </summary>

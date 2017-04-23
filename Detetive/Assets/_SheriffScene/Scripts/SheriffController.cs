@@ -59,27 +59,90 @@ public class SheriffController : MonoBehaviour {
 
 
         m_gameInformation = new GameInformation(m_corretHunch);
-
-
-        List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT != m_corretHunch.HC.MC).ToList();
-        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W != m_corretHunch.HR.W.MW).ToList();
         
+        List<Place> places = new List<Place>();
+        //places.AddRange(m_placesBehaviour.GetPlaces);
+        places.AddRange(Manager.Instance.Places);
+
+        //Initialize evert room
+        foreach (Place place in places)
+        {
+            m_gameInformation.Rs.Add(new Room(place));
+        }
+
+        //Add weapons on rooms
+        AddWeapons(places);
+
+        //AddWeaponsTips
+        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W != m_corretHunch.HR.W.MW).ToList();
+        AddTip<WeaponTip>(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
+
+        //Add character tips
+        List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT != m_corretHunch.HC.MC).ToList();
+        AddTip<CharacterTip>(places, characterTips, Manager.Instance.Min_Character_Tips);
+    }
+    
+    /// <summary>
+    /// Generic add tip method
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="places"></param>
+    /// <param name="tips"></param>
+    /// <param name="minRandom"></param>
+    private void AddTip<T>(List<Place> places,List<T> tips, int minRandom) where T : TipItem
+    {
+        var randomPlaces = GetRandomPlaces(places);
+
+        for (int i = 0; i < Random.Range(Manager.Instance.Min_Character_Tips, tips.Count); i++)
+        {
+            var item = randomPlaces[i];
+            m_gameInformation.Rs.First(x => x.P.MP == item.MP).T.Add(new TipItem(ReturnRandomItem<T>(tips).TP));
+        }
+    }
+
+    /// <summary>
+    /// Add weapons on game
+    /// </summary>
+    /// <param name="places"></param>
+    private void AddWeapons(List<Place> places)
+    {
         //Get all weapons
         List<Weapon> weapons = new List<Weapon>();
         weapons.AddRange(Manager.Instance.Weapons);
+
+        var randomPlaces = GetRandomPlaces(places);
         
-        foreach (var item in Manager.Instance.Places)
-        //foreach (var item in m_placesBehaviour.GetPlaces)
+        for (int i = 0; i < Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
         {
-            var weapon = weapons.OrderBy(x => System.Guid.NewGuid()).FirstOrDefault();
-            if (weapon != null)
-            {
-                m_gameInformation.Rs.Add(new Room(item, weapon));
-                weapons.Remove(weapon);
-            }
-            else
-                Debug.Log("Weapon is null");
+            var item = randomPlaces[i];
+            m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = ReturnRandomItem<Weapon>(weapons);
         }
+    }
+
+    /// <summary>
+    /// Return a random generic item
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    /// <returns></returns>
+    private T ReturnRandomItem<T>(List<T> list)
+    {
+        var listItem = list.OrderBy(x => System.Guid.NewGuid()).FirstOrDefault();
+        if (listItem != null)
+        {
+            list.Remove(listItem);
+        }
+        return listItem;
+    }
+    
+    /// <summary>
+    /// Random places
+    /// </summary>
+    /// <param name="places"></param>
+    /// <returns></returns>
+    private List<Place> GetRandomPlaces(List<Place> places)
+    {
+        return places.OrderBy(x => System.Guid.NewGuid()).ToList();
     }
    
     /// <summary>

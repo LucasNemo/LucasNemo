@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 public class Room  {
     /// <summary>
     /// Place 
@@ -11,9 +13,15 @@ public class Room  {
     /// <summary>
     /// Tip (A tip item that can be in room)
     /// </summary>
-    public TipItem T { get; set; }
+    public List<TipItem> T { get; set; }
 
-    public Room(Place place, Weapon weapon, TipItem tip)
+    public Room(Place place)
+    {
+        this.P = place;
+        this.T = new List<TipItem>();
+    }
+
+    public Room(Place place, Weapon weapon, List<TipItem> tip)
     {
         this.P = place;
         this.W = weapon;
@@ -26,7 +34,7 @@ public class Room  {
         this.W = weapon;
     }
 
-    public Room(Place place, TipItem tip)
+    public Room(Place place, List<TipItem> tip)
     {
         this.P = place;
         this.T = tip;

@@ -31,8 +31,18 @@ public class DetectiveController : MonoBehaviour {
         {
             if (!string.IsNullOrEmpty(result))
             {
-                Manager.Instance.MyGameInformation = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
-                m_menu.SetActive(true);
+                try
+                {
+                    var deserializeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
+                    Manager.Instance.MyGameInformation = deserializeResult;
+                    m_menu.SetActive(true);
+                }
+                catch (Exception e)
+                {
+                    print(e.Message);
+                    throw;
+                }
+            
             }
             else
             {

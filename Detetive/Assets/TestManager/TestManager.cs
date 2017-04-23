@@ -30,7 +30,7 @@ public class TestManager : MonoBehaviour {
         {
             if ( GUI.Button(new Rect(0,Screen.height - 200,200,200), "MENU"))
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("MenuScene");
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 public class Room  {
@@ -15,6 +16,7 @@ public class Room  {
     /// </summary>
     public List<TipItem> T { get; set; }
 
+    [JsonConstructor]
     public Room(Place place)
     {
         this.P = place;

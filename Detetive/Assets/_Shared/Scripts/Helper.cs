@@ -1,8 +1,8 @@
 ﻿
 using System;
-using System.IO;
-using System.IO.Compression;
+using Unity.IO.Compression;
 using System.Text;
+using System.IO;
 
 public class Helper
 {
@@ -17,6 +17,7 @@ public class Helper
     public static string CompressString(string text)
     {
         byte[] buffer = Encoding.UTF8.GetBytes(text);
+        
         var memoryStream = new MemoryStream();
         using (var gZipStream = new GZipStream(memoryStream, CompressionMode.Compress, true))
         {

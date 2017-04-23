@@ -32,7 +32,7 @@ public class CharacterBehaviour : MonoBehaviour {
     {
         m_gameInformation.P = character;
         var serialized = Newtonsoft.Json.JsonConvert.SerializeObject(m_gameInformation);
-        print(serialized);
+        //print(serialized);
         Sprite qrCode = GenerateQRCode.GenerateQRSprite(serialized, 256);
         m_qrcodeImage.sprite = qrCode;
     }

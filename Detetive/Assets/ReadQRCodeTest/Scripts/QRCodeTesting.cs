@@ -89,7 +89,7 @@ public class QRCodeTesting : MonoBehaviour
 
                 break;
             case State.QRCodeReaded:
-                GUI.Label(new Rect(100, 100, 200, 200), "Resultado do QR:"+ qrCodeMessage);
+                GUI.Label(new Rect(100, 100, 400, 2000), "Resultado do QR:"+ qrCodeMessage);
                 break;
             case State.GenerateQRCode:
                 //Drawing the QRCode

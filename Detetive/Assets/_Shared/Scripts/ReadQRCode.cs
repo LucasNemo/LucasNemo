@@ -8,7 +8,7 @@ public class ReadQRCode
 {
     private IBarcodeReader barcodeReader; 
 
-   public ReadQRCode ()
+    public ReadQRCode ()
     {
         barcodeReader = new BarcodeReader();
     }

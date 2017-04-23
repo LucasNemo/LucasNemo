@@ -7,6 +7,9 @@ public class GyroCamera : MonoBehaviour
     private float appliedGyroYAngle = 0f;
     private float calibrationYAngle = 0f;
 
+
+    private Vector3 m_defeaultCameraAngles;
+
     
 
     void Start()
@@ -14,25 +17,35 @@ public class GyroCamera : MonoBehaviour
         Input.gyro.enabled = true;
         Application.targetFrameRate = 60;
         initialYAngle = transform.eulerAngles.y;
+
+        //get the initial camera rotation - to be used as rrefernce.
+        m_defeaultCameraAngles = transform.localRotation.eulerAngles;
     }
 
     void Update()
     {
-        GyroModifyCamera();
 
-        //ApplyGyroRotation();
-        //ApplyCalibration();
+        verticalAngle += Input.gyro.rotationRate.y;
+        verticalAngle %= 360f;
+
+        horizontalAngle += Input.gyro.rotationRate.x;
+        horizontalAngle %= 360f;
+
+        transform.rotation = Quaternion.Euler(-horizontalAngle, -verticalAngle, transform.rotation.z);
+
+        
     }
+    float verticalAngle = 0;
+    float horizontalAngle = 0;
 
     void OnGUI()
     {
         if (GUILayout.Button("Calibrate", GUILayout.Width(300), GUILayout.Height(100)))
         {
-            Input.gyro.enabled = !Input.gyro.enabled;
-            //CalibrateYAngle();
+            verticalAngle = 0;
+            horizontalAngle = 0;
         }
 
-        GUI.Label(new Rect(0, 0, 1000, 100), GetGyroInfo());
     }
 
     private string GetGyroInfo()
@@ -46,25 +59,44 @@ public class GyroCamera : MonoBehaviour
         calibrationYAngle = appliedGyroYAngle - initialYAngle; 
     }
 
+    
 
     // The Gyroscope is right-handed.  Unity is left handed.
     // Make the necessary change to the camera.
     void GyroModifyCamera()
     {
 
-        var attitude = Input.gyro.attitude;
 
-        if (attitude.eulerAngles.magnitude == 0)
-        {
-            var rot = Input.gyro.rotationRate;
-            transform.Rotate(new Vector3(-rot.x, -rot.y, 0f) * 2f);  // GyroToUnity(Input.gyro.attitude);
-            var r = transform.rotation.eulerAngles;
-            transform.rotation = Quaternion.Euler(r.x, r.y, 0);
-        }
-        else
-        {
-            transform.rotation = GyroToUnity(Input.gyro.attitude);
-        }
+        transform.rotation =  Quaternion.LookRotation(Input.acceleration);
+
+        //Apply the device rotation to camera
+
+        //var gyro = Input.gyro.rotationRate;
+
+        //print(GetGyroInfo());
+
+        //var degreeAngle = (gyro * Mathf.Rad2Deg).normalized;
+
+        //print(degreeAngle);
+
+        //transform.Rotate(new Vector3(-degreeAngle.x, -degreeAngle.y, 0) );
+
+
+        //var attitude = Input.gyro.attitude;
+
+        ////The phone does not support local space coordinates
+
+        //if (attitude.eulerAngles.magnitude == 0)
+        //{
+        //    var rot = Input.gyro.rotationRate;
+        //    transform.Rotate(new Vector3(-rot.x, -rot.y, 0f) * 2f);  // GyroToUnity(Input.gyro.attitude);
+        //    var r = transform.rotation.eulerAngles;
+        //    transform.rotation = Quaternion.Euler(r.x, r.y, 0);
+        //}
+        //else
+        //{
+        //    transform.rotation = GyroToUnity(Input.gyro.attitude);
+        //}
 
         
     }

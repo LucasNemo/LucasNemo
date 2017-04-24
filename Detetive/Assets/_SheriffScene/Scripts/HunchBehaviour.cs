@@ -32,7 +32,7 @@ public class HunchBehaviour : MonoBehaviour {
             {
                 print("QrCode is null");
             }
-        });
+        }, true);
     }
 
 }

@@ -48,7 +48,7 @@ public class DetectiveController : MonoBehaviour {
             {
                 print("QrCode is null");
             }
-        });
+        },true);
     }
 
     public void OnHunchClick()

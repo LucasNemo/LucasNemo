@@ -71,15 +71,15 @@ public class SheriffController : MonoBehaviour {
         }
 
         //Add weapons on rooms
-        AddWeapons(places);
+        AddWeapons(places, m_corretHunch.HR.W);
 
         //AddWeaponsTips
         List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W != m_corretHunch.HR.W.MW).ToList();
-        AddTip<WeaponTip>(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
+        AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
 
         //Add character tips
         List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT != m_corretHunch.HC.MC).ToList();
-        AddTip<CharacterTip>(places, characterTips, Manager.Instance.Min_Character_Tips);
+        AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
     }
     
     /// <summary>
@@ -104,18 +104,22 @@ public class SheriffController : MonoBehaviour {
     /// Add weapons on game
     /// </summary>
     /// <param name="places"></param>
-    private void AddWeapons(List<Place> places)
+    /// <param name="Weapon"> The GAME weapon</param>
+    private void AddWeapons(List<Place> places, Weapon weapon)
     {
         //Get all weapons
         List<Weapon> weapons = new List<Weapon>();
         weapons.AddRange(Manager.Instance.Weapons);
 
         var randomPlaces = GetRandomPlaces(places);
-        
-        for (int i = 0; i < Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
+
+        var item = randomPlaces[0];
+        m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = weapon;
+
+        for (int i = 1; i < Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
         {
-            var item = randomPlaces[i];
-            m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = ReturnRandomItem<Weapon>(weapons);
+            item = randomPlaces[i];
+            m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = ReturnRandomItem(weapons);
         }
     }
 

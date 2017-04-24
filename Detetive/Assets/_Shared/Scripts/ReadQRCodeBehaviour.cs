@@ -24,18 +24,15 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
     void Start () {
         screenRect = new Rect(0, 0, Screen.width, Screen.height);
         camTexture = new WebCamTexture();
-        camTexture.requestedHeight = Screen.height;
-        camTexture.requestedWidth = Screen.width;
-
-       
+        camTexture.requestedHeight = 400;
+        camTexture.requestedWidth = 400;
 
         readQRCode = new ReadQRCode();
-
     }
 
-    public void ReadQrCode(System.Action<string> callback)
+    public void ReadQrCode(System.Action<string> callback, bool useCompression)
     {
-        m_readQRCodeRoutine = StartCoroutine(ReadQRCode());
+        m_readQRCodeRoutine = StartCoroutine(ReadQRCode(useCompression));
         m_state = State.readQRCode;
         m_readCallback = callback;
 
@@ -54,16 +51,15 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
             case State.readQRCode:
                 // drawing the camera on screen
                 GUI.DrawTexture(screenRect, camTexture, ScaleMode.ScaleToFit);
-                GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 200, 400, 400), "");
                 break;
         }
     }
 
-    IEnumerator ReadQRCode()
+    IEnumerator ReadQRCode(bool useCompression)
     {
         do
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.3f);
             if (camTexture != null)
             {
                 readQRCode.ReadQR(camTexture, (string e) =>
@@ -78,7 +74,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
                         camTexture.Stop();
                         StopCoroutine(m_readQRCodeRoutine);
                     }
-                },false);
+                },useCompression);
             }
         } while (true);
 

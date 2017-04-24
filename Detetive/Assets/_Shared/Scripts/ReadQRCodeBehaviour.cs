@@ -59,42 +59,6 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         }
     }
 
-    private void FixedUpdate()
-    {
-        switch (m_state)
-        {
-            case State.none:
-                break;
-            case State.readQRCode:
-
-                time += Time.deltaTime;
-                //if (time > .3f)
-                //{
-                    //time = 0;
-                    //if (camTexture != null)
-                    //{
-                    //    readQRCode.ReadQR(camTexture, (string e) =>
-                    //    {
-                    //        qrCodeMessage = e;
-
-                    //        if (!string.IsNullOrEmpty(qrCodeMessage))
-                    //        {
-                    //            if (m_readCallback != null)
-                    //                m_readCallback(qrCodeMessage);
-                    //            m_state = State.none;
-                    //        }
-                    //    });
-                    //}
-              //  }
-                break;
-            case State.QRCodeReaded:
-                break;
-            default:
-                break;
-        }
-    }
-
-
     IEnumerator ReadQRCode()
     {
         do

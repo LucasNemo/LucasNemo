@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 08abcc5d4732a4946b96a5d1b9edd581
+timeCreated: 1492968257
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Planer
+  fontNames:
+  - Planer
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

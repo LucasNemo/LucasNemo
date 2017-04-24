@@ -13,7 +13,6 @@ public class TestManager : MonoBehaviour {
 
     public void OnGUI()
     {
-
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 150, 200, 200), "Testar QRCodes"))

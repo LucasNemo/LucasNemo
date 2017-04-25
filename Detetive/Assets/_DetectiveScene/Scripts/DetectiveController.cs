@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,7 +29,7 @@ public class DetectiveController : MonoBehaviour {
 
     private void InitializePlayerInfo()
     {
-        FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
+        ReadQRFromsCene(true,(result)=>
         {
             if (!string.IsNullOrEmpty(result))
             {
@@ -43,13 +44,20 @@ public class DetectiveController : MonoBehaviour {
                     print(e.Message);
                     throw;
                 }
-            
+
             }
             else
             {
                 print("QrCode is null");
             }
-        },true);
+        });
+    
+    }
+
+    private void ReadQRFromsCene(bool useCompression, Action<string> result)
+    {
+        FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode(result,
+         useCompression);
     }
 
     public void OnHunchClick()
@@ -67,7 +75,20 @@ public class DetectiveController : MonoBehaviour {
 
     public void OnInvesticateClicked()
     {
-        SceneManager.LoadScene("ARTest"); 
+        ReadQRFromsCene(false, (result) =>
+        {
+            var enumTest = Enum.Parse(typeof(Enums.Places), result);
+
+            if (enumTest != null && 
+
+            Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest  )))
+            {
+                SceneManager.LoadScene("ARTest");
+            }
+        });
+
+
+        //SceneManager.LoadScene("ARTest"); 
     }
 
 }

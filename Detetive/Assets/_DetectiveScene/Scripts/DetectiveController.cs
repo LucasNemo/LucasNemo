@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DetectiveController : MonoBehaviour {
@@ -62,6 +63,11 @@ public class DetectiveController : MonoBehaviour {
         m_detectiveHunchBehaviour.gameObject.SetActive(false);
         m_hunchQr.SetQrCodeImage(m_detectiveHunchBehaviour.GetHunch);
         m_hunchQr.gameObject.SetActive(true);
+    }
+
+    public void OnInvesticateClicked()
+    {
+        SceneManager.LoadScene("ARTest"); 
     }
 
 }

@@ -40,7 +40,7 @@ public class GyroCamera : MonoBehaviour
 
     void OnGUI()
     {
-        if (GUILayout.Button("Calibrate", GUILayout.Width(300), GUILayout.Height(100)))
+        if (GUI.Button(new Rect(Screen.width - 150, 0, 300, 150), "Calibrar AR"))
         {
             verticalAngle = 0;
             horizontalAngle = 0;

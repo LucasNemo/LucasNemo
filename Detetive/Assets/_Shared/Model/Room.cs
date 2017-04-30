@@ -23,22 +23,19 @@ public class Room  {
         this.T = new List<TipItem>();
     }
 
-    public Room(Place place, Weapon weapon, List<TipItem> tip)
+    public Room(Place place, Weapon weapon) : this(place)
     {
-        this.P = place;
-        this.W = weapon;
-        this.T = tip;
-    }
-
-    public Room(Place place, Weapon weapon)
-    {
-        this.P = place;
         this.W = weapon;
     }
 
-    public Room(Place place, List<TipItem> tip)
-    {
-        this.P = place;
+    public Room(Place place, List<TipItem> tip) : this(place)
+    {   
         this.T = tip;
     }
+
+    public Room(Place place, Weapon weapon, List<TipItem> tip) : this(place, tip)
+    {
+        this.W = weapon;        
+    }
+
 }

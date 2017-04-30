@@ -55,7 +55,7 @@ public class SheriffController : MonoBehaviour {
         //Make correct hunch
         m_corretHunch = new Hunch(new Room(Manager.Instance.Places[Helper.Random(0, Manager.Instance.Places.Count)],
                                            Manager.Instance.Weapons[Helper.Random(0, Manager.Instance.Weapons.Count)]),
-                                           Manager.Instance.Characters[Helper.Random(0, Manager.Instance.Characters.Count)]);
+                                           Manager.Instance.Characters[Helper.Random(0, Manager.Instance.Characters.Count)].MC);
 
 
         m_gameInformation = new GameInformation(m_corretHunch);
@@ -74,11 +74,11 @@ public class SheriffController : MonoBehaviour {
         AddWeapons(places, m_corretHunch.HR.W);
 
         //AddWeaponsTips
-        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W != m_corretHunch.HR.W.MW).ToList();
+        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W.GetHashCode() != m_corretHunch.HR.W.MW).ToList();
         AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
 
         //Add character tips
-        List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT != m_corretHunch.HC.MC).ToList();
+        List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
         AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
     }
     

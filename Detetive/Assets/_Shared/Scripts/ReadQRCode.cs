@@ -11,6 +11,13 @@ public class ReadQRCode
     public ReadQRCode ()
     {
         barcodeReader = new BarcodeReader();
+
+        barcodeReader.Options = new ZXing.Common.DecodingOptions();
+
+        barcodeReader.Options.PossibleFormats = new List<BarcodeFormat>();
+        barcodeReader.Options.PossibleFormats.Add(BarcodeFormat.QR_CODE);
+        barcodeReader.Options.TryHarder = false;
+
     }
 
     public void ReadQR(WebCamTexture camTexture, Action<string> callback, bool zip = true)
@@ -20,7 +27,7 @@ public class ReadQRCode
         {
             // decode the current frame
             //var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
-         
+
             var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
             if (result != null)
             {

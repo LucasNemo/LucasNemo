@@ -18,5 +18,5 @@ public class PlayerHunch {
         this.P = player;
         this.MH = hunch;
         this.HT = time;
-    }
+    } 
 }

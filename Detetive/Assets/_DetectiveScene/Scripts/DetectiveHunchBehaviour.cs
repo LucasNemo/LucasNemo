@@ -24,16 +24,16 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     void Start()
     {
-        InitializeGrid<CharacterSelectionItem, Character>(m_gridCharacters, m_characterItem, Manager.Instance.Characters, OnCharacterCallback);
-        InitializeGrid<PlaceSelectionItem, Place>(m_gridPlaces, m_placeItem, Manager.Instance.Places, OnPlaceCallback);
-        InitializeGrid<WeaponSelectionItem, Weapon>(m_gridWeapons, m_weaponItem, Manager.Instance.Weapons, OnWeaponCallback);
+        InitializeGrid(m_gridCharacters, m_characterItem, Manager.Instance.Characters, OnCharacterCallback);
+        InitializeGrid(m_gridPlaces, m_placeItem, Manager.Instance.Places, OnPlaceCallback);
+        InitializeGrid(m_gridWeapons, m_weaponItem, Manager.Instance.Weapons, OnWeaponCallback);
     }
 
     private void InitializeGrid<T, G>(GridLayoutGroup grid, T itemPrefab, List<G> itensList, Action<G> callback) where T : GenericSelectItem<G>
     {
         foreach (G item in itensList)
         {
-            var selection = GameObject.Instantiate<T>(itemPrefab, grid.transform);
+            var selection = Instantiate(itemPrefab, grid.transform);
             selection.UpdateItem(item, callback);
         }
     }
@@ -77,6 +77,6 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         }
         
         m_hunch = new PlayerHunch(Manager.Instance.MyGameInformation.P, 
-            new Hunch(new Room(m_selectedPlace, m_selectedWeapon), m_selectedCharacter), DateTime.Now.Ticks);
+            new Hunch(new Room(m_selectedPlace, m_selectedWeapon), m_selectedCharacter.MC), DateTime.Now.Ticks);
     }
 }

@@ -12,7 +12,7 @@ public class GenerateQRCode {
 
         if(zip)
             newQr = Helper.CompressString(textForEncoding);
-
+        Debug.Log(newQr);
         var writer = new BarcodeWriter
         {
             Format = BarcodeFormat.QR_CODE,

@@ -12,6 +12,6 @@ public class WeaponSelectionItem : GenericSelectItem<Weapon> {
     public override void UpdateItem(Weapon Item, Action<Weapon> callback)
     {
         base.UpdateItem(Item, callback);
-        m_weaponNameText.text = Item.N;
+        m_weaponNameText.text =  Manager.Instance.WeaponsName[ (Enums.Weapons) Item.MW ];
     }
 }

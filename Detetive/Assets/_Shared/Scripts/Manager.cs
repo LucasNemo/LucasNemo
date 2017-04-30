@@ -68,17 +68,31 @@ public class Manager
 
     #region Cards
 
+    public Dictionary<Enums.Characters, string> CharactersName = new Dictionary<Enums.Characters, string>
+    {
+        {Enums.Characters.Advogado_Sr_Marinho, "ADVOGADO SR. MARINHO" },
+        {Enums.Characters.Chef_de_Cozinha_Tony_Gourmet, "CHEF DE COZINHA TONY GOURMET" },
+        {Enums.Characters.Coveiro_Sergio_Soturno, "COVEIRO SÉRGIO SOTURNO" },
+        {Enums.Characters.Dancarina_Srta_Rosa, "DANÇARINA SRTA. ROSA" },
+        {Enums.Characters.Florista_Dona_Branca, "FLORISTA DONA BRANCA" },
+        {Enums.Characters.Medica_Dona_Violeta, "MÉDICA DONA VIOLETA" },
+        {Enums.Characters.Mordomo_James, "MORDOMO JAMES" },
+        {Enums.Characters.Sargento_Bicode, "SARGENTO BIGODE" }
+    };
+
+ 
+
     private void InitializeCharacters()
     {
         Characters = new List<Character>();
-        Characters.Add(new Character("ADVOGADO SR. MARINHO", Enums.Characters.Advogado_Sr_Marinho));
-        Characters.Add(new Character("CHEF DE COZINHA TONY GOURMET", Enums.Characters.Chef_de_Cozinha_Tony_Gourmet));
-        Characters.Add(new Character("COVEIRO SÉRGIO SOTURNO", Enums.Characters.Coveiro_Sergio_Soturno));
-        Characters.Add(new Character("DANÇARINA SRTA. ROSA", Enums.Characters.Dancarina_Srta_Rosa));
-        Characters.Add(new Character("FLORISTA DONA BRANCA", Enums.Characters.Florista_Dona_Branca));
-        Characters.Add(new Character("MÉDICA DONA VIOLETA", Enums.Characters.Medica_Dona_Violeta));
-        Characters.Add(new Character("MORDOMO JAMES", Enums.Characters.Mordomo_James));
-        Characters.Add(new Character("SARGENTO BIGODE", Enums.Characters.Sargento_Bicode));
+        Characters.Add(new Character( Enums.Characters.Advogado_Sr_Marinho.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Chef_de_Cozinha_Tony_Gourmet.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Coveiro_Sergio_Soturno.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Dancarina_Srta_Rosa.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Florista_Dona_Branca.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Medica_Dona_Violeta.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Mordomo_James.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Sargento_Bicode.GetHashCode()));
     }
 
     private void InitializePlaces()
@@ -97,17 +111,30 @@ public class Manager
         Places.Add(new Place("Restaurante", Enums.Places.Restaurante));
     }
 
+
+    public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
+    {
+        {Enums.Weapons.Arma_Quimica,"Arma Química" },
+        {Enums.Weapons.Espingarda, "Espingarda" },
+        {Enums.Weapons.Faca, "Faca" },
+        {Enums.Weapons.Pa, "Pá" },
+        {Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
+        {Enums.Weapons.Soco_Ingles, "Soco Inglês"},
+        {Enums.Weapons.Tesoura, "Tesoura" },
+        {Enums.Weapons.Veneno, "Veneno" }
+    };
+
     private void InitializeWeapons()
     {
         Weapons = new List<Weapon>();
-        Weapons.Add(new Weapon("Arma Química", Enums.Weapons.Arma_Quimica));
-        Weapons.Add(new Weapon("Espingarda", Enums.Weapons.Espingarda));
-        Weapons.Add(new Weapon("Faca", Enums.Weapons.Faca));
-        Weapons.Add(new Weapon("Pá", Enums.Weapons.Pa));
-        Weapons.Add(new Weapon("Pé de Cabra", Enums.Weapons.Pe_de_Cabra));
-        Weapons.Add(new Weapon("Soco Inglês", Enums.Weapons.Soco_Ingles));
-        Weapons.Add(new Weapon("Tesoura", Enums.Weapons.Tesoura));
-        Weapons.Add(new Weapon("Veneno", Enums.Weapons.Veneno));
+        Weapons.Add(new Weapon( Enums.Weapons.Arma_Quimica));
+        Weapons.Add(new Weapon( Enums.Weapons.Espingarda));
+        Weapons.Add(new Weapon( Enums.Weapons.Faca));
+        Weapons.Add(new Weapon( Enums.Weapons.Pa));
+        Weapons.Add(new Weapon( Enums.Weapons.Pe_de_Cabra));
+        Weapons.Add(new Weapon( Enums.Weapons.Soco_Ingles));
+        Weapons.Add(new Weapon( Enums.Weapons.Tesoura));
+        Weapons.Add(new Weapon( Enums.Weapons.Veneno));
     }
     
     private void InitializeCharacterTips()

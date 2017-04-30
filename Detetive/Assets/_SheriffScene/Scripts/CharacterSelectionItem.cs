@@ -14,6 +14,6 @@ public class CharacterSelectionItem : GenericSelectItem<Character> {
     public override void UpdateItem(Character Item, Action<Character> callback)
     {
         base.UpdateItem(Item, callback);
-        m_characterText.text = Item.N;
+        m_characterText.text = Manager.Instance.CharactersName[ (Enums.Characters) Item.MC];
     }
 }

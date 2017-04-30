@@ -7,10 +7,9 @@ public class Hunch  {
     /// <summary>
     /// HunchCharacter (Character that commit the murder)
     /// </summary>
-    public Character HC { get; set; }
+    public int HC { get; set; }
 
-
-    public Hunch(Room room, Character hunchCharacter)
+    public Hunch(Room room, int hunchCharacter)
     {
         this.HR = room;
         this.HC = hunchCharacter;
@@ -33,6 +32,11 @@ public class Hunch  {
         if (x == y) return false;
 
         return true;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
     }
 
 }

@@ -10,7 +10,12 @@ public class HunchQrCodeBehaviour : MonoBehaviour {
     
     public void SetQrCodeImage(PlayerHunch hunch)
     {
-        m_qrCodeImage.sprite = GenerateQRCode.GenerateQRSprite(Newtonsoft.Json.JsonConvert.SerializeObject(hunch));
+
+        string data = Newtonsoft.Json.JsonConvert.SerializeObject(hunch);
+
+        print(data);
+
+        m_qrCodeImage.sprite = GenerateQRCode.GenerateQRSprite(data);
     }
 	
 }

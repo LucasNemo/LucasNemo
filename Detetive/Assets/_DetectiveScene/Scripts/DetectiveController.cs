@@ -41,14 +41,14 @@ public class DetectiveController : MonoBehaviour {
                 }
                 catch (Exception e)
                 {
-                    print(e.Message);
+                    Debug.LogError("\n\n\nCrash dentro do readQRFromScene: "+ e.Message);
                     throw;
                 }
 
             }
             else
             {
-                print("QrCode is null");
+                Debug.LogError("QrCode is null");
             }
         });
     
@@ -56,7 +56,11 @@ public class DetectiveController : MonoBehaviour {
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result)
     {
-        FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode(result,
+        var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
+
+        var camTexture = readQRCodeBehaviour.GetCameraTexture;
+
+        readQRCodeBehaviour.ReadQrCode(result,
          useCompression);
     }
 

@@ -3,17 +3,12 @@
 public class Character  {
     
     /// <summary>
-    /// Name
+    /// MyCharacter Enum <seealso cref="Enums.Characters"/>
     /// </summary>
-    public string N { get; set; }
-    /// <summary>
-    /// MyCharacter Enum
-    /// </summary>
-    public Enums.Characters MC { get; set; }
+    public int MC { get; set; }
 
-    public Character(string name, Enums.Characters mycharacter)
+    public Character(int mycharacter)
     {
-        this.N = name;
         this.MC = mycharacter;
     }
 

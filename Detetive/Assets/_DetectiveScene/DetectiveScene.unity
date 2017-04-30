@@ -1779,6 +1779,8 @@ MonoBehaviour:
   m_detectiveHunchBehaviour: {fileID: 765627370}
   m_hunchQr: {fileID: 454089820}
   m_menu: {fileID: 1044941587}
+  cameraObject: {fileID: 0}
+  cameraImage: {fileID: 0}
 --- !u!1 &1278148966
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,14 @@
 ﻿
 public class Weapon {
+    
     /// <summary>
-    /// Name
+    /// MyWeapon <seealso cref="Enums.Weapons"/>
     /// </summary>
-    public string N { get; set; }
-    /// <summary>
-    /// MyWeapon
-    /// </summary>
-    public Enums.Weapons MW { get; set; }
+    public int MW { get; set; }
 
-    public Weapon(string name, Enums.Weapons myweapon)
+    public Weapon(Enums.Weapons myweapon)
     {
-        this.N = name;
-        this.MW = myweapon;
+        this.MW = myweapon.GetHashCode();
     }
 
 }

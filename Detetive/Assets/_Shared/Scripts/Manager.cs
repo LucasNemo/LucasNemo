@@ -98,17 +98,17 @@ public class Manager
     private void InitializePlaces()
     {
         Places = new List<Place>();
-        Places.Add(new Place("Banco", Enums.Places.Banco));
-        Places.Add(new Place("Boate", Enums.Places.Boate));
-        Places.Add(new Place("Cemitério", Enums.Places.Cemiterio));
-        Places.Add(new Place("Estação de Trem", Enums.Places.Estacao_de_Trem));
-        Places.Add(new Place("Floricultura", Enums.Places.Floricultura));
-        Places.Add(new Place("Hospital", Enums.Places.Hospital));
-        Places.Add(new Place("Hotel", Enums.Places.Hotel));
-        Places.Add(new Place("Mansão", Enums.Places.Mansao));
-        Places.Add(new Place("Praça Central", Enums.Places.Praca_Central));
-        Places.Add(new Place("Prefeitura", Enums.Places.Prefeitura));
-        Places.Add(new Place("Restaurante", Enums.Places.Restaurante));
+        Places.Add(new Place("Banco", Enums.Places.Banco, false));
+        Places.Add(new Place("Boate", Enums.Places.Boate, false));
+        Places.Add(new Place("Cemitério", Enums.Places.Cemiterio, false));
+        Places.Add(new Place("Estação de Trem", Enums.Places.Estacao_de_Trem, false));
+        Places.Add(new Place("Floricultura", Enums.Places.Floricultura, false));
+        Places.Add(new Place("Hospital", Enums.Places.Hospital, false));
+        Places.Add(new Place("Hotel", Enums.Places.Hotel, false));
+        Places.Add(new Place("Mansão", Enums.Places.Mansao, false));
+        Places.Add(new Place("Praça Central", Enums.Places.Praca_Central, false));
+        Places.Add(new Place("Prefeitura", Enums.Places.Prefeitura, false));
+        Places.Add(new Place("Restaurante", Enums.Places.Restaurante, false));
     }
 
 

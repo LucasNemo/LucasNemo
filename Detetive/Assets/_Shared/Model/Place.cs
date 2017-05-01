@@ -9,10 +9,17 @@
     /// </summary>s
     public int MP { get; set; }
 
-    public Place(string name, Enums.Places myplace)
+    /// <summary>
+    /// Is this the game host? 
+    /// The place to be the police statation or whatever
+    /// </summary>
+    public bool IH { get; set; }
+
+    public Place(string name, Enums.Places myplace, bool isHost)
     {
         this.N = name;
         this.MP = myplace.GetHashCode();
+        this.IH = isHost;
     }
 
 }

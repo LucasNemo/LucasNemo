@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class SheriffController : MonoBehaviour {
 
@@ -43,8 +44,11 @@ public class SheriffController : MonoBehaviour {
     public void OnFinishAddPlaces()
     {
         InitializeGameInformation();
+
+
         m_placesBehaviour.gameObject.SetActive(false);
         m_characterBehaviour.gameObject.SetActive(true);
+
     }
     
     /// <summary>
@@ -52,6 +56,8 @@ public class SheriffController : MonoBehaviour {
     /// </summary>
     private void InitializeGameInformation()
     {
+        UpdateManagerPlaces();
+
         //Make correct hunch
         m_corretHunch = new Hunch(new Room(Manager.Instance.Places[Helper.Random(0, Manager.Instance.Places.Count)],
                                            Manager.Instance.Weapons[Helper.Random(0, Manager.Instance.Weapons.Count)]),
@@ -81,7 +87,25 @@ public class SheriffController : MonoBehaviour {
         List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
         AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
     }
-    
+
+    private void UpdateManagerPlaces()
+    {
+        var places = m_placesBehaviour.GetPlaces;
+
+        foreach (var item in places)
+        {
+            foreach (var mPlaces in Manager.Instance.Places)
+            {
+                if (mPlaces.MP == item.MP)
+                {
+                    mPlaces.N = item.N;
+                    mPlaces.IH = item.IH;
+                    break;
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// Generic add tip method
     /// </summary>
@@ -93,7 +117,7 @@ public class SheriffController : MonoBehaviour {
     {
         var randomPlaces = GetRandomPlaces(places);
 
-        for (int i = 0; i < Random.Range(Manager.Instance.Min_Character_Tips, tips.Count); i++)
+        for (int i = 0; i < UnityEngine.Random.Range(Manager.Instance.Min_Character_Tips, tips.Count); i++)
         {
             var item = randomPlaces[i];
             m_gameInformation.Rs.First(x => x.P.MP == item.MP).T.Add(new TipItem(ReturnRandomItem<T>(tips).TP));
@@ -116,7 +140,7 @@ public class SheriffController : MonoBehaviour {
         var item = randomPlaces[0];
         m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = weapon;
 
-        for (int i = 1; i < Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
+        for (int i = 1; i < UnityEngine.Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
         {
             item = randomPlaces[i];
             m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = ReturnRandomItem(weapons);

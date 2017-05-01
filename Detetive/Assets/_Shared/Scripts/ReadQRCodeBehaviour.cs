@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ReadQRCodeBehaviour : MonoBehaviour {
 
     private WebCamTexture camTexture;
-    private Rect screenRect;
     private ReadQRCode readQRCode;
     private string qrCodeMessage;
     private float time = 0;
@@ -30,7 +29,6 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
 
     private void Awake()
     {
-        screenRect = new Rect(0, 0, Screen.width, Screen.height);
         readQRCode = new ReadQRCode();
     }
 
@@ -40,9 +38,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
 
     void InitializeCamera()
     {
-        camTexture = new WebCamTexture();
-        camTexture.requestedHeight = 400;
-        camTexture.requestedWidth = 400;
+        camTexture = new WebCamTexture(512, 512);
     }
 
     public void ReadQrCode(System.Action<string> callback, bool useCompression)
@@ -56,8 +52,10 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         {
             GetCameraCanvasReference();
         }
-
-        m_cameraImage.material.mainTexture = camTexture;
+        
+        Material m = new Material(m_cameraImage.material);
+        m.mainTexture = camTexture;
+        m_cameraImage.material = m;
 
         m_readQRCodeRoutine = StartCoroutine(ReadQRCode(useCompression));
         m_state = State.readQRCode;
@@ -78,26 +76,11 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         }
     }
 
-
-    //void OnGUI()
-    //{ 
-    //    switch (m_state)
-    //    {
-    //        case State.none:
-    //            break;
-    //        case State.readQRCode:
-    //            // drawing the camera on screen
-    //            GUIUtility.RotateAroundPivot(camTexture.videoRotationAngle, Vector2.zero);
-    //            GUI.DrawTexture(screenRect, camTexture, ScaleMode.ScaleToFit);
-    //            break;
-    //    }
-    //}
-
     IEnumerator ReadQRCode(bool useCompression)
     {
         do
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
             if (camTexture != null)
             {
 

@@ -44,7 +44,6 @@ public class DetectiveController : MonoBehaviour {
                     Debug.LogError("\n\n\nCrash dentro do readQRFromScene: "+ e.Message);
                     throw;
                 }
-
             }
             else
             {
@@ -81,12 +80,12 @@ public class DetectiveController : MonoBehaviour {
     {
         ReadQRFromsCene(false, (result) =>
         {
+            Debug.LogError("\n\n\nLeitura do QRCode " + result + "\n\n\n");
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
 
-            if (enumTest != null && 
-
-            Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest  )))
+            if (enumTest != null &&   Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest.GetHashCode()  )))
             {
+                Debug.LogError(string.Format("\n\n\n Lugar {0} Delegacia {1}\n\n", Manager.Instance.Places.First(x => x.MP == enumTest.GetHashCode())));
                 SceneManager.LoadScene("ARTest");
             }
         });

@@ -14,6 +14,12 @@ public class PlaceBehaviour : MonoBehaviour
     //Save last place readed
     private Place m_lastPlace;
 
+    [SerializeField]
+    private Text m_errormessage;
+
+    [SerializeField]
+    private Toggle m_toggle;
+
     /// <summary>
     /// Get added places
     /// </summary>
@@ -22,6 +28,11 @@ public class PlaceBehaviour : MonoBehaviour
     void Start()
     {
         m_places = new List<Place>();
+    }
+
+    private void FixedUpdate()
+    {
+        m_toggle.gameObject.SetActive( !m_places.Any(x => x.IH) );
     }
 
     public void OpenQrCodeReader()
@@ -37,7 +48,18 @@ public class PlaceBehaviour : MonoBehaviour
     public void OnAddPlaceClick()
     {
         if (m_lastPlace != null)
-            m_places.Add(new Place(m_inputField.text, (Enums.Places)  m_lastPlace.MP));
+        {
+            if (!m_places.Any(x => x.N.Equals(m_inputField.text) || x.MP == m_lastPlace.MP))
+            {
+                m_errormessage.gameObject.SetActive(false);
+                m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, m_toggle.isOn));
+
+                m_inputField.text = string.Empty;
+                m_lastPlace = null;
+            }
+            else
+                m_errormessage.gameObject.SetActive(true);
+        }
     }
 
 }

@@ -17,7 +17,7 @@ public class ReadQRCode
         barcodeReader.Options.PossibleFormats = new List<BarcodeFormat>();
         barcodeReader.Options.PossibleFormats.Add(BarcodeFormat.QR_CODE);
         barcodeReader.Options.TryHarder = false;
-
+        
     }
 
     public void ReadQR(WebCamTexture camTexture, Action<string> callback, bool zip = true)

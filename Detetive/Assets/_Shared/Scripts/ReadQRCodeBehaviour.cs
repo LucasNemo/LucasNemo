@@ -26,6 +26,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
 
     private State m_state;
     private Coroutine m_readQRCodeRoutine;
+    private string m_qrcodeText;
 
     private void Awake()
     {
@@ -89,11 +90,13 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
 
                 readQRCode.ReadQR(camTexture, (string e) =>
                 {
+                    m_qrcodeText = e;
+
+                    Invoke("ClearText", 5f);
                     Destroy(m_cameraCanvasReference);
                     m_cameraCanvasReference = null;
 
                     qrCodeMessage = e;
-
                     Debug.LogError("\n\n\n\n\n\n\n\n" + e + "\n\n\n\\n\n");
 
                     if (!string.IsNullOrEmpty(qrCodeMessage))
@@ -108,5 +111,17 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
             }
         } while (true);
 
+    }
+
+
+    void ClearText()
+    {
+        m_qrcodeText = string.Empty;
+    }
+
+    private void OnGUI()
+    {
+        if (string.IsNullOrEmpty(m_qrcodeText)) return;
+            GUI.Label(new Rect(0,0,1000,1000), m_qrcodeText);
     }
 }

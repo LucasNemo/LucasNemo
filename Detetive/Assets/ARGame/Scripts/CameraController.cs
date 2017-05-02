@@ -1,29 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour {
 
-    public Renderer plane;
-
+    public Image plane;
     private WebCamTexture camTexture;
-
 
     void Start()    
     {
-
         camTexture = new WebCamTexture();
-        //camTexture.requestedHeight = 10;
-        //camTexture.requestedWidth = 10;
-
         if (camTexture != null)
-        {
             camTexture.Play();
-        }
+
+        plane.material.mainTexture = camTexture;
+
+        Material m = new Material(plane.material);
+        m.mainTexture = camTexture;
+        plane.material = m;
+
     }
 
     private void FixedUpdate()
     {
-        plane.material.mainTexture = camTexture;
+        plane.transform.localRotation = Quaternion.Euler(0, 0, camTexture.videoRotationAngle);
     }
 }

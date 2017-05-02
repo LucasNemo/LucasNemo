@@ -115,25 +115,27 @@ public class Manager
     public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
     {
         {Enums.Weapons.Arma_Quimica,"Arma Química" },
-        {Enums.Weapons.Espingarda, "Espingarda" },
+        //{Enums.Weapons.Espingarda, "Espingarda" },
         {Enums.Weapons.Faca, "Faca" },
-        {Enums.Weapons.Pa, "Pá" },
-        {Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
+        //{Enums.Weapons.Pa, "Pá" },
+        //{Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
         {Enums.Weapons.Soco_Ingles, "Soco Inglês"},
-        {Enums.Weapons.Tesoura, "Tesoura" },
+        //{Enums.Weapons.Tesoura, "Tesoura" },
         {Enums.Weapons.Veneno, "Veneno" }
     };
+
+    public Room ActiveRoom;
 
     private void InitializeWeapons()
     {
         Weapons = new List<Weapon>();
         Weapons.Add(new Weapon( Enums.Weapons.Arma_Quimica));
-        Weapons.Add(new Weapon( Enums.Weapons.Espingarda));
+        //Weapons.Add(new Weapon( Enums.Weapons.Espingarda));
         Weapons.Add(new Weapon( Enums.Weapons.Faca));
-        Weapons.Add(new Weapon( Enums.Weapons.Pa));
-        Weapons.Add(new Weapon( Enums.Weapons.Pe_de_Cabra));
+        //Weapons.Add(new Weapon( Enums.Weapons.Pa));
+        //Weapons.Add(new Weapon( Enums.Weapons.Pe_de_Cabra));
         Weapons.Add(new Weapon( Enums.Weapons.Soco_Ingles));
-        Weapons.Add(new Weapon( Enums.Weapons.Tesoura));
+        //Weapons.Add(new Weapon( Enums.Weapons.Tesoura));
         Weapons.Add(new Weapon( Enums.Weapons.Veneno));
     }
     
@@ -161,14 +163,14 @@ public class Manager
     private void InitializeWeaponsTips()
     {
         WeaponsTips = new List<WeaponTip>();
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Arma_Quimica, Enums.TipsSounds.Nao_foi_Arma_Quimica_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Espingarda, Enums.TipsSounds.Nao_foi_Espingarda_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Faca, Enums.TipsSounds.Nao_foi_Faca_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pa, Enums.TipsSounds.Nao_foi_Pa_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pe_de_Cabra, Enums.TipsSounds.Nao_foi_Pe_de_Cabra_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Soco_Ingles, Enums.TipsSounds.Nao_foi_Soco_Ingles_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Tesoura, Enums.TipsSounds.Nao_foi_Tesoura));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Veneno, Enums.TipsSounds.Nao_foi_Veneno_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Arma_Quimica, Enums.TipsSounds.Nao_foi_Arma_Quimica_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Espingarda, Enums.TipsSounds.Nao_foi_Espingarda_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Faca, Enums.TipsSounds.Nao_foi_Faca_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pa, Enums.TipsSounds.Nao_foi_Pa_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pe_de_Cabra, Enums.TipsSounds.Nao_foi_Pe_de_Cabra_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Soco_Ingles, Enums.TipsSounds.Nao_foi_Soco_Ingles_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Tesoura, Enums.TipsSounds.Nao_foi_Tesoura));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Veneno, Enums.TipsSounds.Nao_foi_Veneno_com_Ruido));
     }
 
     #endregion

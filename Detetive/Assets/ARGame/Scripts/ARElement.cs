@@ -1,8 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ARElement : MonoBehaviour {
+
+    public enum ARType
+    {
+        Weapon,
+        Tip
+    }
+
+    public ARType arType;
+
+    [Tooltip("Not required!")]
+    public Enums.Weapons weaponType;
+
+    public Action onElementClicked;
 
     Material mainMaterial;
 
@@ -15,7 +29,12 @@ public class ARElement : MonoBehaviour {
     {
         if(Input.GetMouseButtonDown(0))
         {
-            mainMaterial.color = Color.red;
+            Debug.LogError("Investigado!");
+
+            if (onElementClicked != null)
+            {
+                onElementClicked.Invoke();
+            }
         }
     }
 

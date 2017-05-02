@@ -14,17 +14,18 @@ public class DetectiveController : MonoBehaviour {
     private HunchQrCodeBehaviour m_hunchQr;
     [SerializeField]
     private GameObject m_menu;
+    private bool m_initialized;
 
-    private void Start()
+    private void FixedUpdate()
     {
-        if(Manager.Instance.MyGameInformation == null)
-        {
+        if (m_initialized) return;
+        m_initialized = true;
+
+        if (Manager.Instance.MyGameInformation == null)
             InitializePlayerInfo();
-        }
         else
-        {
             m_menu.SetActive(true);
-        }
+
     }
 
     private void InitializePlayerInfo()
@@ -80,13 +81,12 @@ public class DetectiveController : MonoBehaviour {
     {
         ReadQRFromsCene(false, (result) =>
         {
-            Debug.LogError("\n\n\nLeitura do QRCode " + result + "\n\n\n");
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
 
             if (enumTest != null &&   Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest.GetHashCode()  )))
             {
-                Debug.LogError(string.Format("\n\n\n Lugar {0} Delegacia {1}\n\n", Manager.Instance.Places.First(x => x.MP == enumTest.GetHashCode())));
-                SceneManager.LoadScene("ARTest");
+                Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
+                SceneManager.LoadScene("ARScene");
             }
         });
 

@@ -62,7 +62,7 @@ public class SheriffController : MonoBehaviour {
     {
         m_wannaPlay.gameObject.SetActive(false);
         m_characterBehaviour.gameObject.SetActive(true);
-        
+          
         //Start the timer to start the game! 
         StartCoroutine(StartTimerController());
     } 
@@ -206,7 +206,7 @@ public class SheriffController : MonoBehaviour {
     /// </summary>
     public void OnFinishAddCharacter()
     {
-        if(m_wannaPlay.SheriffWannaPlay)
+        if (Manager.Instance.SheriffWannaPlay)
         {
             SceneManager.LoadScene("DetectiveScene");
         }

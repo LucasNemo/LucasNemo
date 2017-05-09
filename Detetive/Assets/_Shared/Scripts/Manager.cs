@@ -62,6 +62,11 @@ public class Manager
     /// </summary>
     public bool isOnGame { get { return MyGameInformation != null ? true : false; } }
 
+    /// <summary>
+    /// Sheriff wanna play detective too
+    /// </summary>
+    public bool SheriffWannaPlay { get; set; }
+
     public Manager()
     {
         IntializeCards();

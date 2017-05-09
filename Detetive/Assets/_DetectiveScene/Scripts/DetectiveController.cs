@@ -99,7 +99,7 @@ public class DetectiveController : MonoBehaviour {
     public void OnFinishHunchClicked()
     {
         m_detectiveHunchBehaviour.gameObject.SetActive(false);
-
+         
         ReadQRFromsCene(false, (result) =>
         {
             var enumTest = Enum.Parse(typeof(Enums.Places), result);

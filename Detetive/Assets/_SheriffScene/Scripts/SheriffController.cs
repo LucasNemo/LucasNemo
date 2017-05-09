@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using System;
-
+ 
 public class SheriffController : MonoBehaviour {
 
     #region Editor Variables
@@ -24,12 +24,24 @@ public class SheriffController : MonoBehaviour {
     private Hunch m_corretHunch;
     private float m_timer = 120f;
 
+    [SerializeField]
+    private WannaPlayBehaviour m_wannaPlay;
+
     #endregion
 
     #region Properties
 
     public float Timer { get { return m_timer; } }
     #endregion 
+
+    public void OnSelectWannaPlay(bool wannaPlay)
+    {
+        m_wannaPlay.gameObject.SetActive(false);
+        m_characterBehaviour.gameObject.SetActive(true);
+
+        //Start the timer to start the game! 
+        StartCoroutine(StartTimerController());
+    }
 
     /// <summary>
     /// Get a game already set information

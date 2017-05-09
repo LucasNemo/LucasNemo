@@ -13,14 +13,17 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
 
         if (Manager.Instance.MyGameInformation == null)
         {
-            TryLoadPreviousGameData();
             m_detectiveState = Enums.DetectiveState.ReadGameConfiguration;
+        }
+        else
+        {
+            m_detectiveState = Enums.DetectiveState.TimerToStart;
         }
     }
 
-    private void TryLoadPreviousGameData()
+    public void Dummy()
     {
-        //throw new NotImplementedException();
+        //Do some dummy stuff
     }
 
     void Update()

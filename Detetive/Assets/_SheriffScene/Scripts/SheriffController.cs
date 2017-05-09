@@ -22,7 +22,7 @@ public class SheriffController : MonoBehaviour {
     #region Private Att
     private GameInformation m_gameInformation;
     private Hunch m_corretHunch;
-    private float m_timer = 120f;
+    private float m_timer = Manager.Instance.COOLDOWN;
 
     [SerializeField]
     private WannaPlayBehaviour m_wannaPlay;
@@ -64,12 +64,8 @@ public class SheriffController : MonoBehaviour {
     {
         InitializeGameInformation();
 
-
         m_placesBehaviour.gameObject.SetActive(false);
-        m_characterBehaviour.gameObject.SetActive(true);
-        
-        //Start the timer to start the game! 
-        StartCoroutine(StartTimerController());
+        m_wannaPlay.gameObject.SetActive(true);
     }
 
     private IEnumerator StartTimerController()
@@ -209,8 +205,16 @@ public class SheriffController : MonoBehaviour {
     /// </summary>
     public void OnFinishAddCharacter()
     {
+        if (Manager.Instance.SheriffWannaPlay)
+        {
+            SceneManager.LoadScene("DetectiveScene");
+        }
+        else
+        {
+            //TODO O QUE ROLA QUANDO DELE NÃO QUER JOGAR?!@#!$!@
+        }
+
         m_characterBehaviour.gameObject.SetActive(false);
-        m_hunchBehaviour.gameObject.SetActive(true);
     }
 
     /// <summary>

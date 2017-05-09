@@ -25,10 +25,15 @@ public class Manager
     public int Min_Weapons = 3;
     public int Min_Weapons_Tips = 3;
     public int Min_Character_Tips = 3;
+    public float COOLDOWN = 20f;
+
     #endregion
 
     #region Constants
-    
+
+    public readonly string READ_FROM_XERIFE = "Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
+    public readonly string GO_TO_PD = "Vá para a delegacia e realize a leitura do QRCode para conferir suas respostas!";
+    public readonly string READ_FROM_PLACE = "Realize a leitura do QRCode do cenário / ambiente";
     private const string SAVE_NAME = "GameInfo";
 
     #endregion
@@ -168,6 +173,7 @@ public class Manager
     };
 
     public Room ActiveRoom;
+    
 
     private void InitializeWeapons()
     {

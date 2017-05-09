@@ -40,6 +40,7 @@ public class MenuController : MonoBehaviour {
                 SceneManager.LoadScene("DetectiveScene");
                 break;
             case 3:
+                Manager.Instance.MyGameInformation = null;
                 m_continueMenu.SetActive(false);
                 m_newGameMenu.SetActive(true);
                 break;

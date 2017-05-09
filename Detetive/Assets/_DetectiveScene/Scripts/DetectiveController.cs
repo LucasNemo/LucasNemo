@@ -23,7 +23,13 @@ public class DetectiveController : MonoBehaviour {
     private GameObject m_menu;
     TimerController m_timerController;
     private bool m_initialized;
-    
+
+    private void Awake()
+    {
+        DetectiveManager.Instance.Dummy();
+    }
+
+
     private void FixedUpdate()
     {
         switch (DetectiveManager.Instance.GetCurrentState())
@@ -73,11 +79,10 @@ public class DetectiveController : MonoBehaviour {
 
     private void InitializePlayerInfo()
     {
-        //TODO - Please, remove the hardcoded!!!!!!!!!
         ReadQRFromsCene(true,(result)=>
         {
             DetectiveManager.Instance.QRCodeReaded(result);
-        }, "Realize a leitura do QRCode do Xerife para receber as informações do jogo!");
+        }, Manager.Instance.READ_FROM_XERIFE);
     }
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)
@@ -113,16 +118,11 @@ public class DetectiveController : MonoBehaviour {
                     Debug.LogError("Jogador está na delegacia!!!!"); 
                 }
             }
-        }, "Vá para a delegacia e realize a leitura do QRCode para conferir suas respostas!");
-
-        //m_hunchQr.SetQrCodeImage(m_detectiveHunchBehaviour.GetHunch);
-
-       // m_hunchQr.gameObject.SetActive(true);
+        }, Manager.Instance.GO_TO_PD);
     }
 
     public void OnInvesticateClicked()
     {
-        //TODO - please remove the hardcoded!!!!!!!!
         ReadQRFromsCene(false, (result) =>
         {
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
@@ -132,7 +132,7 @@ public class DetectiveController : MonoBehaviour {
                 Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
                 SceneManager.LoadScene("ARScene");
             }
-        }, "Realize a leitura do QRCode do cenário / ambiente");
+        }, Manager.Instance.READ_FROM_PLACE);
     }
 
 }

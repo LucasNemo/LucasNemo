@@ -105,8 +105,8 @@ public class SheriffController : MonoBehaviour {
         AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
 
         //Add character tips
-         List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
-         AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
+        List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
+        AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
     }
 
     private void UpdateManagerPlaces()

@@ -42,7 +42,7 @@ public class GenerateQRCode {
 
     public static Sprite GenerateQRSprite(string text, int size = 256)
     {
-        Texture2D qrCode = GenerateQR(text, 256);
+        Texture2D qrCode = GenerateQR(text, size);
         return Sprite.Create(qrCode, new Rect(0, 0, qrCode.width, qrCode.height), new Vector2(0.5f, 0.5f));
     }
 }

@@ -1778,6 +1778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_detectiveHunchBehaviour: {fileID: 765627370}
   m_hunchQr: {fileID: 454089820}
+  m_resultScreen: {fileID: 0}
   m_menu: {fileID: 1044941587}
 --- !u!1 &1278148966
 GameObject:

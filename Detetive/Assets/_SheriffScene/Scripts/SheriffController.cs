@@ -17,8 +17,6 @@ public class SheriffController : MonoBehaviour {
     private HunchBehaviour m_hunchBehaviour;
     [SerializeField]
     private FinishGameBehaviour m_finishBehaviour;
-    [SerializeField]
-    private WannaPlayBehaviour m_wannaPlay;
     #endregion
 
     #region Private Att
@@ -53,20 +51,15 @@ public class SheriffController : MonoBehaviour {
     public void OnFinishAddPlaces()
     {
         InitializeGameInformation();
-        
+
+
         m_placesBehaviour.gameObject.SetActive(false);
-        m_wannaPlay.gameObject.SetActive(true);
-    }
-    
-    public void OnSelectWannaPlay(bool wannaPlay)
-    {
-        m_wannaPlay.gameObject.SetActive(false);
         m_characterBehaviour.gameObject.SetActive(true);
-          
+        
         //Start the timer to start the game! 
         StartCoroutine(StartTimerController());
-    } 
-    
+    }
+
     private IEnumerator StartTimerController()
     {
         do
@@ -108,12 +101,12 @@ public class SheriffController : MonoBehaviour {
         AddWeapons(places, m_corretHunch.HR.W);
 
         //AddWeaponsTips
-       // List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W.GetHashCode() != m_corretHunch.HR.W.MW).ToList();
-        //AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
+        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W.GetHashCode() != m_corretHunch.HR.W.MW).ToList();
+        AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
 
         //Add character tips
-       // List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
-   //AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
+         List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
+         AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
     }
 
     private void UpdateManagerPlaces()
@@ -145,9 +138,13 @@ public class SheriffController : MonoBehaviour {
     {
         var randomPlaces = GetRandomPlaces(places);
 
-        for (int i = 0; i < UnityEngine.Random.Range(Manager.Instance.Min_Character_Tips, tips.Count); i++)
+        //Get random between all tips in game !         
+        var rand = UnityEngine.Random.Range(Manager.Instance.Min_Character_Tips, tips.Count);
+        for (int i = 0; i < rand; i++)
         {
             var item = randomPlaces[i];
+
+            //Add a unique tip to each room!
             m_gameInformation.Rs.First(x => x.P.MP == item.MP).T.Add(new TipItem(ReturnRandomItem<T>(tips).TP));
         }
     }
@@ -176,14 +173,14 @@ public class SheriffController : MonoBehaviour {
     }
 
     /// <summary>
-    /// Return a random generic item
+    /// Return a random generic item then remove from list
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="list"></param>
     /// <returns></returns>
     private T ReturnRandomItem<T>(List<T> list)
     {
-        var listItem = list.OrderBy(x => System.Guid.NewGuid()).FirstOrDefault();
+        var listItem = list.SortList().FirstOrDefault();
         if (listItem != null)
         {
             list.Remove(listItem);
@@ -198,7 +195,7 @@ public class SheriffController : MonoBehaviour {
     /// <returns></returns>
     private List<Place> GetRandomPlaces(List<Place> places)
     {
-        return places.OrderBy(x => System.Guid.NewGuid()).ToList();
+        return places.SortList();
     }
    
     /// <summary>
@@ -206,17 +203,8 @@ public class SheriffController : MonoBehaviour {
     /// </summary>
     public void OnFinishAddCharacter()
     {
-        if (Manager.Instance.SheriffWannaPlay)
-        {
-            SceneManager.LoadScene("DetectiveScene");
-        }
-        else
-        {
-            //TODO O QUE ROLA QUANDO DELE NÃO QUER JOGAR?!@#!$!@
-        }
-
         m_characterBehaviour.gameObject.SetActive(false);
-        //m_hunchBehaviour.gameObject.SetActive(true);
+        m_hunchBehaviour.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -232,5 +220,5 @@ public class SheriffController : MonoBehaviour {
     {
         return m_hunchBehaviour.GetHunchs.Where(x => x.MH == m_corretHunch).OrderBy(y => y.HT).FirstOrDefault(); 
     }
-    
+
 }

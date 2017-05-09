@@ -84,6 +84,9 @@
     <Compile Include="Assets\ARGame\Scripts\CameraController.cs" />
     <Compile Include="Assets\ARGame\Scripts\GyroCamera.cs" />
     <Compile Include="Assets\ARGame\Scripts\HandleInvestigations.cs" />
+    <Compile Include="Assets\Helpers\Scripts\AudioController.cs" />
+    <Compile Include="Assets\Helpers\Scripts\Extensions.cs" />
+    <Compile Include="Assets\Helpers\Scripts\PlayAndRemove.cs" />
     <Compile Include="Assets\JsonDotNet\Extras\CustomConverters\Matrix4x4Converter.cs" />
     <Compile Include="Assets\JsonDotNet\Extras\CustomConverters\Vector2Converter.cs" />
     <Compile Include="Assets\JsonDotNet\Extras\CustomConverters\Vector3Converter.cs" />
@@ -439,6 +442,7 @@
     <Compile Include="Assets\_DetectiveScene\Scripts\HunchQrCodeBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\InvestigateBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\PlaceSelectionItem.cs" />
+    <Compile Include="Assets\_DetectiveScene\Scripts\TipBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\WeaponSelectionItem.cs" />
     <Compile Include="Assets\_MenuScene\Scripts\MenuController.cs" />
     <Compile Include="Assets\_Shared\Model\Character.cs" />

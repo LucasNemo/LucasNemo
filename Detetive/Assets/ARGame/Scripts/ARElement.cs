@@ -25,16 +25,13 @@ public class ARElement : MonoBehaviour {
         mainMaterial = GetComponent<Renderer>().material;        
     }
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Debug.LogError("Investigado!");
+        Debug.LogError("Investigado!");
 
-            if (onElementClicked != null)
-            {
-                onElementClicked.Invoke();
-            }
+        if (onElementClicked != null)
+        {
+            onElementClicked.Invoke();
         }
     }
 

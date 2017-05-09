@@ -9,6 +9,10 @@ public class HandleInvestigations : MonoBehaviour
 {
     public ARElement[] arElements;
 
+    public Transform[] arPos;
+
+    public TipBehaviour tipModel; 
+
     private void Start()
     {
          SetCurrentRoom( Manager.Instance.ActiveRoom );
@@ -28,14 +32,25 @@ public class HandleInvestigations : MonoBehaviour
 
         if (roomInfo.T != null && roomInfo.T.Count > 0)
         {
-            EnableTips();
+            EnableTips(roomInfo);
         }
-
     }
 
-    private void EnableTips()
+    private void EnableTips(Room roomInfo)
     {
-        throw new NotImplementedException();
+        var tips = roomInfo.T;
+
+        for (int i = 0; i < tips.Count; i++)
+        {
+            var pos = arPos.Length > i ? arPos[i] : arPos[0]; 
+            SpawnTip(tips[i], pos.position);
+        }
+    }
+
+    private void SpawnTip(TipItem tip, Vector3 pos)
+    {
+        var go = Instantiate(tipModel, pos, Quaternion.identity);
+        go.SetupTip(tip.TP);
     }
 
     private void EnableWeapons(Room roomInfo)
@@ -57,5 +72,7 @@ public class HandleInvestigations : MonoBehaviour
                 SceneManager.LoadScene("DetectiveScene");
             };
         }
+       
+
     }
 }

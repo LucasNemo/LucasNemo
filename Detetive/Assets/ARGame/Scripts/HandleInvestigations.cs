@@ -7,24 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class HandleInvestigations : MonoBehaviour
 {
-    public ARElement[] arElements;
-
-    public Transform[] arPos;
-
-    public TipBehaviour tipModel; 
+    public ARElement[] arElements;  //List of elements on scene
+    public List<Transform> arPos;   //The list of positions 
+    public TipBehaviour tipModel;   //The base of any tip!
 
     private void Start()
     {
-         SetCurrentRoom( Manager.Instance.ActiveRoom );
+        //Randomize the array of positios!
+        arPos = arPos.SortList();
+        SetCurrentRoom( Manager.Instance.ActiveRoom );
     }
 
-    private void SetCurrentRoom(object activeRoom)
+    private void SetCurrentRoom(Room roomInfo)
     {
-        throw new NotImplementedException();
-    }
+        //Only enable tips and 3d models when the scene has it! - of course! 
 
-    public void SetCurrentRoom(Room roomInfo)
-    {
         if (roomInfo.W != null)
         {
             EnableWeapons(roomInfo);
@@ -42,8 +39,7 @@ public class HandleInvestigations : MonoBehaviour
 
         for (int i = 0; i < tips.Count; i++)
         {
-            var pos = arPos.Length > i ? arPos[i] : arPos[0]; 
-            SpawnTip(tips[i], pos.position);
+            SpawnTip(tips[i], GetSpawnPosition());
         }
     }
 
@@ -62,17 +58,25 @@ public class HandleInvestigations : MonoBehaviour
         if (arWeapon)   
         {
             arWeapon.gameObject.SetActive(true);
-
-            UnityEngine.Random.InitState( (int) Time.realtimeSinceStartup);
-            
-            //arWeapon.transform.position = new Vector3(rX, rY, rZ);
-
+            arWeapon.transform.position = GetSpawnPosition();
             arWeapon.onElementClicked = () =>
             {
                 SceneManager.LoadScene("DetectiveScene");
             };
         }
-       
+    }
 
+    /// <summary>
+    /// Get a position from the array of positions then remove the indice from collection!
+    /// </summary>
+    /// <returns></returns>
+    private Vector3 GetSpawnPosition()
+    {
+        var id = arPos.Count - 1;
+        if (id < 0) return new Vector3(5, 5, 5);
+        var p = arPos[id];
+        Vector3 pos = new Vector3(p.position.x, p.position.y, p.position.z);
+        arPos.RemoveAt(id);
+        return pos;
     }
 }

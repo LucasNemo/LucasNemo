@@ -136,16 +136,19 @@ public class SheriffController : MonoBehaviour {
     /// <param name="minRandom"></param>
     private void AddTip<T>(List<Place> places,List<T> tips, int minRandom) where T : TipItem
     {
-        var randomPlaces = GetRandomPlaces(places);
+        var randomPlaces = places.SortList();
 
         //Get random between all tips in game !         
-        var rand = UnityEngine.Random.Range(Manager.Instance.Min_Character_Tips, tips.Count);
-        for (int i = 0; i < rand; i++)
+        var rand = UnityEngine.Random.Range(minRandom, tips.Count);
+
+        for (int i = 0; i < places.Count; i++)
         {
             var item = randomPlaces[i];
 
             //Add a unique tip to each room!
             m_gameInformation.Rs.First(x => x.P.MP == item.MP).T.Add(new TipItem(ReturnRandomItem<T>(tips).TP));
+
+            if (tips.Count <= 0) return;
         }
     }
 
@@ -160,7 +163,7 @@ public class SheriffController : MonoBehaviour {
         List<Weapon> weapons = new List<Weapon>();
         weapons.AddRange(Manager.Instance.Weapons);
 
-        var randomPlaces = GetRandomPlaces(places);
+        var randomPlaces = places.SortList();
 
         var item = randomPlaces[0];
         m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = weapon;
@@ -187,16 +190,7 @@ public class SheriffController : MonoBehaviour {
         }
         return listItem;
     }
-    
-    /// <summary>
-    /// Random places
-    /// </summary>
-    /// <param name="places"></param>
-    /// <returns></returns>
-    private List<Place> GetRandomPlaces(List<Place> places)
-    {
-        return places.SortList();
-    }
+  
    
     /// <summary>
     /// Method called when player finish add detectives

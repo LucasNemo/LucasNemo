@@ -15,6 +15,11 @@ public class GameInformation  {
     /// </summary>
     public Hunch CH { get; set; }
 
+    /// <summary>
+    /// The timer to start the game! (a cooldown to balacen the game)
+    /// </summary>
+    public float Timer { get; set; }
+
     public GameInformation(Hunch correctHunch)
     {
         this.CH = correctHunch;

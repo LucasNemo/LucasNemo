@@ -20,7 +20,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
 
     private void TryLoadPreviousGameData()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     void Update()
@@ -82,8 +82,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
                 var deserializeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
                 Manager.Instance.MyGameInformation = deserializeResult;
 
-                //TODO - Save game data!
-               
+                //TODO - Save game data!               
                 m_detectiveState = Enums.DetectiveState.TimerToStart;
             }
             catch (Exception e)
@@ -140,7 +139,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
 
     private void HandleStartGame()
     {
-        throw new NotImplementedException();
+         // do some stat stuff 
     }
 
     private void HandleReadGameConfiguration()

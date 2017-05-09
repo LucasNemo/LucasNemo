@@ -11,7 +11,7 @@ using UnityEngine.UI;
 /// Handle the detective scene only - Not like the manager that handle all the detective actions
 /// </summary>
 public class DetectiveController : MonoBehaviour {
-
+     
   
     [SerializeField]
     private DetectiveHunchBehaviour m_detectiveHunchBehaviour;
@@ -21,6 +21,7 @@ public class DetectiveController : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_menu;
+    
 
     private bool m_initialized;
     
@@ -52,26 +53,43 @@ public class DetectiveController : MonoBehaviour {
             case Enums.DetectiveState.ReadingGameState:
                 break;
             case Enums.DetectiveState.TimerToStart:
+                HandleTimer();
                 break;
+        }
+    }
+
+    TimerController m_timerController; 
+
+    private void HandleTimer()
+    {
+        if (!m_timerController)
+        {
+            m_timerController =Instantiate( Resources.Load<TimerController>("TimerCanvas") );
+            StartCoroutine(m_timerController.StartTimer(Manager.Instance.MyGameInformation.Timer, () =>
+            {
+                DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+                Destroy(m_timerController.gameObject);
+            }));
         }
     }
 
     private void InitializePlayerInfo()
     {
+        //TODO - Please, remove the hardcoded!!!!!!!!!
         ReadQRFromsCene(true,(result)=>
         {
             DetectiveManager.Instance.QRCodeReaded(result);
-        });
+        }, "Realize a leitura do QRCode do Xerife!");
     }
 
-    private void ReadQRFromsCene(bool useCompression, Action<string> result)
+    private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)
     {
         var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
 
         var camTexture = readQRCodeBehaviour.GetCameraTexture;
 
         readQRCodeBehaviour.ReadQrCode(result,
-         useCompression);
+         useCompression, title);
     }
 
     public void OnHunchClick()
@@ -89,6 +107,7 @@ public class DetectiveController : MonoBehaviour {
 
     public void OnInvesticateClicked()
     {
+        //TODO - please remove the hardcoded!!!!!!!!
         ReadQRFromsCene(false, (result) =>
         {
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
@@ -98,7 +117,7 @@ public class DetectiveController : MonoBehaviour {
                 Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
                 SceneManager.LoadScene("ARScene");
             }
-        });
+        }, "Realize a leitura do QRCode do cenário / ambiente");
     }
 
 }

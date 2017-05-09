@@ -16,6 +16,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
 
     private GameObject m_cameraCanvasReference;
     private Image m_cameraImage;
+    private Text m_title; 
 
     private enum State
     {
@@ -42,7 +43,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         camTexture = new WebCamTexture(512, 512);
     }
 
-    public void ReadQrCode(System.Action<string> callback, bool useCompression)
+    public void ReadQrCode(System.Action<string> callback, bool useCompression, string titleText)
     {
         if (camTexture == null)
             InitializeCamera();
@@ -61,12 +62,16 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         m_readQRCodeRoutine = StartCoroutine(ReadQRCode(useCompression));
         m_state = State.readQRCode;
         m_readCallback = callback;
+
+
+        m_title.text = titleText;
     }
 
     private void GetCameraCanvasReference()
     {
         m_cameraCanvasReference = Instantiate(cameraCanvasPrefab);
         m_cameraImage = m_cameraCanvasReference.GetComponentInChildren<Image>();
+        m_title = m_cameraCanvasReference.GetComponentInChildren<Text>(); 
     }
 
     public WebCamTexture GetCameraTexture

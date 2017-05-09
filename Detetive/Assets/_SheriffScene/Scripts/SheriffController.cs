@@ -22,8 +22,15 @@ public class SheriffController : MonoBehaviour {
     #region Private Att
     private GameInformation m_gameInformation;
     private Hunch m_corretHunch;
+    private float m_timer = 120f;
+
     #endregion
-    
+
+    #region Properties
+
+    public float Timer { get { return m_timer; } }
+    #endregion 
+
     /// <summary>
     /// Get a game already set information
     /// </summary>
@@ -48,9 +55,23 @@ public class SheriffController : MonoBehaviour {
 
         m_placesBehaviour.gameObject.SetActive(false);
         m_characterBehaviour.gameObject.SetActive(true);
-
+        
+        //Start the timer to start the game! 
+        StartCoroutine(StartTimerController());
     }
-    
+
+    private IEnumerator StartTimerController()
+    {
+        do
+        {
+            m_timer -= Time.deltaTime;
+            m_timer = (float) Math.Round(m_timer, 2);
+            yield return null;
+        } while (m_timer > 0);
+
+        m_timer = 0;
+    }
+
     /// <summary>
     /// Initialize game information add rooms and weapon on each of it
     /// </summary>

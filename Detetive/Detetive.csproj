@@ -406,6 +406,7 @@
     <Compile Include="Assets\ReadQRCodeTest\Scripts\QRCodeTesting.cs" />
     <Compile Include="Assets\TestManager\TestManager.cs" />
     <Compile Include="Assets\TestManager\TestSerializes.cs" />
+    <Compile Include="Assets\Timer\TimerController.cs" />
     <Compile Include="Assets\Unity.IO.Compression\BlockType.cs" />
     <Compile Include="Assets\Unity.IO.Compression\CompressionMode.cs" />
     <Compile Include="Assets\Unity.IO.Compression\CopyEncoder.cs" />

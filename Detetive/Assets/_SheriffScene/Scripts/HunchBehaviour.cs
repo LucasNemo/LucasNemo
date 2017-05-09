@@ -21,6 +21,7 @@ public class HunchBehaviour : MonoBehaviour {
     /// </summary>
     public void OnAddHunch()
     {
+        //TODO - PLEASE REMOVE THE HARDCODED!!!!!
         FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
         {
             if(!string.IsNullOrEmpty(result))
@@ -32,7 +33,7 @@ public class HunchBehaviour : MonoBehaviour {
             {
                 print("QrCode is null");
             }
-        }, true);
+        }, true, "");
     }
 
 }

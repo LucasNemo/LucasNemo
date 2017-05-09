@@ -37,12 +37,14 @@ public class PlaceBehaviour : MonoBehaviour
 
     public void OpenQrCodeReader()
     {
+        //TODO - PLEASE REMOVE THE HARDCODED!!!!!!!
         FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
         {
             Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
-            m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)  x.MP) == place);
+            m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
             m_inputField.text = m_lastPlace.N;
-        },false);
+        }, false, "Realize a leitura do QRCode do lugar / ambiente");
+         
     }
 
     public void OnAddPlaceClick()

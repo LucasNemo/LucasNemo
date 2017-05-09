@@ -168,19 +168,18 @@ public class SheriffController : MonoBehaviour {
     private void AddWeapons(List<Place> places, Weapon weapon)
     {
         //Get all weapons
-        List<Weapon> weapons = new List<Weapon>();
-        weapons.AddRange(Manager.Instance.Weapons);
+        //List<Weapon> weapons = new List<Weapon>();
+        //weapons.AddRange(Manager.Instance.Weapons);
 
         var randomPlaces = places.SortList();
-
         var item = randomPlaces[0];
         m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = weapon;
 
-        for (int i = 1; i < UnityEngine.Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
-        {
-            item = randomPlaces[i];
-            m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = ReturnRandomItem(weapons);
-        }
+        //for (int i = 1; i < UnityEngine.Random.Range(Manager.Instance.Min_Weapons, weapons.Count); i++)
+        //{
+        //    item = randomPlaces[i];
+        //    m_gameInformation.Rs.First(x => x.P.MP == item.MP).W = ReturnRandomItem(weapons);
+        //}
     }
 
     /// <summary>

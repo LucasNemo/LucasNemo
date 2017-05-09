@@ -10,12 +10,13 @@ public class HandleInvestigations : MonoBehaviour
     public ARElement[] arElements;  //List of elements on scene
     public List<Transform> arPos;   //The list of positions 
     public TipBehaviour tipModel;   //The base of any tip!
-
+    public GameObject murdererPlace; 
     private void Start()
     {
         //Randomize the array of positios!
         arPos = arPos.SortList();
         SetCurrentRoom( Manager.Instance.ActiveRoom );
+        murdererPlace.SetActive(Manager.Instance.ActiveRoom.P.MP == Manager.Instance.MyGameInformation.CH.HR.P.MP);
     }
 
     private void SetCurrentRoom(Room roomInfo)

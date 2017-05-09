@@ -20,6 +20,9 @@ public class DetectiveController : MonoBehaviour {
     private HunchQrCodeBehaviour m_hunchQr;
 
     [SerializeField]
+    private GameObject m_resultScreen; 
+
+    [SerializeField]
     private GameObject m_menu;
     TimerController m_timerController;
     private bool m_initialized;
@@ -115,7 +118,13 @@ public class DetectiveController : MonoBehaviour {
 
                 if (Manager.Instance.ActiveRoom.P.IH)
                 {
-                    Debug.LogError("Jogador está na delegacia!!!!"); 
+                    var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
+                    var answer = Manager.Instance.MyGameInformation.CH.HR == playerhunch.HR;
+
+                    m_resultScreen.SetActive(true);
+                    m_resultScreen.GetComponentInChildren<Text>().text = string.Format("Seu palpite\nSuspeito{0}\nLocal{1}\nArma{2}\n\nEstá {3}",
+                         ((Enums.Characters)playerhunch.HC).ToString(), (playerhunch.HR.P.N),
+                         ((Enums.Weapons)playerhunch.HR.W.MW).ToString(), answer ? "CORRETA!!!" : "ERRADO!"  );
                 }
             }
         }, Manager.Instance.GO_TO_PD);

@@ -6,52 +6,62 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Handle the detective scene only - Not like the manager that handle all the detective actions
+/// </summary>
 public class DetectiveController : MonoBehaviour {
 
+  
     [SerializeField]
     private DetectiveHunchBehaviour m_detectiveHunchBehaviour;
+
     [SerializeField]
     private HunchQrCodeBehaviour m_hunchQr;
+
     [SerializeField]
     private GameObject m_menu;
-    private bool m_initialized;
 
+    private bool m_initialized;
+    
     private void FixedUpdate()
     {
-        if (m_initialized) return;
-        m_initialized = true;
-
-        if (Manager.Instance.MyGameInformation == null)
-            InitializePlayerInfo();
-        else
-            m_menu.SetActive(true);
-
+        switch (DetectiveManager.Instance.GetCurrentState())
+        {
+            case Enums.DetectiveState.ReadGameConfiguration:
+                InitializePlayerInfo();
+                DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadingGameState);
+                break;
+            case Enums.DetectiveState.StartGame:
+                m_menu.SetActive(true);
+                break;
+            case Enums.DetectiveState.WaitingForAction:
+                break;
+            case Enums.DetectiveState.Investigate:
+                break;
+            case Enums.DetectiveState.Investigating:
+                break;
+            case Enums.DetectiveState.EndingInvestigation:
+                break;
+            case Enums.DetectiveState.Hunch:
+                break;
+            case Enums.DetectiveState.WaitingDeploy:
+                break;
+            case Enums.DetectiveState.ResultScreen:
+                break;
+            case Enums.DetectiveState.ReadingGameState:
+                break;
+            case Enums.DetectiveState.TimerToStart:
+                break;
+        }
     }
 
     private void InitializePlayerInfo()
     {
         ReadQRFromsCene(true,(result)=>
         {
-            if (!string.IsNullOrEmpty(result))
-            {
-                try
-                {
-                    var deserializeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
-                    Manager.Instance.MyGameInformation = deserializeResult;
-                    m_menu.SetActive(true);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("\n\n\nCrash dentro do readQRFromScene: "+ e.Message);
-                    throw;
-                }
-            }
-            else
-            {
-                Debug.LogError("QrCode is null");
-            }
+            DetectiveManager.Instance.QRCodeReaded(result);
         });
-    
     }
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result)
@@ -89,9 +99,6 @@ public class DetectiveController : MonoBehaviour {
                 SceneManager.LoadScene("ARScene");
             }
         });
-
-
-        //SceneManager.LoadScene("ARTest"); 
     }
 
 }

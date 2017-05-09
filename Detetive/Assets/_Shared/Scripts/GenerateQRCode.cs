@@ -22,7 +22,7 @@ public class GenerateQRCode {
                 Width = width
             }
         };
-
+        
         return writer.Write(newQr);
     }
 
@@ -31,10 +31,10 @@ public class GenerateQRCode {
     /// </summary>
     /// <param name="text">QRCode info</param>
     /// <returns></returns>
-    public static Texture2D GenerateQR(string text, int size = 256)
+    public static Texture2D GenerateQR(string text, int size = 256, bool compression = true)
     {
         var encoded = new Texture2D(size, size);
-        var color32 = Encode(text, encoded.width, encoded.height);
+        var color32 = Encode(text, encoded.width, encoded.height, compression);
         encoded.SetPixels32(color32);
         encoded.Apply();
         return encoded;
@@ -46,3 +46,4 @@ public class GenerateQRCode {
         return Sprite.Create(qrCode, new Rect(0, 0, qrCode.width, qrCode.height), new Vector2(0.5f, 0.5f));
     }
 }
+    

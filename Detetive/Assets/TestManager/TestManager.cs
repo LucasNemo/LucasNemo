@@ -5,33 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class TestManager : MonoBehaviour {
 
+    GenerateQRCode qrcode; 
+
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene(1);
-    }
+        // DontDestroyOnLoad(gameObject);
+        //   SceneManager.LoadScene(1);
 
+        qrcode = new GenerateQRCode();
+    }
+    string txt = "40";
+    Texture t;
     public void OnGUI()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 150, 200, 200), "Testar QRCodes"))
-            {
-                SceneManager.LoadScene(2);
-            }
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 150, 200, 200), "Testar AR"))
-            {
-                SceneManager.LoadScene(3);
-            }
-        }
-        else 
+        txt = GUI.TextField(new Rect(0, 100, 100, 50), txt);
+
+        if (GUI.Button(new Rect(0,0,100,50), "x"))
         {
-            if ( GUI.Button(new Rect(0,Screen.height - 200,200,200), "MENU"))
-            {
-                SceneManager.LoadScene("MenuScene");
-            }
+          
+            t = GenerateQRCode.GenerateQR(txt, 256, false);
         }
+
+        if(t)
+           GUI.DrawTexture(new Rect(0, 200, 512, 512), t);
     }
 
 

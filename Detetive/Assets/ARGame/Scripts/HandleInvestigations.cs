@@ -44,17 +44,13 @@ public class HandleInvestigations : MonoBehaviour
 
         var arWeapon = arElements.Where(x => x.arType == ARElement.ARType.Weapon).FirstOrDefault(x => x.weaponType == weapon);
 
-        if (arWeapon)
+        if (arWeapon)   
         {
             arWeapon.gameObject.SetActive(true);
 
             UnityEngine.Random.InitState( (int) Time.realtimeSinceStartup);
-
-            var rX = UnityEngine.Random.Range(-10, 10);
-            var rY = UnityEngine.Random.Range(-10, 10);
-            var rZ = UnityEngine.Random.Range(-10, 10);
-
-            arWeapon.transform.position = new Vector3(rX, rY, rZ);
+            
+            //arWeapon.transform.position = new Vector3(rX, rY, rZ);
 
             arWeapon.onElementClicked = () =>
             {

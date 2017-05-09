@@ -1,5 +1,69 @@
 ﻿public class Enums
 {
+
+
+    public enum DetectiveState
+    {
+        /// <summary>
+        /// Read the game configuration from Xerife or whatever! 
+        /// </summary>
+        ReadGameConfiguration = 1,
+    
+        /// <summary>
+        /// Starting the game - save the state and do something else
+        /// </summary>
+        StartGame = 2,
+
+        /// <summary>
+        /// Wainting for some player action - Investigate, hunch or notes (i dont know, dont push me, ok??)
+        /// </summary>
+        WaitingForAction = 3,
+
+        /// <summary>
+        /// Start investigate - do some preloads or unloads! 
+        /// </summary>
+        Investigate = 4,
+
+        /// <summary>
+        /// Investigating our amazing 3D models spawned with AR 
+        /// </summary>
+        Investigating = 5,
+
+        /// <summary>
+        /// Ok, that's enough - Finish the investigation!
+        /// </summary>
+        EndingInvestigation = 6,
+
+        /// <summary>
+        /// It's time!!!! Do your hunch and be ready to finish the game!
+        /// </summary>
+        Hunch = 7,
+
+        /// <summary>
+        /// Waiting the player move to the police station , xerife or whatever darling!
+        /// </summary>
+        WaitingDeploy = 8,
+
+        /// <summary>
+        /// The final screen!!!!! - Result time!!
+        /// </summary>
+        ResultScreen = 9,
+
+        /// <summary>
+        /// Ok, i forgot this state, dont judge me :(
+        /// </summary>
+        ReadingGameState = 10,
+
+
+        /// <summary>
+        /// It's a new state - realy new! 
+        /// Player's waiting for the cooldown to start the match 
+        /// </summary>
+        TimerToStart = 11
+
+
+    }
+
     /// <summary>
     /// Possibles characters to choose
     /// Value is Qrcode ID
@@ -36,7 +100,7 @@
     /// Possibles Places 
     /// Value is Qrcode ID
     /// </summary>
-    public enum Places
+    public enum Places 
     {
         Banco = 17,
         Boate = 18,

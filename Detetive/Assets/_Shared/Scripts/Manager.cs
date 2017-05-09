@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Manager
 {
@@ -24,6 +25,12 @@ public class Manager
     public int Min_Weapons = 3;
     public int Min_Weapons_Tips = 3;
     public int Min_Character_Tips = 3;
+    #endregion
+
+    #region Constants
+    
+    private const string SAVE_NAME = "GameInfo";
+
     #endregion
 
     /// <summary>
@@ -50,12 +57,17 @@ public class Manager
     /// All scenario of player
     /// </summary>
     public GameInformation MyGameInformation { get; set; }
+    /// <summary>
+    /// Player already start or still are on game
+    /// </summary>
+    public bool isOnGame { get { return MyGameInformation != null ? true : false; } }
 
     public Manager()
     {
         IntializeCards();
+        LoadGameInformation();
     }
-
+    
     private void IntializeCards()
     {
         InitializeCharacters();
@@ -66,6 +78,32 @@ public class Manager
         InitializeWeaponsTips();
     }
 
+    #region Persistence 
+    
+    private void LoadGameInformation()
+    {
+        if (FileManager.CheckIfFileExistsInPath(Application.persistentDataPath, SAVE_NAME))
+        {
+            MyGameInformation = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>
+                                (FileManager.LoadData(Application.persistentDataPath, SAVE_NAME));
+        }
+    }
+    
+    public void SaveGameInformation()
+    {
+        if (MyGameInformation != null)
+        {
+            FileManager.SaveData(Newtonsoft.Json.JsonConvert.SerializeObject(MyGameInformation),
+                                                    Application.persistentDataPath, SAVE_NAME);
+        }
+        else
+        {
+            Debug.LogWarning("Gameinformation is null, initialize before save");
+        }
+    }
+
+    #endregion
+    
     #region Cards
 
     public Dictionary<Enums.Characters, string> CharactersName = new Dictionary<Enums.Characters, string>

@@ -17,6 +17,8 @@ public class SheriffController : MonoBehaviour {
     private HunchBehaviour m_hunchBehaviour;
     [SerializeField]
     private FinishGameBehaviour m_finishBehaviour;
+    [SerializeField]
+    private WannaPlayBehaviour m_wannaPlay;
     #endregion
 
     #region Private Att
@@ -51,15 +53,20 @@ public class SheriffController : MonoBehaviour {
     public void OnFinishAddPlaces()
     {
         InitializeGameInformation();
-
-
+        
         m_placesBehaviour.gameObject.SetActive(false);
+        m_wannaPlay.gameObject.SetActive(true);
+    }
+    
+    public void OnSelectWannaPlay(bool wannaPlay)
+    {
+        m_wannaPlay.gameObject.SetActive(false);
         m_characterBehaviour.gameObject.SetActive(true);
         
         //Start the timer to start the game! 
         StartCoroutine(StartTimerController());
-    }
-
+    } 
+    
     private IEnumerator StartTimerController()
     {
         do
@@ -106,7 +113,7 @@ public class SheriffController : MonoBehaviour {
 
         //Add character tips
        // List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
-   //     AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
+   //AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
     }
 
     private void UpdateManagerPlaces()
@@ -199,8 +206,17 @@ public class SheriffController : MonoBehaviour {
     /// </summary>
     public void OnFinishAddCharacter()
     {
+        if(m_wannaPlay.SheriffWannaPlay)
+        {
+            SceneManager.LoadScene("DetectiveScene");
+        }
+        else
+        {
+            //TODO O QUE ROLA QUANDO DELE NÃO QUER JOGAR?!@#!$!@
+        }
+
         m_characterBehaviour.gameObject.SetActive(false);
-        m_hunchBehaviour.gameObject.SetActive(true);
+        //m_hunchBehaviour.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -216,5 +232,5 @@ public class SheriffController : MonoBehaviour {
     {
         return m_hunchBehaviour.GetHunchs.Where(x => x.MH == m_corretHunch).OrderBy(y => y.HT).FirstOrDefault(); 
     }
-
+    
 }

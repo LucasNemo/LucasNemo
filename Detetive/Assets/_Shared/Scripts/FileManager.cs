@@ -113,7 +113,7 @@ public class FileManager
 
     public static bool CheckIfFileExistsInPath(string path, string fileName)
     {
-        return File.Exists(path + "/" + fileName);
+        return File.Exists(path + fileName);
     }
 
     /// <summary>

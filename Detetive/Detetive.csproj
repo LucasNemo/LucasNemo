@@ -467,6 +467,7 @@
     <Compile Include="Assets\_Shared\Scripts\ReadQRCode.cs" />
     <Compile Include="Assets\_Shared\Scripts\ReadQRCodeBehaviour.cs" />
     <Compile Include="Assets\_Shared\Scripts\SingletonBehaviour.cs" />
+    <Compile Include="Assets\_Shared\Scripts\SpriteSelectionBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\CharacterBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\CharacterSelectionItem.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\FinishGameBehaviour.cs" />
@@ -474,6 +475,10 @@
     <Compile Include="Assets\_SheriffScene\Scripts\PlaceBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\SheriffController.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\WannaPlayBehaviour.cs" />
+    <Compile Include="Assets\_SplashScene\Scripts\IntroBehaviour.cs" />
+    <Compile Include="Assets\_SplashScene\Scripts\MenuBehaviour.cs" />
+    <Compile Include="Assets\_SplashScene\Scripts\SelectionBehaviour.cs" />
+    <Compile Include="Assets\_SplashScene\Scripts\SplashController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3D Models\Faca\NewUnlitShader.shader" />

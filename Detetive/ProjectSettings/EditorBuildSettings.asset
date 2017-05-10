@@ -5,21 +5,23 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/_SplashScene/Splash.unity
   - enabled: 0
     path: Assets/TestManager/Intro.unity
   - enabled: 0
     path: Assets/TestManager/Menu.unity
   - enabled: 0
     path: Assets/ARGame/Scene/ARTest.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_MenuScene/MenuScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/ReadQRCodeTest/Scenes/QRCodeTest.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/ARGame/Scene/ARScene.unity
   - enabled: 0
     path: Assets/ARGame/Scene/ARTest.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_DetectiveScene/DetectiveScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_SheriffScene/SheriffScene.unity

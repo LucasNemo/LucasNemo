@@ -25,13 +25,23 @@ public class GyroCamera : MonoBehaviour
     void Update()
     {
 
-        verticalAngle += Input.gyro.rotationRate.y;
-        verticalAngle %= 360f;
+        var supportedAttitude = Input.gyro.attitude;
 
-        horizontalAngle += Input.gyro.rotationRate.x;
-        horizontalAngle %= 360f;
+        if (System.Math.Round(supportedAttitude.eulerAngles.magnitude, 2) == 0)
+        {
 
-        transform.rotation = Quaternion.Euler(-horizontalAngle, -verticalAngle, transform.rotation.z);
+            verticalAngle += Input.gyro.rotationRate.y;
+            verticalAngle %= 360f;
+
+            horizontalAngle += Input.gyro.rotationRate.x;
+            horizontalAngle %= 360f;
+
+            transform.rotation = Quaternion.Euler(-horizontalAngle, -verticalAngle, transform.rotation.z);
+        }
+        else 
+        {
+            transform.rotation =  Quaternion.Euler(new Vector3(-supportedAttitude.eulerAngles.x, -supportedAttitude.eulerAngles.y, supportedAttitude.eulerAngles.z));
+        }
 
         
     }
@@ -46,11 +56,18 @@ public class GyroCamera : MonoBehaviour
             horizontalAngle = 0;
         }
 
+        GUI.Label(new Rect(0, 0, 500, 500), GetGyroInfo());
+
     }
 
     private string GetGyroInfo()
     {
-        return string.Format(" attitude {0}  gravity {1} rotation {2} acceleration {3}  ", Input.gyro.attitude.ToString(), Input.gyro.gravity.ToString(), Input.gyro.rotationRate.ToString(), Input.gyro.userAcceleration.ToString());
+        return string.Format(" attitude {0}  gravity {1} rotation {2} acceleration {3} RotationRate {4} ", 
+            Input.gyro.attitude.ToString(), 
+            Input.gyro.gravity.ToString(),
+            Input.gyro.rotationRate.ToString(), 
+            Input.gyro.userAcceleration.ToString(),
+            Input.gyro.rotationRateUnbiased.ToString());
     }
 
     public void CalibrateYAngle()

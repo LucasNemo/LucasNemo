@@ -43,7 +43,7 @@ public class PlaceBehaviour : MonoBehaviour
             Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
             m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
             m_inputField.text = m_lastPlace.N;
-        }, false, "Realize a leitura do QRCode do lugar / ambiente");
+        }, false, Manager.Instance.READ_FROM_PLACE);
          
     }
 

@@ -52,13 +52,13 @@ public class QRCodeTesting : MonoBehaviour
                     time = 0;
                     if (camTexture != null)
                     {
-                        readQRCode.ReadQR(camTexture, (string e) =>
+                        readQRCode.ReadQR(this, (string e) =>
                         {
                             qrCodeMessage = e;
 
                             if (!string.IsNullOrEmpty(qrCodeMessage))
                                 m_state = State.QRCodeReaded;
-                        });
+                        }, "The fucking testing!");
                     }
                 }
                 break;

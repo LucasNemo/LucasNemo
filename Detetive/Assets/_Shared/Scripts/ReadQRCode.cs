@@ -2,47 +2,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ZXing;
+using UnityEngine.SceneManagement;
 
 public class ReadQRCode
 {
-    private IBarcodeReader barcodeReader; 
+    string qrCodeSceneName = "QRScanScene";
 
-    public ReadQRCode ()
+    private MonoBehaviour sender;
+    private Action<string> m_callback;
+    private bool m_zipped;
+    private QRCodeDecodeController m_qrCodeDecoder;
+
+    public void ReadQR(MonoBehaviour sender, Action<string> callback, string title, bool zip = true)
     {
-        barcodeReader = new BarcodeReader();
+        this.sender = sender;
+        m_callback = callback;
+        m_zipped = zip;
+        sender.StartCoroutine(ReadQRCodeAsync(title));
+    }
 
-        barcodeReader.Options = new ZXing.Common.DecodingOptions();
+    IEnumerator ReadQRCodeAsync(string title)
+    {
+        yield return SceneManager.LoadSceneAsync(qrCodeSceneName, LoadSceneMode.Additive);
 
-        barcodeReader.Options.PossibleFormats = new List<BarcodeFormat>();
-        barcodeReader.Options.PossibleFormats.Add(BarcodeFormat.QR_CODE);
-        barcodeReader.Options.TryHarder = false;
+        CheckQRCodeReferente();
+
+        m_qrCodeDecoder.SetSceneTitle(title);
+
+        m_qrCodeDecoder.onQRScanFinished += ReadQRCode_onQRScanFinished;
+    }
+
+    private void CheckQRCodeReferente()
+    {
+        if (m_qrCodeDecoder == null)
+            m_qrCodeDecoder = GameObject.FindObjectOfType<QRCodeDecodeController>();
+    }
+
+    private void ReadQRCode_onQRScanFinished(string str)
+    {
+        CheckQRCodeReferente();
         
+        m_qrCodeDecoder.onQRScanFinished -= ReadQRCode_onQRScanFinished;
+        m_qrCodeDecoder.StopWork();
+        string result = m_zipped ? Helper.DecompressString(str) : str; 
+        m_callback.Invoke(result);
+        SceneManager.UnloadSceneAsync(qrCodeSceneName);
     }
-
-    public void ReadQR(WebCamTexture camTexture, Action<string> callback, bool zip = true)
-    {
-        // do the reading — you might want to attempt to read less often than you draw on the screen for performance sake
-        try
-        {
-            // decode the current frame
-            //var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
-
-            var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
-            if (result != null)
-            {
-                var descompressedQr = result.Text;
-
-                if(zip)
-                    descompressedQr = Helper.DecompressString(result.Text);
-
-                if (callback != null)
-                    callback.Invoke(descompressedQr);
-
-                Debug.Log("DECODED TEXT FROM QR:" + descompressedQr);
-            }
-        }
-        catch (Exception ex) { Debug.LogWarning(ex.Message); }
-    }
-
 }

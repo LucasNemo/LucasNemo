@@ -92,8 +92,6 @@ public class DetectiveController : MonoBehaviour {
     {
         var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
 
-        var camTexture = readQRCodeBehaviour.GetCameraTexture;
-
         readQRCodeBehaviour.ReadQrCode(result,
          useCompression, title);
     }

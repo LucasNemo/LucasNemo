@@ -444,7 +444,6 @@
     <Compile Include="Assets\_DetectiveScene\Scripts\PlaceSelectionItem.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\TipBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\WeaponSelectionItem.cs" />
-    <Compile Include="Assets\_MenuScene\Scripts\MenuController.cs" />
     <Compile Include="Assets\_Shared\Model\Character.cs" />
     <Compile Include="Assets\_Shared\Model\CharacterTip.cs" />
     <Compile Include="Assets\_Shared\Model\GameInformation.cs" />

@@ -26,4 +26,9 @@ public class CameraController : MonoBehaviour {
     {
         plane.transform.localRotation = Quaternion.Euler(0, 0, camTexture.videoRotationAngle);
     }
+
+    private void OnDestroy()
+    {
+        camTexture.Stop();
+    }
 }

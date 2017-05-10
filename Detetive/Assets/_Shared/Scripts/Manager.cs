@@ -38,6 +38,10 @@ public class Manager
     public readonly string DETECTIVE_URL = "http://www.estrela.com.br/brinquedo/detetive-com-aplicativo/";
     public readonly string DETECTIVE_URL_TERM = "http://www.estrela.com.br/brinquedo/deteti";
     public readonly string DETECTIVE_URL_TALK = "http://www.estrela.com.br/brinquedo/detetive-com";
+    public readonly string CONFIRM_VISIT_MODAL_TITLE = @"VOCÊ SERÁ REDIRECIONADO PARA O SITE DA ESTRELA.";
+    public readonly string CONTINUE_GAME_MODAL_DESCRIPTION = "VOCÊ TEM UM JOGO SALVO, DESEJA CONTINUAR  OU COMEÇAR UM NOVO?";
+    public readonly string TERMS_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Termos de Uso.";
+    public readonly string TALK_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Fale Conosco.";
     #endregion
 
     /// <summary>

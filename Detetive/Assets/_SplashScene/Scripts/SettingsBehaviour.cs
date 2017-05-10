@@ -5,7 +5,7 @@ using UnityEngine;
 public class SettingsBehaviour : MonoBehaviour {
 
     [SerializeField]
-    private GameObject m_main, m_credits, m_howToPlay, m_termConfirm, m_talkConfirm;
+    private GameObject m_main, m_credits, m_howToPlay;
 
     public void OnBackMainClick()
     {
@@ -35,43 +35,39 @@ public class SettingsBehaviour : MonoBehaviour {
         m_main.SetActive(true);
         m_howToPlay.SetActive(false);
     }
-
-    #region Term
-
+    
     public void OnTermClick()
     {
-        m_termConfirm.SetActive(true);
+        GenericModal.Instance.OpenModal(Manager.Instance.TERMS_MODAL_DESCRIPTION, "Voltar", "Continuar", () =>
+        {
+            GenericModal.Instance.CloseModal();
+        },
+       () =>
+       {
+            OnConfirmTerm();
+       });
     }
-
-    public void OnBackFromTermClick()
-    {
-        m_termConfirm.SetActive(false);
-    }
-    
+      
     public void OnConfirmTerm()
     {
         Application.OpenURL(Manager.Instance.DETECTIVE_URL_TERM);
     }
-
-    #endregion
-
-    #region Talk
-
+    
     public void OnTalkWithUsClick()
     {
-        m_talkConfirm.SetActive(true);
+        GenericModal.Instance.OpenModal(Manager.Instance.TALK_MODAL_DESCRIPTION, "Voltar", "Continuar", () =>
+        {
+            GenericModal.Instance.CloseModal();
+        },
+        () =>
+        {
+            OnConfirmOnTalkWithUs();
+        });
     }
     
-    public void OnBackFromOnTalkWithUsClick()
-    {
-        m_talkConfirm.SetActive(false);
-    }
-
     public void OnConfirmOnTalkWithUs()
     {
         Application.OpenURL(Manager.Instance.DETECTIVE_URL_TALK);
     }
-
-    #endregion
-
+  
 }

@@ -3,32 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuBehaviour : MonoBehaviour {
+public class MenuBehaviour : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject m_confirmContinue;
 
-	public void OnChooseClick()
+    public void OnChooseClick()
     {
         if (Manager.Instance.isOnGame)
         {
-            m_confirmContinue.SetActive(true);
+            GenericModal.Instance.OpenModal(Manager.Instance.CONTINUE_GAME_MODAL_DESCRIPTION, "Novo jogo", "Continuar", () =>
+            {
+                GenericModal.Instance.CloseModal();
+                OnNewGameClick();
+            },
+            () =>
+            {
+                OnConfirmContinueClick();
+            });
         }
         else
         {
             FindObjectOfType<SplashController>().OpenSelection();
         }
     }
-    
-    public void OnConfirmContinueClick()
+
+    private void OnConfirmContinueClick()
     {
         SceneManager.LoadScene("DetectiveScene");
     }
 
-    public void OnNewGameClick()
+    private void OnNewGameClick()
     {
         Manager.Instance.MyGameInformation = null;
-        m_confirmContinue.SetActive(false);
         FindObjectOfType<SplashController>().OpenSelection();
     }
 

@@ -458,6 +458,7 @@
     <Compile Include="Assets\_Shared\Scripts\Enums.cs" />
     <Compile Include="Assets\_Shared\Scripts\FileManager.cs" />
     <Compile Include="Assets\_Shared\Scripts\GenerateQRCode.cs" />
+    <Compile Include="Assets\_Shared\Scripts\GenericModal.cs" />
     <Compile Include="Assets\_Shared\Scripts\GenericSelectItem.cs" />
     <Compile Include="Assets\_Shared\Scripts\Helper.cs" />
     <Compile Include="Assets\_Shared\Scripts\LocalizationManager.cs" />

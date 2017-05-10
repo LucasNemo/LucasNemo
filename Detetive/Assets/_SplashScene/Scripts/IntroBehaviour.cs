@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroBehaviour : MonoBehaviour {
-    
+public class IntroBehaviour : MonoBehaviour
+{
+
     [SerializeField]
-    private GameObject m_visit, m_visitConfirm;
-    
+    private GameObject m_visit;
+
     public void OnVisitClick()
     {
         m_visit.SetActive(false);
-        m_visitConfirm.SetActive(true);
+        GenericModal.Instance.OpenModal(Manager.Instance.CONFIRM_VISIT_MODAL_TITLE, "Voltar", "Continuar", () =>
+        {
+            GenericModal.Instance.CloseModal();
+            OnCancelConfirmClick();
+        },
+        () =>
+        {
+            OnGoToSite();
+        });
     }
 
-    public void OnCancelConfirmClick()
+    private void OnCancelConfirmClick()
     {
         m_visit.SetActive(true);
-        m_visitConfirm.SetActive(false);
     }
 
-    public void OnGoToSite()
+    private void OnGoToSite()
     {
         Application.OpenURL(Manager.Instance.DETECTIVE_URL);
     }

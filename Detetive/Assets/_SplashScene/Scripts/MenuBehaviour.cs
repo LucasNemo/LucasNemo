@@ -11,7 +11,7 @@ public class MenuBehaviour : MonoBehaviour {
 
     public void OnSettingsClick()
     {
-        //TODO open settings here
+        FindObjectOfType<SplashController>().OpenSettings();
     }
 
 }

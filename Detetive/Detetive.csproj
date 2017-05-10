@@ -478,6 +478,7 @@
     <Compile Include="Assets\_SplashScene\Scripts\IntroBehaviour.cs" />
     <Compile Include="Assets\_SplashScene\Scripts\MenuBehaviour.cs" />
     <Compile Include="Assets\_SplashScene\Scripts\SelectionBehaviour.cs" />
+    <Compile Include="Assets\_SplashScene\Scripts\SettingsBehaviour.cs" />
     <Compile Include="Assets\_SplashScene\Scripts\SplashController.cs" />
   </ItemGroup>
   <ItemGroup>

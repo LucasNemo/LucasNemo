@@ -36,6 +36,8 @@ public class Manager
     public readonly string READ_FROM_PLACE = "Realize a leitura do QRCode do cenário / ambiente";
     private const string SAVE_NAME = "GameInfo";
     public readonly string DETECTIVE_URL = "http://www.estrela.com.br/brinquedo/detetive-com-aplicativo/";
+    public readonly string DETECTIVE_URL_TERM = "http://www.estrela.com.br/brinquedo/deteti";
+    public readonly string DETECTIVE_URL_TALK = "http://www.estrela.com.br/brinquedo/detetive-com";
     #endregion
 
     /// <summary>

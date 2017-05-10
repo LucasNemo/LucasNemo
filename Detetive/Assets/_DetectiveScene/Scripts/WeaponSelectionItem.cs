@@ -14,4 +14,18 @@ public class WeaponSelectionItem : GenericSelectItem<Weapon> {
         base.UpdateItem(Item, callback);
         m_weaponNameText.text =  Manager.Instance.WeaponsName[ (Enums.Weapons) Item.MW ];
     }
+
+
+    public override void SelectItem()
+    {
+        m_weaponNameText.color = Color.red;
+
+        base.SelectItem();
+    }
+
+    public override void UnSelectItem()
+    {
+        base.UnSelectItem();
+        m_weaponNameText.color = Color.black;
+    }
 }

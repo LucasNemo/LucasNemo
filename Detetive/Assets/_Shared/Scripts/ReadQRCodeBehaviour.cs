@@ -109,6 +109,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
                         if (m_readCallback != null)
                             m_readCallback(qrCodeMessage);
                         m_state = State.none;
+                        m_cameraImage.material.mainTexture = null;
                         camTexture.Stop();
                         StopCoroutine(m_readQRCodeRoutine);
                     }

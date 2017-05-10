@@ -16,4 +16,18 @@ public class CharacterSelectionItem : GenericSelectItem<Character> {
         base.UpdateItem(Item, callback);
         m_characterText.text = Manager.Instance.CharactersName[ (Enums.Characters) Item.MC];
     }
+
+
+    public override void SelectItem()
+    {
+        m_characterText.color = Color.red;
+
+        base.SelectItem();
+    }
+
+    public override void UnSelectItem()
+    {
+        base.UnSelectItem();
+        m_characterText.color = Color.black;
+    }
 }

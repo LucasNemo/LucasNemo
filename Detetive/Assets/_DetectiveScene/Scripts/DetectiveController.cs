@@ -119,7 +119,7 @@ public class DetectiveController : MonoBehaviour {
                 if (Manager.Instance.ActiveRoom.P.IH)
                 {
                     var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
-                    var answer = Manager.Instance.MyGameInformation.CH.HR == playerhunch.HR;
+                    var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
 
                     m_resultScreen.SetActive(true);
                     m_resultScreen.GetComponentInChildren<Text>().text = string.Format("Seu palpite\nSuspeito{0}\nLocal{1}\nArma{2}\n\nEstá {3}",
@@ -144,4 +144,9 @@ public class DetectiveController : MonoBehaviour {
         }, Manager.Instance.READ_FROM_PLACE);
     }
 
+    public void OnBackFromHunch()
+    {
+        m_detectiveHunchBehaviour.gameObject.SetActive(false);
+        m_menu.SetActive(true);
+    }
 }

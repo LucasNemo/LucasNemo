@@ -15,4 +15,17 @@ public class PlaceSelectionItem : GenericSelectItem<Place> {
         m_nameText.text = Item.N;
     }
 
+    public override void SelectItem()
+    {
+        m_nameText.color = Color.red;
+
+        base.SelectItem();
+    }
+
+    public override void UnSelectItem()
+    {
+        base.UnSelectItem();
+        m_nameText.color = Color.black;
+    }
+
 }

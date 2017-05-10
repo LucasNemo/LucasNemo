@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,35 +23,71 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     public PlayerHunch GetHunch { get { return m_hunch; } }
 
-    void Start()
+
+    private List<CharacterSelectionItem> characters;
+    private List<PlaceSelectionItem> places;
+    private List<WeaponSelectionItem> weapons;
+
+    void Awake()
     {
-        InitializeGrid(m_gridCharacters, m_characterItem, Manager.Instance.Characters, OnCharacterCallback);
-        InitializeGrid(m_gridPlaces, m_placeItem, Manager.Instance.Places, OnPlaceCallback);
-        InitializeGrid(m_gridWeapons, m_weaponItem, Manager.Instance.Weapons, OnWeaponCallback);
+        InitializeGrid(m_gridCharacters, m_characterItem, Manager.Instance.Characters, OnCharacterCallback, out characters);
+        InitializeGrid(m_gridPlaces, m_placeItem, Manager.Instance.Places, OnPlaceCallback, out places);
+        InitializeGrid(m_gridWeapons, m_weaponItem, Manager.Instance.Weapons, OnWeaponCallback,out weapons);
     }
 
-    private void InitializeGrid<T, G>(GridLayoutGroup grid, T itemPrefab, List<G> itensList, Action<G> callback) where T : GenericSelectItem<G>
+    /// <summary>
+    /// do some amazing comments =X
+    /// </summary>
+    /// <typeparam name="T">The GenericSelectedItem</typeparam>
+    /// <typeparam name="G">the correspondent model - places, characters, whatever!! =)</typeparam>
+    /// <param name="grid"></param>
+    /// <param name="itemPrefab"></param>
+    /// <param name="itensList"></param>
+    /// <param name="callback"></param>
+    /// <param name="myList"></param>
+    private void InitializeGrid<T, G>(GridLayoutGroup grid, T itemPrefab, List<G> itensList, Action<G> callback, out List<T> myList)
+        where T : GenericSelectItem<G>
     {
+
+        myList = new List<T>();
+
         foreach (G item in itensList)
         {
             var selection = Instantiate(itemPrefab, grid.transform);
             selection.UpdateItem(item, callback);
+            myList.Add(selection);
+            
         }
     }
 
     private void OnWeaponCallback(Weapon weapon)
     {
+
+        weapons.ForEach(x => x.UnSelectItem());
+
         m_selectedWeapon = weapon;
+
+        weapons.Where(x => x.GetItem.MW == m_selectedWeapon.MW).First().SelectItem();
+
     }
 
     private void OnPlaceCallback(Place place)
     {
+        places.ForEach(x => x.UnSelectItem());
+
         m_selectedPlace = place;
+
+        places.Where(x => x.GetItem.MP == m_selectedPlace.MP).First().SelectItem();
     }
 
     private void OnCharacterCallback(Character character)
     {
+        characters.ForEach(x => x.UnSelectItem());
+
         m_selectedCharacter = character;
+
+        characters.Where(x => x.GetItem.MC == m_selectedCharacter.MC).First().SelectItem();
+
     }
 
     /// <summary>

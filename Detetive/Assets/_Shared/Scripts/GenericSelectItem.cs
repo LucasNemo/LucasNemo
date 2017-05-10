@@ -13,6 +13,8 @@ public class GenericSelectItem<T> : MonoBehaviour {
     //Callback to return clicked item
     private System.Action<T> m_clickCallback;
 
+    public T GetItem { get { return m_item; }  }
+
     /// <summary>
     /// Add a selected item
     /// </summary>
@@ -28,6 +30,17 @@ public class GenericSelectItem<T> : MonoBehaviour {
     {
         if (m_clickCallback != null)
             m_clickCallback(m_item);
+    }
+
+
+    public virtual void SelectItem()
+    {
+        //Dummy =X
+    }
+
+    public virtual void UnSelectItem()
+    {
+        //Dummy =X
     }
 
 }

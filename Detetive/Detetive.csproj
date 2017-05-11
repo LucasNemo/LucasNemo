@@ -406,6 +406,7 @@
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ThreadSafeStore.cs" />
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_TypeExtensions.cs" />
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
+    <Compile Include="Assets\Notes\Sprites\Notes.cs" />
     <Compile Include="Assets\QRcode\Plugins\Loom\Loom.cs" />
     <Compile Include="Assets\QRcode\Scripts\CameraPlaneController.cs" />
     <Compile Include="Assets\QRcode\Scripts\DecodeByStaticPic.cs" />

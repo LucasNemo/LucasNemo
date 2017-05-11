@@ -132,6 +132,7 @@ public class DeviceCameraController : MonoBehaviour {
 
     private void OnDestroy()
     {
+        print("Destroy called from deviceCamera");
         //There is no place like home...:)
         StopWork();
     }

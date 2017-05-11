@@ -15,8 +15,10 @@ public class HandleInvestigations : MonoBehaviour
 
     public Text title;
 
-    private void Start()
+    public GameObject periciaButton;
+    private string status;
 
+    private void Start()
     {
 
         if (Manager.Instance.ActiveRoom == null) return;
@@ -24,13 +26,61 @@ public class HandleInvestigations : MonoBehaviour
         //Randomize the array of positios!
         arPos = arPos.SortList();
         SetCurrentRoom( Manager.Instance.ActiveRoom );
-        murdererPlace.SetActive(Manager.Instance.ActiveRoom.P.MP == Manager.Instance.MyGameInformation.CH.HR.P.MP);
+
+        if (DetectiveManager.Instance.PericiaAlreadyRequested( (Enums.Places) Manager.Instance.ActiveRoom.P.MP))
+        {
+            periciaButton.SetActive(false);
+            if (DetectiveManager.Instance.AlreadGotAResultToThisPlace())
+            {
+                if (DetectiveManager.Instance.PericiaResultToThisPlace())
+                    status = "O resultado da perícia saiu! Foi neste local que acontenceu o crime!!";
+                else
+                    status = "O resultado da perícia saiu! NÃO foi neste local que acontenceu o crime!";
+            }
+            else
+            {
+                status = "O resultado da perícia ainda NÃO saiu!";
+            }
+
+            GenericModal.Instance.OpenAlertMode(status, "Ok", () =>
+            {
+
+            });
+        }
+       
+
+        if (DetectiveManager.Instance.PericiasToCheck.Count > 0)
+        {
+            if (!DetectiveManager.Instance.PericiasToCheck.Contains( (Enums.Places) Manager.Instance.ActiveRoom.P.MP))
+            {
+                GenericModal.Instance.OpenAlertMode("Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!", "Ok", ()=>
+                {
+                    
+                });
+            }
+            else
+            {
+                DetectiveManager.Instance.PericiasToCheck.Remove((Enums.Places)Manager.Instance.ActiveRoom.P.MP);
+            }
+        }
     }
+
+    public void RequestPericia()
+    {
+        DetectiveManager.Instance.RequestPericiaToThisPlace();
+        GenericModal.Instance.OpenAlertMode("Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...", "Ok", () =>
+        {
+
+        });
+    }
+
 
     private void SetCurrentRoom(Room roomInfo)
     {
         //Set the name choosed by player
         title.text = roomInfo.P.N;
+
+        StartCoroutine(EnableModels(roomInfo));
     }
 
     public IEnumerator EnableModels(Room roomInfo)

@@ -56,6 +56,8 @@ public class GenericModal : MonoBehaviour {
         CloseModal(m_close);
         if (m_alertModeCallback != null)
             m_alertModeCallback();
+
+        m_alertModeCallback = null;
     }
 
     public void CloseModal(bool close)
@@ -69,6 +71,8 @@ public class GenericModal : MonoBehaviour {
 
         if (m_leftCallback != null)
             m_leftCallback();
+
+        m_leftCallback = null;
     }
     
     public void OnRightCallback()
@@ -76,6 +80,8 @@ public class GenericModal : MonoBehaviour {
         CloseModal(m_close);
         if (m_rightCallback != null)
             m_rightCallback();
+
+        m_rightCallback = null;
     }
 
 }

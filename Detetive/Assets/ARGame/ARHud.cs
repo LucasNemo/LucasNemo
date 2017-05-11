@@ -7,14 +7,13 @@ public class ARHud : MonoBehaviour {
 
     public GameObject notes;
 
+    public DeviceCameraController deviceCamera;
+
 	public void OnBackClicked()
     {
+        deviceCamera.StopWork();
+
         SceneManager.LoadScene("DetectiveScene");
     }
-
-
-    public void OnNotesClicked()
-    {
-        notes.SetActive(!notes.activeSelf);
-    }
+  
 }

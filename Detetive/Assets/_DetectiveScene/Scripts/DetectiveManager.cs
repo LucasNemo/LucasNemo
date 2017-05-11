@@ -6,11 +6,27 @@ using UnityEngine;
 public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
     
     private Enums.DetectiveState m_detectiveState;
-    private float m_timer; 
+    private float m_timer;
+
+    public List<Enums.Places> IsPericiaRequested;
+
+    public Dictionary<Enums.Places, bool> PericiaResults;
+
+    public List<Enums.Places> PericiasToCheck;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        
+
+        if (IsPericiaRequested == null)
+            IsPericiaRequested = new List<Enums.Places>();
+
+        if (PericiaResults == null)
+            PericiaResults = new Dictionary<Enums.Places, bool>();
+
+        if (PericiasToCheck == null)
+            PericiasToCheck = new List<Enums.Places>();
+
         if (Manager.Instance.MyGameInformation == null)
         {
             m_detectiveState = Enums.DetectiveState.ReadGameConfiguration;
@@ -141,4 +157,54 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
     {
         throw new NotImplementedException();
     }
+
+    public bool PericiaAlreadyRequested(Enums.Places place)
+    {
+        return IsPericiaRequested.Contains(place);
+    }
+
+    public void RequestPericiaToThisPlace()
+    {
+        var currentPlace = Manager.Instance.ActiveRoom;
+
+        if (IsPericiaRequested.Contains( (Enums.Places) currentPlace.P.MP))
+        {
+            return;
+        }
+
+        IsPericiaRequested.Add( (Enums.Places) currentPlace.P.MP);
+    }
+
+    public bool AlreadGotAResultToThisPlace()
+    {
+        var currentPlace = Manager.Instance.ActiveRoom;
+
+        foreach (var item in IsPericiaRequested)
+        {
+            if (currentPlace.P.MP != item.GetHashCode())
+            {
+                if (!PericiaResults.ContainsKey(item))
+                {
+                    var correctPlace = Manager.Instance.MyGameInformation.CH.HR.P.MP;
+                    PericiaResults.Add(item, correctPlace == item.GetHashCode());
+
+                    if (!PericiasToCheck.Contains(item))
+                        PericiasToCheck.Add(item);
+                }
+            }
+        }
+
+        if (PericiaResults.ContainsKey((Enums.Places)currentPlace.P.MP))
+            return true;
+
+        return false;
+    }
+
+    public bool PericiaResultToThisPlace()
+    {
+        var currentPlace = Manager.Instance.ActiveRoom;
+
+        return PericiaResults[(Enums.Places)currentPlace.P.MP];
+    }
+
 }

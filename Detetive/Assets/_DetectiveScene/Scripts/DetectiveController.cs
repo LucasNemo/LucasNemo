@@ -38,7 +38,14 @@ public class DetectiveController : MonoBehaviour {
 
         DetectiveManager.Instance.Dummy();
     }
-    
+
+
+    private void Start()
+    {
+        
+    }
+
+
     private void FixedUpdate()
     {
         switch (DetectiveManager.Instance.GetCurrentState())
@@ -85,8 +92,7 @@ public class DetectiveController : MonoBehaviour {
         Notes.instance.Hide();
         mainCanvas.SetActive(false);
         var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
-        readQRCodeBehaviour.ReadQrCode(result,
-         useCompression, title);
+        readQRCodeBehaviour.ReadQrCode(result,  useCompression, title);
     }
 
     public void OnHunchClick()
@@ -131,15 +137,15 @@ public class DetectiveController : MonoBehaviour {
 
         ReadQRFromsCene(false, (result) =>
         {
-            mainCanvas.SetActive(true);
-            Notes.instance.Hide();
+            //mainCanvas.SetActive(true);
+            //Notes.instance.Hide();
 
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
 
             if (enumTest != null &&   Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest.GetHashCode()  )))
             {
-                Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
-                SceneManager.LoadScene("ARScene");
+                Manager.Instance.ActiveRoom= Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
+                SceneManager.LoadSceneAsync("ARScene");
             }
         }, Manager.Instance.READ_FROM_PLACE);
     }

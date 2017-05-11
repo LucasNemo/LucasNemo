@@ -1,37 +1,37 @@
 fileFormatVersion: 2
 guid: 7aabb663c7b254c47919486242117cf3
-timeCreated: 1494474395
-licenseType: Pro
+timeCreated: 1494480372
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: AF_Detetive_Cartas_FT_0
-    21300002: AF_Detetive_Cartas_FT_1
-    21300004: AF_Detetive_Cartas_FT_2
-    21300006: AF_Detetive_Cartas_FT_3
-    21300008: AF_Detetive_Cartas_FT_4
-    21300010: AF_Detetive_Cartas_FT_5
-    21300012: AF_Detetive_Cartas_FT_6
-    21300014: AF_Detetive_Cartas_FT_7
-    21300016: AF_Detetive_Cartas_FT_8
-    21300018: AF_Detetive_Cartas_FT_9
-    21300020: AF_Detetive_Cartas_FT_10
-    21300022: AF_Detetive_Cartas_FT_11
-    21300024: AF_Detetive_Cartas_FT_12
-    21300026: AF_Detetive_Cartas_FT_13
-    21300028: AF_Detetive_Cartas_FT_14
-    21300030: AF_Detetive_Cartas_FT_15
-    21300032: AF_Detetive_Cartas_FT_16
-    21300034: AF_Detetive_Cartas_FT_17
-    21300036: AF_Detetive_Cartas_FT_18
+    21300000: 08
+    21300002: 07
+    21300004: 06
+    21300006: 05
+    21300008: 04
+    21300010: 02
+    21300012: 03
+    21300014: 01
+    21300016: 27
+    21300018: 26
+    21300020: 25
+    21300022: 24
+    21300024: 23
+    21300026: 22
+    21300028: 21
+    21300030: 20
+    21300032: 19
+    21300034: 18
+    21300036: 17
     21300038: AF_Detetive_Cartas_FT_19
-    21300040: AF_Detetive_Cartas_FT_20
-    21300042: AF_Detetive_Cartas_FT_21
-    21300044: AF_Detetive_Cartas_FT_22
-    21300046: AF_Detetive_Cartas_FT_23
-    21300048: AF_Detetive_Cartas_FT_24
-    21300050: AF_Detetive_Cartas_FT_25
-    21300052: AF_Detetive_Cartas_FT_26
-    21300054: AF_Detetive_Cartas_FT_27
+    21300040: 16
+    21300042: 15
+    21300044: 14
+    21300046: 10
+    21300048: 13
+    21300050: 12
+    21300052: 11
+    21300054: 09
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -114,7 +114,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_0
+      name: 08
       rect:
         serializedVersion: 2
         x: 157
@@ -122,12 +122,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_1
+      name: 07
       rect:
         serializedVersion: 2
         x: 336
@@ -135,12 +135,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_2
+      name: 06
       rect:
         serializedVersion: 2
         x: 515
@@ -148,12 +148,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_3
+      name: 05
       rect:
         serializedVersion: 2
         x: 694
@@ -161,12 +161,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_4
+      name: 04
       rect:
         serializedVersion: 2
         x: 873
@@ -174,12 +174,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_5
+      name: 02
       rect:
         serializedVersion: 2
         x: 1052
@@ -187,12 +187,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_6
+      name: 03
       rect:
         serializedVersion: 2
         x: 1231
@@ -200,12 +200,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_7
+      name: 01
       rect:
         serializedVersion: 2
         x: 157
@@ -213,12 +213,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_8
+      name: 27
       rect:
         serializedVersion: 2
         x: 336
@@ -226,12 +226,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_9
+      name: 26
       rect:
         serializedVersion: 2
         x: 515
@@ -239,12 +239,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_10
+      name: 25
       rect:
         serializedVersion: 2
         x: 694
@@ -252,12 +252,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_11
+      name: 24
       rect:
         serializedVersion: 2
         x: 873
@@ -265,12 +265,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_12
+      name: 23
       rect:
         serializedVersion: 2
         x: 1052
@@ -278,12 +278,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_13
+      name: 22
       rect:
         serializedVersion: 2
         x: 1231
@@ -291,12 +291,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_14
+      name: 21
       rect:
         serializedVersion: 2
         x: 157
@@ -304,12 +304,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_15
+      name: 20
       rect:
         serializedVersion: 2
         x: 336
@@ -317,12 +317,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_16
+      name: 19
       rect:
         serializedVersion: 2
         x: 515
@@ -330,12 +330,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_17
+      name: 18
       rect:
         serializedVersion: 2
         x: 694
@@ -343,12 +343,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_18
+      name: 17
       rect:
         serializedVersion: 2
         x: 873
@@ -356,7 +356,7 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -369,12 +369,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_20
+      name: 16
       rect:
         serializedVersion: 2
         x: 1231
@@ -382,12 +382,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_21
+      name: 15
       rect:
         serializedVersion: 2
         x: 157
@@ -395,12 +395,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_22
+      name: 14
       rect:
         serializedVersion: 2
         x: 336
@@ -408,12 +408,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_23
+      name: 10
       rect:
         serializedVersion: 2
         x: 515
@@ -421,12 +421,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_24
+      name: 13
       rect:
         serializedVersion: 2
         x: 694
@@ -434,12 +434,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_25
+      name: 12
       rect:
         serializedVersion: 2
         x: 873
@@ -447,12 +447,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_26
+      name: 11
       rect:
         serializedVersion: 2
         x: 1052
@@ -460,12 +460,12 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: AF_Detetive_Cartas_FT_27
+      name: 09
       rect:
         serializedVersion: 2
         x: 1231
@@ -473,7 +473,7 @@ TextureImporter:
         width: 179
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

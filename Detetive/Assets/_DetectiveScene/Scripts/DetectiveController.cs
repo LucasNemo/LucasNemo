@@ -15,12 +15,9 @@ public class DetectiveController : MonoBehaviour {
   
     [SerializeField]
     private DetectiveHunchBehaviour m_detectiveHunchBehaviour;
-
+    
     [SerializeField]
-    private HunchQrCodeBehaviour m_hunchQr;
-
-    [SerializeField]
-    private GameObject m_resultScreen; 
+    private ResultBehaviour m_resultScreen; 
 
     [SerializeField]
     private GameObject m_menu;
@@ -31,8 +28,7 @@ public class DetectiveController : MonoBehaviour {
     {
         DetectiveManager.Instance.Dummy();
     }
-
-
+    
     private void FixedUpdate()
     {
         switch (DetectiveManager.Instance.GetCurrentState())
@@ -102,10 +98,12 @@ public class DetectiveController : MonoBehaviour {
                     var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
                     var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
 
-                    m_resultScreen.SetActive(true);
-                    m_resultScreen.GetComponentInChildren<Text>().text = string.Format("Seu palpite\nSuspeito{0}\nLocal{1}\nArma{2}\n\nEstá {3}",
-                         ((Enums.Characters)playerhunch.HC).ToString(), (playerhunch.HR.P.N),
-                         ((Enums.Weapons)playerhunch.HR.W.MW).ToString(), answer ? "CORRETA!!!" : "ERRADO!"  );
+                    m_resultScreen.gameObject.SetActive(true);
+                    m_resultScreen.UpdateInformation(answer);
+                       
+                    //m_resultScreen.GetComponentInChildren<Text>().text = string.Format("Seu palpite\nSuspeito{0}\nLocal{1}\nArma{2}\n\nEstá {3}",
+                    //     ((Enums.Characters)playerhunch.HC).ToString(), (playerhunch.HR.P.N),
+                    //     ((Enums.Weapons)playerhunch.HR.W.MW).ToString(), answer ? "CORRETA!!!" : "ERRADO!"  );
                 }
             }
         }, Manager.Instance.GO_TO_PD);
@@ -113,6 +111,8 @@ public class DetectiveController : MonoBehaviour {
 
     public void OnInvesticateClicked()
     {
+        m_menu.SetActive(false);
+        
         ReadQRFromsCene(false, (result) =>
         {
             var enumTest = Enum.Parse(typeof(Enums.Places), result);

@@ -49,6 +49,18 @@ public class Manager
     public readonly string ON_READ_PLACE_WRONG = "UTILIZE UMA CARTA DE LUGAR PARA LER";
     public readonly string ON_READ_CHARACTER_WRONG = "UTILIZE UMA CARTA DE PERSONAGEM PARA LER";
     public readonly string WARNING_BUTTON = "Entendi!";
+    public readonly string FINAL_CONFIRM_HUNCH = "{0}, COM {1} {2}, {3} {4}";
+    public readonly string WIN_TITLE = "PARABÉNS! \n VOCÊ CONSEGUIU SOLUCIONAR O CRIME!";
+    public readonly string WIN_DESCRIPTION = "JOGUE NOVAMENTE PARA INICIAR UM NOVO CASO!";
+    public readonly string LOOSE_TITLE = "ERRADO!";
+    public readonly string LOOSE_DESCRIPTION = "VOCÊ FALOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
+
+    #endregion  
+
+    #region PATHS
+
+    public readonly string HUNCH_PATH = "Hunch/{0}";
+
     #endregion
 
     /// <summary>
@@ -138,7 +150,7 @@ public class Manager
         {Enums.Characters.Florista_Dona_Branca, "FLORISTA DONA BRANCA" },
         {Enums.Characters.Medica_Dona_Violeta, "MÉDICA DONA VIOLETA" },
         {Enums.Characters.Mordomo_James, "MORDOMO JAMES" },
-        {Enums.Characters.Sargento_Bicode, "SARGENTO BIGODE" }
+        {Enums.Characters.Sargento_Bigode, "SARGENTO BIGODE" }
     };
 
  
@@ -153,7 +165,7 @@ public class Manager
         Characters.Add(new Character( Enums.Characters.Florista_Dona_Branca.GetHashCode()));
         Characters.Add(new Character( Enums.Characters.Medica_Dona_Violeta.GetHashCode()));
         Characters.Add(new Character( Enums.Characters.Mordomo_James.GetHashCode()));
-        Characters.Add(new Character( Enums.Characters.Sargento_Bicode.GetHashCode()));
+        Characters.Add(new Character( Enums.Characters.Sargento_Bigode.GetHashCode()));
     }
 
     private void InitializePlaces()
@@ -176,12 +188,12 @@ public class Manager
     public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
     {
         {Enums.Weapons.Arma_Quimica,"Arma Química" },
-        //{Enums.Weapons.Espingarda, "Espingarda" },
+        {Enums.Weapons.Espingarda, "Espingarda" },
         {Enums.Weapons.Faca, "Faca" },
-        //{Enums.Weapons.Pa, "Pá" },
-        //{Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
+        {Enums.Weapons.Pa, "Pá" },
+        {Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
         {Enums.Weapons.Soco_Ingles, "Soco Inglês"},
-        //{Enums.Weapons.Tesoura, "Tesoura" },
+        {Enums.Weapons.Tesoura, "Tesoura" },
         {Enums.Weapons.Veneno, "Veneno" }
     };
 
@@ -192,12 +204,12 @@ public class Manager
     {
         Weapons = new List<Weapon>();
         Weapons.Add(new Weapon( Enums.Weapons.Arma_Quimica));
-        //Weapons.Add(new Weapon( Enums.Weapons.Espingarda));
+        Weapons.Add(new Weapon(Enums.Weapons.Espingarda));
         Weapons.Add(new Weapon( Enums.Weapons.Faca));
-        //Weapons.Add(new Weapon( Enums.Weapons.Pa));
-        //Weapons.Add(new Weapon( Enums.Weapons.Pe_de_Cabra));
+        Weapons.Add(new Weapon(Enums.Weapons.Pa));
+        Weapons.Add(new Weapon(Enums.Weapons.Pe_de_Cabra));
         Weapons.Add(new Weapon( Enums.Weapons.Soco_Ingles));
-        //Weapons.Add(new Weapon( Enums.Weapons.Tesoura));
+        Weapons.Add(new Weapon(Enums.Weapons.Tesoura));
         Weapons.Add(new Weapon( Enums.Weapons.Veneno));
     }
     
@@ -218,8 +230,8 @@ public class Manager
         CharacterTips.Add(new CharacterTip(Enums.Characters.Medica_Dona_Violeta, Enums.TipsSounds.Nao_foi_Medica2_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Mordomo_James, Enums.TipsSounds.Nao_foi_Mordomo_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Mordomo_James, Enums.TipsSounds.Nao_foi_Mordomo2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bicode, Enums.TipsSounds.Nao_foi_Sargento_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bicode, Enums.TipsSounds.Nao_foi_Sargento2_com_Ruido));
+        CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bigode, Enums.TipsSounds.Nao_foi_Sargento_com_Ruido));
+        CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bigode, Enums.TipsSounds.Nao_foi_Sargento2_com_Ruido));
     }
     
     private void InitializeWeaponsTips()

@@ -122,7 +122,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
 
     private void HandleInvestigate()
     {
-        throw new NotImplementedException();
+        //TODO HANDLE HERE? 
     }
 
     private void HandleWaitingForAction()

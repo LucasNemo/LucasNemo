@@ -9,10 +9,18 @@ public class PlaceSelectionItem : GenericSelectItem<Place> {
     [SerializeField]
     private Text m_nameText;
 
+    [SerializeField]
+    private Image m_placeImage;
+
     public override void UpdateItem(Place Item, Action<Place> callback)
     {
         base.UpdateItem(Item, callback);
         m_nameText.text = Item.N;
+    }
+
+    public void UpdateSprite(Sprite currentSprite)
+    {
+        m_placeImage.sprite = currentSprite;
     }
 
     public override void SelectItem()

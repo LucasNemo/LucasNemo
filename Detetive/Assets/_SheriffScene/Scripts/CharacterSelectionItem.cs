@@ -10,13 +10,17 @@ public class CharacterSelectionItem : GenericSelectItem<Character> {
     private Image m_characterImage;
     [SerializeField]
     private Text m_characterText;
-
+    
     public override void UpdateItem(Character Item, Action<Character> callback)
     {
         base.UpdateItem(Item, callback);
-        m_characterText.text = Manager.Instance.CharactersName[ (Enums.Characters) Item.MC];
+        //m_characterText.text = Manager.Instance.CharactersName[ (Enums.Characters) Item.MC];
     }
-
+    
+    public void UpdateSprite(Sprite currentSprite)
+    {
+        m_characterImage.sprite = currentSprite;
+    }
 
     public override void SelectItem()
     {

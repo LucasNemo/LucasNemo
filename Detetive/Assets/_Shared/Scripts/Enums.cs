@@ -69,7 +69,7 @@
         Florista_Dona_Branca = 05,
         Medica_Dona_Violeta = 06,
         Mordomo_James = 07,
-        Sargento_Bicode = 08,
+        Sargento_Bigode = 08,
     }
 
     /// <summary>

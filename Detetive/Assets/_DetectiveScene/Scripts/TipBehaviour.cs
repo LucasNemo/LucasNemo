@@ -12,7 +12,7 @@ public class TipBehaviour : ARElement {
     {
         this.tipsSound = currentTipSound;
 
-        onElementClicked += () =>
+        onElementClicked = () =>
         {
             if (m_disableAudio) return;
             m_disableAudio = true; 

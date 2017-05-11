@@ -27,7 +27,6 @@ public class ARElement : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        Debug.LogError("Investigado!");
 
         if (onElementClicked != null)
         {

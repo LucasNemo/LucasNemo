@@ -137,7 +137,7 @@ public class HandleInvestigations : MonoBehaviour
             arWeapon.transform.position = GetSpawnPosition();
             arWeapon.onElementClicked = () =>
             {
-                SceneManager.LoadScene("DetectiveScene");
+             //    SceneManager.LoadScene("DetectiveScene");
             };
         }
     }

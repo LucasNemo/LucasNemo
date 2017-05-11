@@ -54,7 +54,7 @@ public class GyroCamera : MonoBehaviour
         {
             var angle = supportedAttitude.eulerAngles;
             offsetRotation = new Vector3(horizontalAngle - angle.x, verticalAngle - angle.y);
-            transform.rotation = Quaternion.Euler(new Vector3(-supportedAttitude.eulerAngles.x , -supportedAttitude.eulerAngles.y,0));
+            transform.rotation = Quaternion.Euler(new Vector3(-supportedAttitude.eulerAngles.x , -supportedAttitude.eulerAngles.y, supportedAttitude.eulerAngles.z));
         }
     }
 

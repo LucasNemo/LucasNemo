@@ -36,6 +36,7 @@ public class DetectiveController : MonoBehaviour {
             Notes.instance.Hide();
         }
 
+
         DetectiveManager.Instance.Dummy();
     }
 
@@ -44,6 +45,9 @@ public class DetectiveController : MonoBehaviour {
     private void Start()
     {
         AudioController.Instance.Play(trilha, AudioController.SoundType.Music);
+
+        if (Notes.instance && Manager.Instance.MyGameInformation != null)
+            Notes.instance.Show();
     }
 
 
@@ -90,18 +94,18 @@ public class DetectiveController : MonoBehaviour {
     {
         ReadQRFromsCene(true,(result)=>
         {
-            DetectiveManager.Instance.QRCodeReaded(result, (success)=>
-            {
-               // GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
-               //{
-               //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
-               //});
-
-            });
-
+            
             Notes.instance.Show();
             mainCanvas.SetActive(true);
-            DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+            //DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+            DetectiveManager.Instance.QRCodeReaded(result, (success) =>
+            {
+                // GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
+                //{
+                //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
+                //});
+
+            });
 
         }, Manager.Instance.READ_FROM_XERIFE);
     }

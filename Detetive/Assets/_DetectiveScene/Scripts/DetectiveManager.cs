@@ -34,8 +34,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
         else
         {
             m_detectiveState = Enums.DetectiveState.StartGame;
-            if (Notes.instance)
-                Notes.instance.Show();
+            
         }
     }
 
@@ -58,7 +57,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
                 var deserializeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
                 Manager.Instance.MyGameInformation = deserializeResult;
                 Manager.Instance.SaveGameInformation();      
-                m_detectiveState = Enums.DetectiveState.WaitingForAction;
+                m_detectiveState = Enums.DetectiveState.StartGame;
 
                 success.Invoke(true);
             }

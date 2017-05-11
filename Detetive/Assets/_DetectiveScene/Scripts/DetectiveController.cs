@@ -74,17 +74,35 @@ public class DetectiveController : MonoBehaviour {
                 break;
             case Enums.DetectiveState.ReadingGameState:
                 break;
+            case Enums.DetectiveState.ReadCharacter:
+                ReadQRFromsCene(false, (x) =>
+                {
+                    Notes.instance.Show();
+                    mainCanvas.SetActive(true);
+                    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+                }, Manager.Instance.READ_CHARACTER);
+                DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.WaitingForAction);
+                break;
         }
     }
     
     private void InitializePlayerInfo()
     {
-       
         ReadQRFromsCene(true,(result)=>
         {
+            DetectiveManager.Instance.QRCodeReaded(result, (success)=>
+            {
+               // GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
+               //{
+               //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
+               //});
+
+            });
+
             Notes.instance.Show();
             mainCanvas.SetActive(true);
-            DetectiveManager.Instance.QRCodeReaded(result);
+            DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+
         }, Manager.Instance.READ_FROM_XERIFE);
     }
 

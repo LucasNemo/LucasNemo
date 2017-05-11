@@ -40,11 +40,19 @@ public class ReadQRCode
 
     private void ReadQRCode_onQRScanFinished(string str)
     {
+        sender.StartCoroutine(QRCodeResultCompleted(str));
+    }
+
+    IEnumerator QRCodeResultCompleted(string str)
+    {
         CheckQRCodeReferente();
         m_qrCodeDecoder.onQRScanFinished -= ReadQRCode_onQRScanFinished;
         m_qrCodeDecoder.StopWork();
-        string result = m_zipped ? Helper.DecompressString(str) : str; 
+        m_qrCodeDecoder = null;
+        string result = m_zipped ? Helper.DecompressString(str) : str;
         m_callback.Invoke(result);
-        SceneManager.UnloadSceneAsync(qrCodeSceneName);
+        m_callback = null;
+        yield return SceneManager.UnloadSceneAsync(qrCodeSceneName);
+
     }
 }

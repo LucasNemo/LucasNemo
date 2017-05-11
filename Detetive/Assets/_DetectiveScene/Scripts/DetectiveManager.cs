@@ -44,48 +44,12 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
         //Do some dummy stuff
     }
 
-    void Update()
-    {
-        switch (m_detectiveState)
-        {
-            case Enums.DetectiveState.ReadGameConfiguration:
-                HandleReadGameConfiguration();
-                break;
-            case Enums.DetectiveState.StartGame:
-                HandleStartGame();
-                break;
-            case Enums.DetectiveState.WaitingForAction:
-                HandleWaitingForAction();
-                break;
-            case Enums.DetectiveState.Investigate:
-                HandleInvestigate();
-                break;
-            case Enums.DetectiveState.Investigating:
-                HandleInvestigating();
-                break;
-            case Enums.DetectiveState.EndingInvestigation:
-                HandleEndingInvestigation();
-                break;
-            case Enums.DetectiveState.Hunch:
-                HandleHunch();
-                break;
-            case Enums.DetectiveState.WaitingDeploy:
-                HandleWaitingDeploy();
-                break;
-            case Enums.DetectiveState.ResultScreen:
-                HandleResultScreen();
-                break;
-            default:
-                break;
-        }
-    }
-
     public Enums.DetectiveState GetCurrentState()
     {
         return m_detectiveState;
     }
 
-    public void QRCodeReaded(string result)
+    public void QRCodeReaded(string result, Action<bool> success)
     {
         if (!string.IsNullOrEmpty(result))
         {
@@ -94,16 +58,22 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
                 var deserializeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
                 Manager.Instance.MyGameInformation = deserializeResult;
                 Manager.Instance.SaveGameInformation();      
-                m_detectiveState = Enums.DetectiveState.StartGame;
+                m_detectiveState = Enums.DetectiveState.WaitingForAction;
+
+                success.Invoke(true);
             }
             catch (Exception e)
             {
                 Debug.LogError("\n\n\nCrash dentro do readQRFromScene: " + e.Message);
+                success.Invoke(false);
+
                 throw;
             }
         }
         else
         {
+            success.Invoke(false);
+
             Debug.LogError("QrCode is null");
         }
     }
@@ -113,51 +83,7 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
         m_detectiveState = nextState;
     }
     
-    private void HandleResultScreen()
-    {
-        throw new NotImplementedException(); 
-    }
-
-    private void HandleWaitingDeploy()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void HandleHunch()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void HandleEndingInvestigation()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void HandleInvestigating()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void HandleInvestigate()
-    {
-        //TODO HANDLE HERE? 
-    }
-
-    private void HandleWaitingForAction()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void HandleStartGame()
-    {
-         // do some stat stuff 
-    }
-
-    private void HandleReadGameConfiguration()
-    {
-        throw new NotImplementedException();
-    }
-
+  
     public bool PericiaAlreadyRequested(Enums.Places place)
     {
         return IsPericiaRequested.Contains(place);

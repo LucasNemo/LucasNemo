@@ -52,8 +52,8 @@
         /// <summary>
         /// Ok, i forgot this state, dont judge me :(
         /// </summary>
-        ReadingGameState = 10
-
+        ReadingGameState = 10,
+        ReadCharacter = 11
     }
 
     /// <summary>

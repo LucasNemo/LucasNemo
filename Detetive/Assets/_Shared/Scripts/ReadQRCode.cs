@@ -41,7 +41,6 @@ public class ReadQRCode
     private void ReadQRCode_onQRScanFinished(string str)
     {
         CheckQRCodeReferente();
-        
         m_qrCodeDecoder.onQRScanFinished -= ReadQRCode_onQRScanFinished;
         m_qrCodeDecoder.StopWork();
         string result = m_zipped ? Helper.DecompressString(str) : str; 

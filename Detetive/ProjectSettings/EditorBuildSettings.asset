@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/QRcode/Scene/QRScanScene.unity
+  - enabled: 1
     path: Assets/_SplashScene/Splash.unity
   - enabled: 0
     path: Assets/ARGame/Scene/ARScene 1.unity
@@ -19,5 +21,3 @@ EditorBuildSettings:
     path: Assets/_DetectiveScene/DetectiveScene.unity
   - enabled: 1
     path: Assets/_SheriffScene/SheriffScene.unity
-  - enabled: 1
-    path: Assets/QRcode/Scene/QRScanScene.unity

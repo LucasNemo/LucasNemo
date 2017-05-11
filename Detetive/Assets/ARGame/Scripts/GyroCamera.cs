@@ -61,19 +61,20 @@ public class GyroCamera : MonoBehaviour
     float verticalAngle = 0;
     float horizontalAngle = 0;
 
-    void OnGUI()
-    {
-        if (GUI.Button(new Rect(Screen.width - 300, 0, 300, 150), "Calibrar AR"))
-        {
-            verticalAngle = 0;
-            horizontalAngle = 0;
-        }
+    //void OnGUI()
+    //{
+    //    if (GUI.Button(new Rect(Screen.width - 300, 0, 300, 150), "Calibrar AR"))
+    //    {
+           
+    //    }
 
-        GUI.skin.label.fontSize = 22;
-        GUI.Label(new Rect(0, 0, 500, 300), GetGyroInfo());
-        GUI.Label(new Rect(0, 300, 800, 1000), GetRotInfo());
+    //    GUI.skin.label.fontSize = 22;
+    //    GUI.Label(new Rect(0, 0, 500, 300), GetGyroInfo());
+    //    GUI.Label(new Rect(0, 300, 800, 1000), GetRotInfo());
 
-    }
+    //}
+
+
 
     private string GetGyroInfo()
     {
@@ -94,8 +95,8 @@ public class GyroCamera : MonoBehaviour
 
     public void CalibrateYAngle()
     {
-        // Offsets the y angle in case it wasn't 0 at edit time.
-        calibrationYAngle = appliedGyroYAngle - initialYAngle; 
+        verticalAngle = 0;
+        horizontalAngle = 0;
     }
 
     

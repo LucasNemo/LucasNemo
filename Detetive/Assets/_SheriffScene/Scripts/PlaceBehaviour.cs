@@ -34,7 +34,6 @@ public class PlaceBehaviour : MonoBehaviour
     {
         m_mainPlaces.SetActive(false);
         m_header.SetActive(false);
-        //TODO - PLEASE REMOVE THE HARDCODED!!!!!!!
         m_readQrCodeBehaviour.ReadQrCode((result) =>
         {
             Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);

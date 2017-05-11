@@ -31,9 +31,15 @@ public class HandleInvestigations : MonoBehaviour
     {
         //Set the name choosed by player
         title.text = roomInfo.P.N;
+    }
+
+    public IEnumerator EnableModels(Room roomInfo)
+    {
+        yield return new WaitForSecondsRealtime(2f);
+
+        FindObjectOfType<GyroCamera>().CalibrateYAngle();
 
         //Only enable tips and 3d models when the scene has it! - of course! 
-
         if (roomInfo.W != null)
         {
             EnableWeapons(roomInfo);

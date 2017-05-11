@@ -40,22 +40,22 @@ public class GyroCamera : MonoBehaviour
         //todo - become a better person...know more math!!
         var supportedAttitude = Input.gyro.attitude;
 
-        //if (System.Math.Round(supportedAttitude.eulerAngles.magnitude, 2) == 0)
-        //{ 
+        if (System.Math.Round(supportedAttitude.eulerAngles.magnitude, 2) == 0)
+        { 
             verticalAngle += Input.gyro.rotationRate.y;
             verticalAngle %= 360f;
 
             horizontalAngle += Input.gyro.rotationRate.x;
             horizontalAngle %= 360f;
 
-            transform.rotation = Quaternion.Euler(-horizontalAngle, -verticalAngle, transform.rotation.z);
-        //}
-        //else
-        //{
-        //    var angle = supportedAttitude.eulerAngles;
-        //    offsetRotation = new Vector3(horizontalAngle - angle.x, verticalAngle - angle.y); 
-        //    transform.rotation = Quaternion.Euler(new Vector3( - supportedAttitude.eulerAngles.x - offsetRotation.x, -supportedAttitude.eulerAngles.y - offsetRotation.y, transform.rotation.z));
-        //}
+            transform.rotation = Quaternion.Euler(-horizontalAngle, -verticalAngle, 0);
+        }
+        else
+        {
+            var angle = supportedAttitude.eulerAngles;
+            offsetRotation = new Vector3(horizontalAngle - angle.x, verticalAngle - angle.y);
+            transform.rotation = Quaternion.Euler(new Vector3(-supportedAttitude.eulerAngles.x - offsetRotation.x, -supportedAttitude.eulerAngles.y - offsetRotation.y,0));
+        }
     }
 
     float verticalAngle = 0;

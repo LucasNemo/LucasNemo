@@ -1137,6 +1137,7 @@ MonoBehaviour:
   m_menu: {fileID: 1071990666}
   m_selection: {fileID: 824647723}
   m_settings: {fileID: 228176920}
+  menu: {fileID: 8300000, guid: 8f7580c05282f894495f0928e5504bb5, type: 3}
 --- !u!1 &2009676144
 GameObject:
   m_ObjectHideFlags: 0

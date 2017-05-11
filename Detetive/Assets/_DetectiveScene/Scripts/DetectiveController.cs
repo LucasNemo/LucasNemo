@@ -39,10 +39,11 @@ public class DetectiveController : MonoBehaviour {
         DetectiveManager.Instance.Dummy();
     }
 
+    public AudioClip trilha; 
 
     private void Start()
     {
-        
+        AudioController.Instance.Play(trilha, AudioController.SoundType.Music);
     }
 
 

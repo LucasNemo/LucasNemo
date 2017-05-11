@@ -438,6 +438,7 @@ MonoBehaviour:
   m_resultScreen: {fileID: 1915893131}
   m_menu: {fileID: 1044941587}
   mainCanvas: {fileID: 1690188082}
+  trilha: {fileID: 8300000, guid: 17930c49927892d43a958d1369b32927, type: 3}
 --- !u!1001 &1331461165
 Prefab:
   m_ObjectHideFlags: 0

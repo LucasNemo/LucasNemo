@@ -16,7 +16,10 @@ public class HandleInvestigations : MonoBehaviour
     public Text title;
 
     public GameObject periciaButton;
+
     private string status;
+
+    public AudioClip sirene;
 
     private void Start()
     {
@@ -33,7 +36,12 @@ public class HandleInvestigations : MonoBehaviour
             if (DetectiveManager.Instance.AlreadGotAResultToThisPlace())
             {
                 if (DetectiveManager.Instance.PericiaResultToThisPlace())
+                {
                     status = "O resultado da perícia saiu! Foi neste local que acontenceu o crime!!";
+
+                    AudioController.Instance.Play(sirene, AudioController.SoundType.SoundEffect2D, 1f, false, true);
+
+                }
                 else
                     status = "O resultado da perícia saiu! NÃO foi neste local que acontenceu o crime!";
             }

@@ -7,7 +7,14 @@ public class SplashController : MonoBehaviour {
     [SerializeField]
     private GameObject m_intro, m_menu, m_selection, m_settings;
 
-	public void OpenMenu()
+    public AudioClip menu;
+
+    private void Start()
+    {
+        AudioController.Instance.Play(menu, AudioController.SoundType.Music);
+    }
+
+    public void OpenMenu()
     {
         m_intro.SetActive(false);
         m_menu.gameObject.SetActive(true);

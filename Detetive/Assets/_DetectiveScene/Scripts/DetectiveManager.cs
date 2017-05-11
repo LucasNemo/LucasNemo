@@ -10,14 +10,14 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
     private void Awake()
     {
         DontDestroyOnLoad(this);
-
+        
         if (Manager.Instance.MyGameInformation == null)
         {
             m_detectiveState = Enums.DetectiveState.ReadGameConfiguration;
         }
         else
         {
-            m_detectiveState = Enums.DetectiveState.TimerToStart;
+            m_detectiveState = Enums.DetectiveState.StartGame;
         }
     }
 
@@ -57,15 +57,6 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
             case Enums.DetectiveState.ResultScreen:
                 HandleResultScreen();
                 break;
-            case Enums.DetectiveState.TimerToStart:
-                m_timer += Time.deltaTime; 
-                //TODO - FOR THE LOVE OF THE GOD, REMOVE THE HARDCODED NUMBER!!!!
-                if (m_timer > 120f)
-                {
-                    m_timer = 0;
-                    RequestChangeState(Enums.DetectiveState.WaitingForAction);
-                }
-                break;
             default:
                 break;
         }
@@ -84,9 +75,8 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
             {
                 var deserializeResult = Newtonsoft.Json.JsonConvert.DeserializeObject<GameInformation>(result);
                 Manager.Instance.MyGameInformation = deserializeResult;
-
-                //TODO - Save game data!               
-                m_detectiveState = Enums.DetectiveState.TimerToStart;
+                Manager.Instance.SaveGameInformation();      
+                m_detectiveState = Enums.DetectiveState.StartGame;
             }
             catch (Exception e)
             {

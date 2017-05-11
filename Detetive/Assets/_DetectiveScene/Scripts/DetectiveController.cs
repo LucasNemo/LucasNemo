@@ -60,26 +60,9 @@ public class DetectiveController : MonoBehaviour {
                 break;
             case Enums.DetectiveState.ReadingGameState:
                 break;
-            case Enums.DetectiveState.TimerToStart:
-                HandleTimer();
-                break;
         }
     }
-
-
-    private void HandleTimer()
-    {
-        if (!m_timerController)
-        {
-            m_timerController =Instantiate( Resources.Load<TimerController>("TimerCanvas") );
-            StartCoroutine(m_timerController.StartTimer(Manager.Instance.MyGameInformation.Timer, () =>
-            {
-                DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
-                Destroy(m_timerController.gameObject);
-            }));
-        }
-    }
-
+    
     private void InitializePlayerInfo()
     {
         ReadQRFromsCene(true,(result)=>

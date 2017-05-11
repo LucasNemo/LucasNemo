@@ -52,15 +52,7 @@
         /// <summary>
         /// Ok, i forgot this state, dont judge me :(
         /// </summary>
-        ReadingGameState = 10,
-
-
-        /// <summary>
-        /// It's a new state - realy new! 
-        /// Player's waiting for the cooldown to start the match 
-        /// </summary>
-        TimerToStart = 11
-
+        ReadingGameState = 10
 
     }
 

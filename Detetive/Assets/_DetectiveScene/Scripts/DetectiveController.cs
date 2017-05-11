@@ -11,8 +11,10 @@ using UnityEngine.UI;
 /// Handle the detective scene only - Not like the manager that handle all the detective actions
 /// </summary>
 public class DetectiveController : MonoBehaviour {
-     
-  
+
+
+    public Notes NotesCanvas; 
+
     [SerializeField]
     private DetectiveHunchBehaviour m_detectiveHunchBehaviour;
     
@@ -24,8 +26,16 @@ public class DetectiveController : MonoBehaviour {
     TimerController m_timerController;
     private bool m_initialized;
 
+    public GameObject mainCanvas; 
+
     private void Awake()
     {
+        if (Notes.instance == null)
+        {
+            Instantiate(NotesCanvas);
+            Notes.instance.Hide();
+        }
+
         DetectiveManager.Instance.Dummy();
     }
     
@@ -61,16 +71,20 @@ public class DetectiveController : MonoBehaviour {
     
     private void InitializePlayerInfo()
     {
+       
         ReadQRFromsCene(true,(result)=>
         {
+            Notes.instance.Show();
+            mainCanvas.SetActive(true);
             DetectiveManager.Instance.QRCodeReaded(result);
         }, Manager.Instance.READ_FROM_XERIFE);
     }
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)
     {
+        Notes.instance.Hide();
+        mainCanvas.SetActive(false);
         var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
-
         readQRCodeBehaviour.ReadQrCode(result,
          useCompression, title);
     }
@@ -112,9 +126,14 @@ public class DetectiveController : MonoBehaviour {
     public void OnInvesticateClicked()
     {
         m_menu.SetActive(false);
-        
+        mainCanvas.SetActive(false);
+        Notes.instance.Hide();
+
         ReadQRFromsCene(false, (result) =>
         {
+            mainCanvas.SetActive(true);
+            Notes.instance.Hide();
+
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
 
             if (enumTest != null &&   Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest.GetHashCode()  )))

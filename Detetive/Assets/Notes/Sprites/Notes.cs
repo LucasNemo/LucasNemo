@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Notes : MonoBehaviour {
 
+    public static Notes instance; 
 
     private void Awake()
     {
+        instance = this;
         DontDestroyOnLoad(this);
     }
 
@@ -15,5 +17,22 @@ public class Notes : MonoBehaviour {
     public void NotesClicked()
     {
         animator.SetTrigger("ChangeState");
+    }
+
+    public void Remove()
+    {
+        instance = null;
+        Destroy(gameObject);   
+    }
+
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

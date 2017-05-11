@@ -42,7 +42,6 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         readQRCode.ReadQR(this, (string e) =>
         {
             qrCodeMessage = e;
-            Debug.LogError("\n\n\n\n\n\n\n\n" + e + "\n\n\n\\n\n");
             if (!string.IsNullOrEmpty(qrCodeMessage))
             {
                 if (m_readCallback != null)

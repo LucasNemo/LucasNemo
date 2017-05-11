@@ -18,6 +18,8 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
         else
         {
             m_detectiveState = Enums.DetectiveState.StartGame;
+            if (Notes.instance)
+                Notes.instance.Show();
         }
     }
 

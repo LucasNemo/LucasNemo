@@ -202,7 +202,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -432,9 +432,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d10af8f6b45f14489a63ddd92cf7b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NotesCanvas: {fileID: 114741822594248668, guid: 4eec28cfbb0023f4383f37a9fba487d1,
+    type: 2}
   m_detectiveHunchBehaviour: {fileID: 2126946931}
   m_resultScreen: {fileID: 1915893131}
   m_menu: {fileID: 1044941587}
+  mainCanvas: {fileID: 1690188082}
 --- !u!1001 &1331461165
 Prefab:
   m_ObjectHideFlags: 0

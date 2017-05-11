@@ -33,4 +33,10 @@ public abstract class SingletonBehaviour<T> : MonoBehaviour
         m_instance = null;
     }
 
+    public void Remove()
+    {
+        Destroy(gameObject);
+        OnApplicationQuit();
+    }
+
 }

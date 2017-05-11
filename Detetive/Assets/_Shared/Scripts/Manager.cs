@@ -42,7 +42,7 @@ public class Manager
     public readonly string CONTINUE_GAME_MODAL_DESCRIPTION = "VOCÊ TEM UM JOGO SALVO, DESEJA CONTINUAR  OU COMEÇAR UM NOVO?";
     public readonly string TERMS_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Termos de Uso.";
     public readonly string TALK_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Fale Conosco.";
-    public readonly string IS_HOST_MODAL = "VOCÊ DESEJA QUE LUGAR SEJA A CADEIA?";
+    public readonly string IS_HOST_MODAL = "VOCÊ DESEJA QUE LUGAR SEJA A DELEGACIA?";
     public readonly string QR_READ_PLACE = "Realize a leitura do QRCode do lugar / ambiente";
     public readonly string PLAYER_WANNA_PLAY = "VOCÊ DESEJA JOGAR TAMBÉM?";
     public readonly string READ_CHARACTER = "LEIA UMA CARTA DE PERSONAGEM";

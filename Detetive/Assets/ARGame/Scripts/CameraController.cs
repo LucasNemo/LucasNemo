@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour {
 
     private void OnDestroy()
     {
-        camTexture.Stop();
+        if (camTexture!= null)
+            camTexture.Stop();
     }
 }

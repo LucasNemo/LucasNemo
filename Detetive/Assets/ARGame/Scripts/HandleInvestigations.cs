@@ -4,15 +4,23 @@ using UnityEngine;
 using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HandleInvestigations : MonoBehaviour
 {
     public ARElement[] arElements;  //List of elements on scene
     public List<Transform> arPos;   //The list of positions 
     public TipBehaviour tipModel;   //The base of any tip!
-    public GameObject murdererPlace; 
+    public GameObject murdererPlace;
+
+    public Text title;
+
     private void Start()
+
     {
+
+        if (Manager.Instance.ActiveRoom == null) return;
+ 
         //Randomize the array of positios!
         arPos = arPos.SortList();
         SetCurrentRoom( Manager.Instance.ActiveRoom );
@@ -21,6 +29,9 @@ public class HandleInvestigations : MonoBehaviour
 
     private void SetCurrentRoom(Room roomInfo)
     {
+        //Set the name choosed by player
+        title.text = roomInfo.P.N;
+
         //Only enable tips and 3d models when the scene has it! - of course! 
 
         if (roomInfo.W != null)

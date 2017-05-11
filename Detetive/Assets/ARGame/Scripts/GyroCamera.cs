@@ -10,6 +10,7 @@ public class GyroCamera : MonoBehaviour
 
     private Vector3 m_defeaultCameraAngles;
 
+    private Vector3 offsetRotation;
     
 
     void Start()
@@ -20,16 +21,27 @@ public class GyroCamera : MonoBehaviour
 
         //get the initial camera rotation - to be used as rrefernce.
         m_defeaultCameraAngles = transform.localRotation.eulerAngles;
+
+        offsetRotation = Vector3.zero;
+
+     
     }
 
     void Update()
     {
+        bool isTouching = TouchToRotate();
 
+        if (!isTouching)
+            DeviceAccelerometerRotation();
+    }
+
+    private void DeviceAccelerometerRotation()
+    {
+        //todo - become a better person...know more math!!
         var supportedAttitude = Input.gyro.attitude;
 
-        if (System.Math.Round(supportedAttitude.eulerAngles.magnitude, 2) == 0)
-        {
-
+        //if (System.Math.Round(supportedAttitude.eulerAngles.magnitude, 2) == 0)
+        //{ 
             verticalAngle += Input.gyro.rotationRate.y;
             verticalAngle %= 360f;
 
@@ -37,14 +49,15 @@ public class GyroCamera : MonoBehaviour
             horizontalAngle %= 360f;
 
             transform.rotation = Quaternion.Euler(-horizontalAngle, -verticalAngle, transform.rotation.z);
-        }
-        else 
-        {
-            transform.rotation =  Quaternion.Euler(new Vector3(-supportedAttitude.eulerAngles.x, -supportedAttitude.eulerAngles.y, supportedAttitude.eulerAngles.z));
-        }
-
-        
+        //}
+        //else
+        //{
+        //    var angle = supportedAttitude.eulerAngles;
+        //    offsetRotation = new Vector3(horizontalAngle - angle.x, verticalAngle - angle.y); 
+        //    transform.rotation = Quaternion.Euler(new Vector3( - supportedAttitude.eulerAngles.x - offsetRotation.x, -supportedAttitude.eulerAngles.y - offsetRotation.y, transform.rotation.z));
+        //}
     }
+
     float verticalAngle = 0;
     float horizontalAngle = 0;
 
@@ -56,7 +69,9 @@ public class GyroCamera : MonoBehaviour
             horizontalAngle = 0;
         }
 
-        GUI.Label(new Rect(0, 0, 500, 500), GetGyroInfo());
+        GUI.skin.label.fontSize = 22;
+        GUI.Label(new Rect(0, 0, 500, 300), GetGyroInfo());
+        GUI.Label(new Rect(0, 300, 800, 1000), GetRotInfo());
 
     }
 
@@ -70,6 +85,13 @@ public class GyroCamera : MonoBehaviour
             Input.gyro.rotationRateUnbiased.ToString());
     }
 
+
+    private string GetRotInfo()
+    {
+        return string.Format(" euler{2} X{0} Y{1}  offset {3}", verticalAngle, horizontalAngle,Input.gyro.attitude.eulerAngles, offsetRotation);
+    }
+
+
     public void CalibrateYAngle()
     {
         // Offsets the y angle in case it wasn't 0 at edit time.
@@ -77,47 +99,6 @@ public class GyroCamera : MonoBehaviour
     }
 
     
-
-    // The Gyroscope is right-handed.  Unity is left handed.
-    // Make the necessary change to the camera.
-    void GyroModifyCamera()
-    {
-
-
-        transform.rotation =  Quaternion.LookRotation(Input.acceleration);
-
-        //Apply the device rotation to camera
-
-        //var gyro = Input.gyro.rotationRate;
-
-        //print(GetGyroInfo());
-
-        //var degreeAngle = (gyro * Mathf.Rad2Deg).normalized;
-
-        //print(degreeAngle);
-
-        //transform.Rotate(new Vector3(-degreeAngle.x, -degreeAngle.y, 0) );
-
-
-        //var attitude = Input.gyro.attitude;
-
-        ////The phone does not support local space coordinates
-
-        //if (attitude.eulerAngles.magnitude == 0)
-        //{
-        //    var rot = Input.gyro.rotationRate;
-        //    transform.Rotate(new Vector3(-rot.x, -rot.y, 0f) * 2f);  // GyroToUnity(Input.gyro.attitude);
-        //    var r = transform.rotation.eulerAngles;
-        //    transform.rotation = Quaternion.Euler(r.x, r.y, 0);
-        //}
-        //else
-        //{
-        //    transform.rotation = GyroToUnity(Input.gyro.attitude);
-        //}
-
-        
-    }
-
     private static Quaternion GyroToUnity(Quaternion q)
     {
         return new Quaternion(q.x, q.y, -q.z, -q.w);
@@ -140,5 +121,46 @@ public class GyroCamera : MonoBehaviour
     {
         // Rotates y angle back however much it deviated when calibrationYAngle was saved.
         transform.Rotate(0f, -calibrationYAngle, 0f, Space.World);
+    }
+
+
+    private Vector2 firstPoint, secondpoint;
+    private float xAngTemp, xAngle, yAngTemp, yAngle;
+
+
+    private bool TouchToRotate()
+    {
+        xAngle = transform.rotation.eulerAngles.y;
+        yAngle = transform.rotation.eulerAngles.x;
+
+        //Check count touches
+        if (Input.touchCount > 0)
+        {
+            //Touch began, save position
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                firstPoint = Input.GetTouch(0).position;
+                xAngTemp = xAngle;
+                yAngTemp = yAngle;
+            }
+            //Move finger by screen
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                secondpoint = Input.GetTouch(0).position;
+                //Mainly, about rotate camera. For example, for Screen.width rotate on 180 degree
+                xAngle = xAngTemp + (secondpoint.x - firstPoint.x) * 360f / Screen.width;
+                yAngle = yAngTemp - (secondpoint.y - firstPoint.y) * 360f / Screen.height;
+
+                //Rotate camera
+                transform.rotation = Quaternion.Euler((float)yAngle,(float) xAngle, 0.0f);
+            }
+
+            verticalAngle = (float)-xAngle;
+            horizontalAngle = (float)-yAngle;
+
+            return true;
+        }
+        
+        return false;
     }
 }

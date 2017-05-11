@@ -130,6 +130,12 @@ public class DeviceCameraController : MonoBehaviour {
 
 
 
+    private void OnDestroy()
+    {
+        //There is no place like home...:)
+        StopWork();
+    }
+
 }
 
 

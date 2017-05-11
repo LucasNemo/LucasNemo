@@ -13,6 +13,7 @@ public class GenericModal : MonoBehaviour {
     private Text m_description, m_leftText, m_rightText, m_alertText;
 
     private Action m_leftCallback, m_rightCallback, m_alertModeCallback;
+    private bool m_close;
 
     public static GenericModal Instance;
 
@@ -22,7 +23,7 @@ public class GenericModal : MonoBehaviour {
         Instance = this;
     }
 
-    public void OpenModal(string description, string buttonLeft, string buttonRight, Action callbackButtonLeft, Action callbackButtonRight)
+    public void OpenModal(string description, string buttonLeft, string buttonRight, Action callbackButtonLeft, Action callbackButtonRight, bool close = true)
     {
         InvertButtons(true);
         m_description.text = description;
@@ -30,6 +31,7 @@ public class GenericModal : MonoBehaviour {
         m_rightText.text = buttonRight;
         this.m_leftCallback = callbackButtonLeft;
         this.m_rightCallback = callbackButtonRight;
+        m_close = close;
         m_modal.SetActive(true);
     }
 
@@ -51,31 +53,29 @@ public class GenericModal : MonoBehaviour {
 
     public void OnClickAlertButton()
     {
+        CloseModal(m_close);
         if (m_alertModeCallback != null)
             m_alertModeCallback();
-
-        CloseModal();
     }
 
-    private void CloseModal()
+    public void CloseModal(bool close)
     {
-        m_modal.SetActive(false);
+          m_modal.SetActive(!close);
     }
 
     public void OnLeftClick()
     {
+        CloseModal(m_close);
+
         if (m_leftCallback != null)
             m_leftCallback();
-
-        CloseModal();
     }
-
+    
     public void OnRightCallback()
     {
+        CloseModal(m_close);
         if (m_rightCallback != null)
             m_rightCallback();
-
-        CloseModal();
     }
 
 }

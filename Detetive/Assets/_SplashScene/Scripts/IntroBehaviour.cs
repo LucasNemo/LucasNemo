@@ -14,11 +14,12 @@ public class IntroBehaviour : MonoBehaviour
         GenericModal.Instance.OpenModal(Manager.Instance.CONFIRM_VISIT_MODAL_TITLE, "Voltar", "Continuar", () =>
         {
             OnCancelConfirmClick();
+            GenericModal.Instance.CloseModal(true);
         },
         () =>
         {
             OnGoToSite();
-        });
+        }, false);
     }
 
     private void OnCancelConfirmClick()

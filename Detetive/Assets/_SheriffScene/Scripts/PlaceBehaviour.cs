@@ -7,7 +7,7 @@ using System.Linq;
 public class PlaceBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameObject m_readQr, m_addingPlace;
+    private GameObject m_readQr, m_addingPlace, m_mainPlaces, m_header;
 
     //Input name field
     [SerializeField]
@@ -32,13 +32,29 @@ public class PlaceBehaviour : MonoBehaviour
     
     public void OpenQrCodeReader()
     {
+        m_mainPlaces.SetActive(false);
+        m_header.SetActive(false);
         //TODO - PLEASE REMOVE THE HARDCODED!!!!!!!
         m_readQrCodeBehaviour.ReadQrCode((result) =>
         {
             Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
             m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
-            m_inputField.text = m_lastPlace.N;
-            ActivePlace();
+
+            if (m_lastPlace != null)
+            {
+                m_inputField.text = m_lastPlace.N;
+                ActivePlace();
+            }
+            else
+            {
+                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_PLACE_WRONG, Manager.Instance.WARNING_BUTTON, () => {
+                    ActiveReadQr();
+                });
+            }
+
+            m_mainPlaces.SetActive(true);
+            m_header.SetActive(true);
+
         }, false, Manager.Instance.QR_READ_PLACE);
     }
 
@@ -58,23 +74,20 @@ public class PlaceBehaviour : MonoBehaviour
     {
         if (m_lastPlace != null)
         {
+            bool isHost = false;
+            
             if (!m_places.Any(x => x.N.Equals(m_inputField.text) || x.MP == m_lastPlace.MP))
             {
-                bool isHost = false;
-
-                if(!m_hostAlreadyChoosed)
+                if (!m_hostAlreadyChoosed)
                 {
-                    GenericModal.Instance.OpenModal(Manager.Instance.IS_HOST_MODAL, "Não", "Sim", () =>
-                    {
-                        GenericModal.Instance.CloseModal();
-                    },
+                    GenericModal.Instance.OpenModal(Manager.Instance.IS_HOST_MODAL, "Não", "Sim", null,
                     () =>
                     {
                         isHost = true;
                         m_hostAlreadyChoosed = true;
                     });
                 }
-                
+
                 m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, isHost));
 
                 m_inputField.text = string.Empty;
@@ -85,6 +98,13 @@ public class PlaceBehaviour : MonoBehaviour
                 //Error modal
             }
         }
+
+        ActiveReadQr();
     }
 
+    public void DisablePlace()
+    {
+        m_mainPlaces.SetActive(false);
+    }
+    
 }

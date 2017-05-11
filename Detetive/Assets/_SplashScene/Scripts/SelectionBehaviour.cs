@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SelectionBehaviour : MonoBehaviour {
+public class SelectionBehaviour : MonoBehaviour
+{
 
     [SerializeField]
     private List<SpriteSelectionBehaviour> m_selectionsButtons;
-    
+
+    private void Start()
+    {
+        SelectItem(0);
+    }
+
     public void OnBackClick()
     {
         FindObjectOfType<SplashController>().OnBackFromSelection();
@@ -21,18 +28,19 @@ public class SelectionBehaviour : MonoBehaviour {
     public void OnPlayClick()
     {
         int selected = m_selectionsButtons.FindIndex(x => x.IsSelected);
-        
+
         switch (selected)
         {
             case -1:
-                //Modal must selected one
-                break;
+            break;
             case 0:
+                SceneManager.LoadScene("SheriffScene");
                 break;
             case 1:
+                SceneManager.LoadScene("DetectiveScene");
                 break;
         }
 
     }
-    
+
 }

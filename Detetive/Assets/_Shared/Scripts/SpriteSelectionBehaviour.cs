@@ -14,7 +14,7 @@ public class SpriteSelectionBehaviour : MonoBehaviour {
 
     private Image m_currentImage;
     
-    private void Start()
+    private void Awake()
     {
         m_currentImage = GetComponent<Image>();
     }

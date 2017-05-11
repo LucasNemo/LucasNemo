@@ -39,8 +39,6 @@ public class CharacterBehaviour : MonoBehaviour {
 
     private void MakeQrCodeForPlayersChoose()
     {
-        float timer = m_sheriffController.Timer - 5f > 0 ? m_sheriffController.Timer - 5f : 0;
-        m_gameInformation.Timer = timer;
         var serialized = Newtonsoft.Json.JsonConvert.SerializeObject(m_gameInformation);
         print(serialized);
         Sprite qrCode = GenerateQRCode.GenerateQRSprite(serialized, 256);

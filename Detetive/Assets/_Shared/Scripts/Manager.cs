@@ -44,6 +44,11 @@ public class Manager
     public readonly string TALK_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Fale Conosco.";
     public readonly string IS_HOST_MODAL = "VOCÊ DESEJA QUE LUGAR SEJA A CADEIA?";
     public readonly string QR_READ_PLACE = "Realize a leitura do QRCode do lugar / ambiente";
+    public readonly string PLAYER_WANNA_PLAY = "VOCÊ DESEJA JOGAR TAMBÉM?";
+    public readonly string READ_CHARACTER = "LEIA UMA CARTA DE PERSONAGEM";
+    public readonly string ON_READ_PLACE_WRONG = "UTILIZE UMA CARTA DE LUGAR PARA LER";
+    public readonly string ON_READ_CHARACTER_WRONG = "UTILIZE UMA CARTA DE PERSONAGEM PARA LER";
+    public readonly string WARNING_BUTTON = "Entendi!";
     #endregion
 
     /// <summary>

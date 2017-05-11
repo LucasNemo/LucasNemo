@@ -5,18 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using System;
- 
-public class SheriffController : MonoBehaviour {
 
+public class SheriffController : MonoBehaviour
+{
     #region Editor Variables
     [SerializeField]
     private PlaceBehaviour m_placesBehaviour;
     [SerializeField]
-    private CharacterBehaviour m_characterBehaviour;
+    private CharacterBehaviour m_setupGame;
     [SerializeField]
-    private HunchBehaviour m_hunchBehaviour;
-    [SerializeField]
-    private FinishGameBehaviour m_finishBehaviour;
+    private GameObject m_header;
     #endregion
 
     #region Private Att
@@ -24,34 +22,18 @@ public class SheriffController : MonoBehaviour {
     private Hunch m_corretHunch;
     private float m_timer = Manager.Instance.COOLDOWN;
 
-    [SerializeField]
-    private WannaPlayBehaviour m_wannaPlay;
-
     #endregion
-
-    #region Properties
-
-    public float Timer { get { return m_timer; } }
-    #endregion 
-
-    public void OnSelectWannaPlay(bool wannaPlay)
-    {
-        m_wannaPlay.gameObject.SetActive(false);
-        m_characterBehaviour.gameObject.SetActive(true);
-
-        //Start the timer to start the game! 
-        StartCoroutine(StartTimerController());
-    }
-
+    
     /// <summary>
     /// Get a game already set information
     /// </summary>
     public GameInformation GetGameInfo { get { return m_gameInformation; } }
 
-    void Start () {
+    void Start()
+    {
         m_placesBehaviour.gameObject.SetActive(true);
     }
-    
+
     public void OnBackClick()
     {
         SceneManager.LoadScene("MenuScene");
@@ -64,20 +46,10 @@ public class SheriffController : MonoBehaviour {
     {
         InitializeGameInformation();
 
-        m_placesBehaviour.gameObject.SetActive(false);
-        m_wannaPlay.gameObject.SetActive(true);
-    }
+        m_placesBehaviour.DisablePlace();
+        m_setupGame.gameObject.SetActive(true);
 
-    private IEnumerator StartTimerController()
-    {
-        do
-        {
-            m_timer -= Time.deltaTime;
-            m_timer = (float) Math.Round(m_timer, 2);
-            yield return null;
-        } while (m_timer > 0);
-
-        m_timer = 0;
+        //m_placesBehaviour.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -94,7 +66,7 @@ public class SheriffController : MonoBehaviour {
 
 
         m_gameInformation = new GameInformation(m_corretHunch);
-        
+
         List<Place> places = new List<Place>();
         //places.AddRange(m_placesBehaviour.GetPlaces);
         places.AddRange(Manager.Instance.Places);
@@ -142,7 +114,7 @@ public class SheriffController : MonoBehaviour {
     /// <param name="places"></param>
     /// <param name="tips"></param>
     /// <param name="minRandom"></param>
-    private void AddTip<T>(List<Place> places,List<T> tips, int minRandom) where T : TipItem
+    private void AddTip<T>(List<Place> places, List<T> tips, int minRandom) where T : TipItem
     {
         var randomPlaces = places.SortList();
 
@@ -197,37 +169,51 @@ public class SheriffController : MonoBehaviour {
         }
         return listItem;
     }
-  
-   
+    
     /// <summary>
     /// Method called when player finish add detectives
     /// </summary>
     public void OnFinishAddCharacter()
     {
-        if (Manager.Instance.SheriffWannaPlay)
+        GenericModal.Instance.OpenModal(Manager.Instance.PLAYER_WANNA_PLAY, "Não", "Sim", () =>
         {
-            SceneManager.LoadScene("DetectiveScene");
-        }
-        else
-        {
-            //TODO O QUE ROLA QUANDO DELE NÃO QUER JOGAR?!@#!$!@
-        }
+            //If player dont wanna play
+            SceneManager.LoadScene("Splash");
+        },
+       () =>
+       {
+           m_setupGame.gameObject.SetActive(false);
+           m_placesBehaviour.DisablePlace();
+           m_header.SetActive(false);
+           FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
+           {
+               Character myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
+               if (myCharacter != null)
+               {
+                   m_gameInformation.P = myCharacter;
+                   Manager.Instance.MyGameInformation = m_gameInformation;
+                   Manager.Instance.SaveGameInformation();
+                   SceneManager.LoadScene("DetectiveScene");
+               }
+               else
+               {
+                   //TODO ADD ALERT
+                   m_setupGame.gameObject.SetActive(true);
+                   m_placesBehaviour.DisablePlace();
+                   m_header.SetActive(true);
 
-        m_characterBehaviour.gameObject.SetActive(false);
+                   GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
+               }
+
+           }, false, Manager.Instance.READ_CHARACTER);
+       });
+
+        m_setupGame.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// Method called when sheriff finish add hunch 
-    /// </summary>
-    public void OnFinishAddHunch()
+    public void OnBackHeaderButtonClick()
     {
-        m_hunchBehaviour.gameObject.SetActive(false);
-        m_finishBehaviour.gameObject.SetActive(true);
+        SceneManager.LoadScene("Splash");
     }
-
-    public PlayerHunch GetBestHunch()
-    {
-        return m_hunchBehaviour.GetHunchs.Where(x => x.MH == m_corretHunch).OrderBy(y => y.HT).FirstOrDefault(); 
-    }
-
+    
 }

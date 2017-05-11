@@ -15,7 +15,6 @@ public class MenuBehaviour : MonoBehaviour
         {
             GenericModal.Instance.OpenModal(Manager.Instance.CONTINUE_GAME_MODAL_DESCRIPTION, "Novo jogo", "Continuar", () =>
             {
-                GenericModal.Instance.CloseModal();
                 OnNewGameClick();
             },
             () =>

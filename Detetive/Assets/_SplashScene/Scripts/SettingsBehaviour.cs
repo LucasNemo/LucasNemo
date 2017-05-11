@@ -38,10 +38,7 @@ public class SettingsBehaviour : MonoBehaviour {
     
     public void OnTermClick()
     {
-        GenericModal.Instance.OpenModal(Manager.Instance.TERMS_MODAL_DESCRIPTION, "Voltar", "Continuar", () =>
-        {
-            GenericModal.Instance.CloseModal();
-        },
+        GenericModal.Instance.OpenModal(Manager.Instance.TERMS_MODAL_DESCRIPTION, "Voltar", "Continuar", null,
        () =>
        {
             OnConfirmTerm();
@@ -55,10 +52,7 @@ public class SettingsBehaviour : MonoBehaviour {
     
     public void OnTalkWithUsClick()
     {
-        GenericModal.Instance.OpenModal(Manager.Instance.TALK_MODAL_DESCRIPTION, "Voltar", "Continuar", () =>
-        {
-            GenericModal.Instance.CloseModal();
-        },
+        GenericModal.Instance.OpenModal(Manager.Instance.TALK_MODAL_DESCRIPTION, "Voltar", "Continuar",null,
         () =>
         {
             OnConfirmOnTalkWithUs();

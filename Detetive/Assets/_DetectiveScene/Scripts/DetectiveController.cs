@@ -130,20 +130,24 @@ public class DetectiveController : MonoBehaviour {
          
         ReadQRFromsCene(false, (result) =>
         {
+            mainCanvas.SetActive(true);
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
-
             if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
             {
+
                 Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
 
                 if (Manager.Instance.ActiveRoom.P.IH)
                 {
+
                     var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
+
                     var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
 
                     m_resultScreen.gameObject.SetActive(true);
                     m_resultScreen.UpdateInformation(answer);
-                       
+
+
                     //m_resultScreen.GetComponentInChildren<Text>().text = string.Format("Seu palpite\nSuspeito{0}\nLocal{1}\nArma{2}\n\nEstá {3}",
                     //     ((Enums.Characters)playerhunch.HC).ToString(), (playerhunch.HR.P.N),
                     //     ((Enums.Weapons)playerhunch.HR.W.MW).ToString(), answer ? "CORRETA!!!" : "ERRADO!"  );

@@ -84,4 +84,11 @@ public class GenericModal : MonoBehaviour {
         m_rightCallback = null;
     }
 
+    public void RemoveHandlers()
+    {
+        m_rightCallback = null;
+        m_leftCallback = null;
+        m_alertModeCallback = null;
+    }
+
 }

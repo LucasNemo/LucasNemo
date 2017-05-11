@@ -79,18 +79,31 @@ public class PlaceBehaviour : MonoBehaviour
             {
                 if (!m_hostAlreadyChoosed)
                 {
-                    GenericModal.Instance.OpenModal(Manager.Instance.IS_HOST_MODAL, "Não", "Sim", null,
+                    GenericModal.Instance.OpenModal(Manager.Instance.IS_HOST_MODAL, "Não", "Sim", ()=>
+                    {
+                        isHost = false;
+                        m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, isHost));
+                        m_inputField.text = string.Empty;
+                        m_lastPlace = null;
+                    },
                     () =>
                     {
                         isHost = true;
                         m_hostAlreadyChoosed = true;
+                        m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, isHost));
+                        m_inputField.text = string.Empty;
+                        m_lastPlace = null;
                     });
                 }
+                else
+                {
+                    isHost = false;
+                    m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, isHost));
+                    m_inputField.text = string.Empty;
+                    m_lastPlace = null;
+                }
 
-                m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, isHost));
-
-                m_inputField.text = string.Empty;
-                m_lastPlace = null;
+             
             }
             else
             {

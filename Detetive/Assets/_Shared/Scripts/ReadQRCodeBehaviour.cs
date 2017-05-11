@@ -23,13 +23,9 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
     private State m_state;
     private Coroutine m_readQRCodeRoutine;
 
-    private void Awake()
-    {
-        readQRCode = new ReadQRCode();
-    }
-
     public void ReadQrCode(System.Action<string> callback, bool useCompression, string titleText)
     {
+        readQRCode = new ReadQRCode();
         m_title = titleText;
         m_state = State.readQRCode;
         m_readCallback = callback;
@@ -45,7 +41,11 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
             if (!string.IsNullOrEmpty(qrCodeMessage))
             {
                 if (m_readCallback != null)
+                {
                     m_readCallback(qrCodeMessage);
+                    m_readCallback = null;
+                }
+
                 m_state = State.none;
             }
         }, m_title, useCompression);

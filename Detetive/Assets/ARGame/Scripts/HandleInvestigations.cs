@@ -23,9 +23,11 @@ public class HandleInvestigations : MonoBehaviour
 
     private void Start()
     {
-
+        
         if (Manager.Instance.ActiveRoom == null) return;
- 
+
+        GenericModal.Instance.RemoveHandlers();
+
         //Randomize the array of positios!
         arPos = arPos.SortList();
         SetCurrentRoom( Manager.Instance.ActiveRoom );
@@ -50,10 +52,8 @@ public class HandleInvestigations : MonoBehaviour
                 status = "O resultado da perícia ainda NÃO saiu!";
             }
 
-            GenericModal.Instance.OpenAlertMode(status, "Ok", () =>
-            {
-
-            });
+            GenericModal.Instance.OpenAlertMode(status, "Ok", null);
+            return;
         }
        
 
@@ -61,10 +61,7 @@ public class HandleInvestigations : MonoBehaviour
         {
             if (!DetectiveManager.Instance.PericiasToCheck.Contains( (Enums.Places) Manager.Instance.ActiveRoom.P.MP))
             {
-                GenericModal.Instance.OpenAlertMode("Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!", "Ok", ()=>
-                {
-                    
-                });
+                GenericModal.Instance.OpenAlertMode("Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!", "Ok", null);
             }
             else
             {
@@ -76,10 +73,7 @@ public class HandleInvestigations : MonoBehaviour
     public void RequestPericia()
     {
         DetectiveManager.Instance.RequestPericiaToThisPlace();
-        GenericModal.Instance.OpenAlertMode("Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...", "Ok", () =>
-        {
-
-        });
+        GenericModal.Instance.OpenAlertMode("Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...", "Ok", null);
     }
 
 

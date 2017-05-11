@@ -6,6 +6,9 @@ using System.Linq;
 
 public class PlaceBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject m_readQr, m_addingPlace;
+
     //Input name field
     [SerializeField]
     private InputField m_inputField;
@@ -13,12 +16,8 @@ public class PlaceBehaviour : MonoBehaviour
     private List<Place> m_places;
     //Save last place readed
     private Place m_lastPlace;
-
-    [SerializeField]
-    private Text m_errormessage;
-
-    [SerializeField]
-    private Toggle m_toggle;
+    private ReadQRCodeBehaviour m_readQrCodeBehaviour;
+    private bool m_hostAlreadyChoosed;
 
     /// <summary>
     /// Get added places
@@ -28,23 +27,31 @@ public class PlaceBehaviour : MonoBehaviour
     void Start()
     {
         m_places = new List<Place>();
+        m_readQrCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
     }
-
-    private void FixedUpdate()
-    {
-        m_toggle.gameObject.SetActive( !m_places.Any(x => x.IH) );
-    }
-
+    
     public void OpenQrCodeReader()
     {
         //TODO - PLEASE REMOVE THE HARDCODED!!!!!!!
-        FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
+        m_readQrCodeBehaviour.ReadQrCode((result) =>
         {
             Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
             m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
             m_inputField.text = m_lastPlace.N;
-        }, false, Manager.Instance.READ_FROM_PLACE);
-         
+            ActivePlace();
+        }, false, Manager.Instance.QR_READ_PLACE);
+    }
+
+    private void ActivePlace()
+    {
+        m_readQr.SetActive(false);
+        m_addingPlace.SetActive(true);
+    }
+
+    private void ActiveReadQr()
+    {
+        m_addingPlace.SetActive(false);
+        m_readQr.SetActive(true);
     }
 
     public void OnAddPlaceClick()
@@ -53,14 +60,30 @@ public class PlaceBehaviour : MonoBehaviour
         {
             if (!m_places.Any(x => x.N.Equals(m_inputField.text) || x.MP == m_lastPlace.MP))
             {
-                m_errormessage.gameObject.SetActive(false);
-                m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, m_toggle.isOn));
+                bool isHost = false;
+
+                if(!m_hostAlreadyChoosed)
+                {
+                    GenericModal.Instance.OpenModal(Manager.Instance.IS_HOST_MODAL, "Não", "Sim", () =>
+                    {
+                        GenericModal.Instance.CloseModal();
+                    },
+                    () =>
+                    {
+                        isHost = true;
+                        m_hostAlreadyChoosed = true;
+                    });
+                }
+                
+                m_places.Add(new Place(m_inputField.text, (Enums.Places)m_lastPlace.MP, isHost));
 
                 m_inputField.text = string.Empty;
                 m_lastPlace = null;
             }
             else
-                m_errormessage.gameObject.SetActive(true);
+            {
+                //Error modal
+            }
         }
     }
 

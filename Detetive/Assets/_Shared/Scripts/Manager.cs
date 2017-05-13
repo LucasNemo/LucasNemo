@@ -54,6 +54,12 @@ public class Manager
     public readonly string WIN_DESCRIPTION = "JOGUE NOVAMENTE PARA INICIAR UM NOVO CASO!";
     public readonly string LOOSE_TITLE = "ERRADO!";
     public readonly string LOOSE_DESCRIPTION = "VOCÊ FALHOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
+    public readonly string CORRECT_PLACE = "O resultado da perícia saiu! Foi neste local que acontenceu o crime!!";
+    public readonly string WRONG_PLACE = "O resultado da perícia saiu! NÃO foi neste local que acontenceu o crime!";
+    public readonly string NOT_READY_YET = "O resultado da perícia ainda NÃO saiu!";
+    public readonly string SOME_RESULTS = "Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!";
+    public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
+
 
     #endregion  
 

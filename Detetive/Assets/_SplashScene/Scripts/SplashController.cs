@@ -5,7 +5,7 @@ using UnityEngine;
 public class SplashController : MonoBehaviour {
 
     [SerializeField]
-    private GameObject m_intro, m_menu, m_selection, m_settings;
+    private GameObject m_intro, m_selection, m_settings;
 
     public AudioClip menu;
 
@@ -13,35 +13,29 @@ public class SplashController : MonoBehaviour {
     {
         AudioController.Instance.Play(menu, AudioController.SoundType.Music);
     }
-
-    public void OpenMenu()
-    {
-        m_intro.SetActive(false);
-        m_menu.gameObject.SetActive(true);
-    }
-    
+ 
     public void OpenSelection()
     {
-        m_menu.SetActive(false);
+        m_selection.SetActive(false);
         m_selection.SetActive(true);
     }
 
     public void OpenSettings()
     {
-        m_menu.SetActive(false);
+        m_selection.SetActive(false);
         m_settings.SetActive(true);
     }
     
     public void OnBackFromSelection()
     {
         m_selection.SetActive(false);
-        m_menu.SetActive(true);
+        m_intro.SetActive(true);
     }
 
     public void OnBackFromSettings()
     {
         m_settings.SetActive(false);
-        m_menu.SetActive(true);
+        m_selection.SetActive(true);
     }
 
 }

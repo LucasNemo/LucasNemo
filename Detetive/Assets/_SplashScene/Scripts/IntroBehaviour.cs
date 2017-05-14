@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroBehaviour : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject m_visit;
 
@@ -34,6 +34,31 @@ public class IntroBehaviour : MonoBehaviour
 
     public void OnContinueClick()
     {
-        FindObjectOfType<SplashController>().OpenMenu();
+        if (Manager.Instance.isOnGame)
+        {
+            GenericModal.Instance.OpenModal(Manager.Instance.CONTINUE_GAME_MODAL_DESCRIPTION, "Novo jogo", "Continuar", () =>
+            {
+                OnNewGameClick();
+            },
+            () =>
+            {
+                OnConfirmContinueClick();
+            });
+        }
+        else
+        {
+            FindObjectOfType<SplashController>().OpenSelection();
+        }
+    }
+
+    private void OnConfirmContinueClick()
+    {
+        SceneManager.LoadScene("DetectiveScene");
+    }
+
+    private void OnNewGameClick()
+    {
+        Manager.Instance.MyGameInformation = null;
+        FindObjectOfType<SplashController>().OpenSelection();
     }
 }

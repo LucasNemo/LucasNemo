@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SelectionBehaviour : MonoBehaviour
 {
-
     [SerializeField]
     private List<SpriteSelectionBehaviour> m_selectionsButtons;
 
@@ -23,6 +22,11 @@ public class SelectionBehaviour : MonoBehaviour
     {
         m_selectionsButtons.ForEach(x => x.DeselectSprite());
         m_selectionsButtons[index].SelectSprite();
+    }
+
+    public void OpenSettings()
+    {
+        FindObjectOfType<SplashController>().OpenSettings();
     }
 
     public void OnPlayClick()

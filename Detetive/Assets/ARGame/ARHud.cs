@@ -15,5 +15,12 @@ public class ARHud : MonoBehaviour {
 
         SceneManager.LoadScene("DetectiveScene");
     }
-  
+
+    private void FixedUpdate()
+    {
+        //TODO is this the best way? =)
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnBackClicked();    
+    }
+
 }

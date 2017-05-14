@@ -10,21 +10,15 @@ public class IntroBehaviour : MonoBehaviour
 
     public void OnVisitClick()
     {
-        m_visit.SetActive(false);
+       // m_visit.SetActive(false);
         GenericModal.Instance.OpenModal(Manager.Instance.CONFIRM_VISIT_MODAL_TITLE, "Voltar", "Continuar", () =>
         {
-            OnCancelConfirmClick();
             GenericModal.Instance.CloseModal(true);
         },
         () =>
         {
             OnGoToSite();
         }, false);
-    }
-
-    private void OnCancelConfirmClick()
-    {
-        m_visit.SetActive(true);
     }
 
     private void OnGoToSite()

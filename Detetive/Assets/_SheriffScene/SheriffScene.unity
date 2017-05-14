@@ -1989,7 +1989,7 @@ Prefab:
     - target: {fileID: 114599832056930578, guid: 70d926d6486d5b948a1fe31c70da63b3,
         type: 2}
       propertyPath: m_Text
-      value: FINALIZAR
+      value: INICIAR PARTIDA
       objectReference: {fileID: 0}
     - target: {fileID: 1990163733163912, guid: 70d926d6486d5b948a1fe31c70da63b3, type: 2}
       propertyPath: m_IsActive

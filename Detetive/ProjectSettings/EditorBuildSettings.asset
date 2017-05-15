@@ -11,10 +11,6 @@ EditorBuildSettings:
     path: Assets/_SplashScene/Splash.unity
   - enabled: 1
     path: Assets/ARGame/Scene/ARScene.unity
-  - enabled: 0
-    path: Assets/ARGame/Scene/ARScene 1.unity
-  - enabled: 0
-    path: Assets/_MenuScene/MenuScene.unity
   - enabled: 1
     path: Assets/_DetectiveScene/DetectiveScene.unity
   - enabled: 1

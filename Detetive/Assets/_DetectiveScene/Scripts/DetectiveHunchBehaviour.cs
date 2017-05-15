@@ -35,7 +35,8 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     void Awake()
     {
-        cards = Resources.LoadAll<Sprite>(string.Format(Manager.Instance.HUNCH_PATH, "AF_Detetive_Cartas_FT"));
+        //string.Format(Manager.Instance.HUNCH_PATH, "AF_Detetive_Cartas_FT")
+        cards = Resources.LoadAll<Sprite>(Manager.Instance.HUNCH_PATH);
 
         InitializeGrid(m_gridCharacters, m_characterItem, Manager.Instance.Characters, OnCharacterCallback, out characters);
 
@@ -81,7 +82,7 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
         foreach (G item in itensList)
         {
-            var selection = Instantiate(itemPrefab, grid.transform);
+            var selection = Instantiate(itemPrefab, grid.transform, false);
             selection.UpdateItem(item, callback);
             myList.Add(selection);
         }

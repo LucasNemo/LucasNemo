@@ -65,7 +65,7 @@ public class Manager
 
     #region PATHS
 
-    public readonly string HUNCH_PATH = "Hunch/{0}";
+    public readonly string HUNCH_PATH = "Hunch/";
 
     #endregion
 

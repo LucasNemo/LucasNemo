@@ -480,6 +480,7 @@
     <Compile Include="Assets\_Shared\Scripts\LocalizationManager.cs" />
     <Compile Include="Assets\_Shared\Scripts\LocalizeText.cs" />
     <Compile Include="Assets\_Shared\Scripts\Manager.cs" />
+    <Compile Include="Assets\_Shared\Scripts\MuteBehaviour.cs" />
     <Compile Include="Assets\_Shared\Scripts\ReadQRCode.cs" />
     <Compile Include="Assets\_Shared\Scripts\ReadQRCodeBehaviour.cs" />
     <Compile Include="Assets\_Shared\Scripts\SingletonBehaviour.cs" />

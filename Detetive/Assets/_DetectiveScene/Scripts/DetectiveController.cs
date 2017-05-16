@@ -48,8 +48,7 @@ public class DetectiveController : MonoBehaviour {
         //if (Notes.instance && Manager.Instance.MyGameInformation != null)
         //    Notes.instance.Show();
     }
-
-
+    
     private void FixedUpdate()
     {
         switch (DetectiveManager.Instance.GetCurrentState())

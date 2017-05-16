@@ -35,8 +35,7 @@ public class DetectiveController : MonoBehaviour {
             Instantiate(NotesCanvas);
             Notes.instance.Hide();
         }
-
-
+        
         DetectiveManager.Instance.Dummy();
     }
 
@@ -46,8 +45,8 @@ public class DetectiveController : MonoBehaviour {
     {
         AudioController.Instance.Play(trilha, AudioController.SoundType.Music);
 
-        if (Notes.instance && Manager.Instance.MyGameInformation != null)
-            Notes.instance.Show();
+        //if (Notes.instance && Manager.Instance.MyGameInformation != null)
+        //    Notes.instance.Show();
     }
 
 

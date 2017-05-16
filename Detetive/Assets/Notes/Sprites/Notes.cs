@@ -21,7 +21,8 @@ public class Notes : MonoBehaviour {
 
     public void NotesClicked()
     {
-        animator.SetTrigger("ChangeState");
+        m_notes.SetActive(!m_notes.activeSelf);
+        //animator.SetTrigger("ChangeState");
     }
 
     public void Remove()

@@ -57,10 +57,10 @@ public class Manager
     public readonly string PLACE_ALREADY_ADDED = "ESTE LUGAR JÁ FOI ADICIONADO, ADICIONE OUTRO CASO QUEIRA QUE SEJA COMO DELEGACIA";
     public readonly string LOOSE_TITLE = "ERRADO!";
     public readonly string LOOSE_DESCRIPTION = "VOCÊ FALHOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
-    public readonly string CORRECT_PLACE = "O resultado da perícia saiu! FOI EXATAMENTE AQUI que acontenceu o crime!!";
-    public readonly string WRONG_PLACE = "Não foi dessa vez! Esse NÃO é o local do crime!";
+    public readonly string CORRECT_PLACE = "ENCONTRAMOS!!! FOI EXATAMENTE AQUI que acontenceu o crime!!";
+    public readonly string WRONG_PLACE = "NÃO FOI DESSA VEZ! Esse NÃO é o local do crime!";
     public readonly string NOT_READY_YET = "O resultado da perícia ainda NÃO saiu!";
-    public readonly string SOME_RESULTS = "Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!";
+    public readonly string SOME_RESULTS = "ATENÇÃO!! Volte para {0} para conferir o resultado da perícia!";
     public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
     public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
     public readonly string REALLY_WANNA_EXIT = "Você deseja realmente sair?";

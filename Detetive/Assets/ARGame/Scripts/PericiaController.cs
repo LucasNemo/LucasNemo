@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PericiaController : MonoBehaviour {
@@ -37,7 +38,8 @@ public class PericiaController : MonoBehaviour {
         {
             if (!DetectiveManager.Instance.PericiasToCheck.Contains((Enums.Places)Manager.Instance.ActiveRoom.P.MP))
             {
-                ShowPericiaModal(Manager.Instance.SOME_RESULTS);
+                var x = DetectiveManager.Instance.PericiasToCheck.First(t=>t != (Enums.Places)Manager.Instance.ActiveRoom.P.MP);
+                ShowPericiaModal( string.Format(Manager.Instance.SOME_RESULTS, DetectiveManager.Instance.PericiasToCheck, (Enums.Places)x));
             }
             else
             {

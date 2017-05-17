@@ -102,8 +102,8 @@ public class SheriffController : MonoBehaviour
         AddWeapons(places, m_corretHunch.HR.W);
 
         //AddWeaponsTips
-        List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W.GetHashCode() != m_corretHunch.HR.W.MW).ToList();
-        AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
+        //List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W.GetHashCode() != m_corretHunch.HR.W.MW).ToList();
+        //AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
 
         //Add character tips
         List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
@@ -146,8 +146,17 @@ public class SheriffController : MonoBehaviour
         {
             var item = randomPlaces[i];
 
+            var t = ReturnRandomItem<T>(tips);
+            if (t == null || item == null) continue;
+
+            var room = m_gameInformation.Rs.First(x => x.P.MP == item.MP);
+
+            if (room == null) continue;
+            if (room.T == null)
+                room.T = new List<TipItem>();
+
             //Add a unique tip to each room!
-            m_gameInformation.Rs.First(x => x.P.MP == item.MP).T.Add(new TipItem(ReturnRandomItem<T>(tips).TP));
+            room.T.Add(new TipItem(t.TP));
 
             if (tips.Count <= 0) return;
         }

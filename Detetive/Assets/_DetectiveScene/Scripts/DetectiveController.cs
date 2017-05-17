@@ -206,6 +206,13 @@ public class DetectiveController : MonoBehaviour {
                     Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
                     SceneManager.LoadSceneAsync("ARScene");
                 }
+                else
+                {
+                    GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leita uma carta de cenário para iniciar a investigação!", "Ok", () =>
+                    {
+                        OnInvesticateClicked();
+                    });
+                }
             }
             catch
             {

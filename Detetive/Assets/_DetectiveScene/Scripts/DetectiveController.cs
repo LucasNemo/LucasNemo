@@ -170,6 +170,7 @@ public class DetectiveController : MonoBehaviour {
 
     public void OnHunchClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_menu.SetActive(false);
         m_detectiveHunchBehaviour.gameObject.SetActive(true);
     }
@@ -208,6 +209,7 @@ public class DetectiveController : MonoBehaviour {
 
     public void OnInvesticateClicked()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_menu.SetActive(false);
         mainCanvas.SetActive(false);
         Notes.instance.Hide();

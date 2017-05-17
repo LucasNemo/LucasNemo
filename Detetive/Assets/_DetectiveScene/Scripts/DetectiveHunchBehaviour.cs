@@ -189,7 +189,8 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
     /// </summary>
     public void OnFinishHunch()
     {
-        if(m_selectedCharacter == null)
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
+        if (m_selectedCharacter == null)
         {
             print("Necessario escolher um personagem");
             return;
@@ -213,17 +214,20 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     public void OnBackFromCharacter()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_detectiveController.OnBackFromHunch();
     }
 
     public void OnBackFromWeapon()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_panelWeapons.SetActive(false);
         m_panelCharacters.SetActive(true);
     }
 
     public void OnBackFromPlace()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_panelPlaces.SetActive(false);
         m_panelWeapons.SetActive(true);
     }

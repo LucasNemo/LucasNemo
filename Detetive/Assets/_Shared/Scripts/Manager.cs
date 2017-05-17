@@ -32,7 +32,7 @@ public class Manager
 
     #region Constants
     public readonly string NO_PD = "Não foi selecionado nenhum lugar para ser delegacia. Escolha um para continuar!";
-    public readonly string READ_FROM_XERIFE = "Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
+    public readonly string READ_FROM_XERIFE = "Não reconhecemos esse qrcode. Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
     public readonly string GO_TO_PD = "Vá para a DELEGACIA {0} e realize a leitura do QRCode para desvendar esse crime!";
     public readonly string READ_FROM_PLACE = "Realize a leitura do QRCode da carta do local / ambiente";
     private const string SAVE_NAME = "GameInfo";
@@ -223,35 +223,35 @@ public class Manager
     private void InitializeCharacterTips()
     {
         CharacterTips = new List<CharacterTip>();
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Advogado_Sr_Marinho, Enums.TipsSounds.Nao_foi_Advogado2_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Advogado_Sr_Marinho, Enums.TipsSounds.Nao_foi_Advogado2_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Advogado_Sr_Marinho, Enums.TipsSounds.Nao_foi_Advogado_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Chef_de_Cozinha_Tony_Gourmet, Enums.TipsSounds.Nao_foi_Chef_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Chef_de_Cozinha_Tony_Gourmet, Enums.TipsSounds.Nao_foi_Chef_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Chef_de_Cozinha_Tony_Gourmet, Enums.TipsSounds.Nao_foi_Chef2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Coveiro_Sergio_Soturno, Enums.TipsSounds.Nao_foi_Coveiro_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Coveiro_Sergio_Soturno, Enums.TipsSounds.Nao_foi_Coveiro_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Coveiro_Sergio_Soturno, Enums.TipsSounds.Nao_foi_Coveiro2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Dancarina_Srta_Rosa, Enums.TipsSounds.Nao_foi_Dancarina_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Dancarina_Srta_Rosa, Enums.TipsSounds.Nao_foi_Dancarina_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Dancarina_Srta_Rosa, Enums.TipsSounds.Nao_foi_Dancarina2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Florista_Dona_Branca, Enums.TipsSounds.Nao_foi_Florista_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Florista_Dona_Branca, Enums.TipsSounds.Nao_foi_Florista_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Florista_Dona_Branca, Enums.TipsSounds.Nao_foi_Florista2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Medica_Dona_Violeta, Enums.TipsSounds.Nao_foi_Medica_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Medica_Dona_Violeta, Enums.TipsSounds.Nao_foi_Medica_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Medica_Dona_Violeta, Enums.TipsSounds.Nao_foi_Medica2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Mordomo_James, Enums.TipsSounds.Nao_foi_Mordomo_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Mordomo_James, Enums.TipsSounds.Nao_foi_Mordomo_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Mordomo_James, Enums.TipsSounds.Nao_foi_Mordomo2_com_Ruido));
-        CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bigode, Enums.TipsSounds.Nao_foi_Sargento_com_Ruido));
+        //CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bigode, Enums.TipsSounds.Nao_foi_Sargento_com_Ruido));
         CharacterTips.Add(new CharacterTip(Enums.Characters.Sargento_Bigode, Enums.TipsSounds.Nao_foi_Sargento2_com_Ruido));
     }
     
     private void InitializeWeaponsTips()
     {
         WeaponsTips = new List<WeaponTip>();
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Arma_Quimica, Enums.TipsSounds.Nao_foi_Arma_Quimica_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Espingarda, Enums.TipsSounds.Nao_foi_Espingarda_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Faca, Enums.TipsSounds.Nao_foi_Faca_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pa, Enums.TipsSounds.Nao_foi_Pa_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pe_de_Cabra, Enums.TipsSounds.Nao_foi_Pe_de_Cabra_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Soco_Ingles, Enums.TipsSounds.Nao_foi_Soco_Ingles_com_Ruido));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Tesoura, Enums.TipsSounds.Nao_foi_Tesoura));
-        WeaponsTips.Add(new WeaponTip(Enums.Weapons.Veneno, Enums.TipsSounds.Nao_foi_Veneno_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Arma_Quimica, Enums.TipsSounds.Nao_foi_Arma_Quimica_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Espingarda, Enums.TipsSounds.Nao_foi_Espingarda_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Faca, Enums.TipsSounds.Nao_foi_Faca_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pa, Enums.TipsSounds.Nao_foi_Pa_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Pe_de_Cabra, Enums.TipsSounds.Nao_foi_Pe_de_Cabra_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Soco_Ingles, Enums.TipsSounds.Nao_foi_Soco_Ingles_com_Ruido));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Tesoura, Enums.TipsSounds.Nao_foi_Tesoura));
+        //WeaponsTips.Add(new WeaponTip(Enums.Weapons.Veneno, Enums.TipsSounds.Nao_foi_Veneno_com_Ruido));
     }
 
     #endregion

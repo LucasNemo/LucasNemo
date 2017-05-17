@@ -20,9 +20,7 @@ public class GenerateQRCode {
             Options = new QrCodeEncodingOptions
             {
                 Height = height,
-                Width = width,
-                Margin = 10
-              
+                Width = width
             }
         };
         

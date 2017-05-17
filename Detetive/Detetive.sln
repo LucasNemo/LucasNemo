@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Detetive", "Detetive.csproj", "{A1EF7D9E-15B7-268C-C993-99328811BBA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Detetive.Editor", "Detetive.Editor.csproj", "{3E2B4783-3AD0-DC37-7AB2-7E7410DCCBCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{A1EF7D9E-15B7-268C-C993-99328811BBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1EF7D9E-15B7-268C-C993-99328811BBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1EF7D9E-15B7-268C-C993-99328811BBA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2B4783-3AD0-DC37-7AB2-7E7410DCCBCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2B4783-3AD0-DC37-7AB2-7E7410DCCBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2B4783-3AD0-DC37-7AB2-7E7410DCCBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2B4783-3AD0-DC37-7AB2-7E7410DCCBCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -424,6 +424,13 @@
     <Compile Include="Assets\TestManager\TestManager.cs" />
     <Compile Include="Assets\TestManager\TestSerializes.cs" />
     <Compile Include="Assets\Timer\TimerController.cs" />
+    <Compile Include="Assets\UITween\Prefabs\Click Effect Pref\ClickedWaveAnimation.cs" />
+    <Compile Include="Assets\UITween\ScenesExamplesScripts\ActivateOnEnable.cs" />
+    <Compile Include="Assets\UITween\ScenesExamplesScripts\CreateAnimImage.cs" />
+    <Compile Include="Assets\UITween\ScenesExamplesScripts\FollowClick.cs" />
+    <Compile Include="Assets\UITween\Scripts\EasyTween.cs" />
+    <Compile Include="Assets\UITween\Scripts\ReferencedFrom.cs" />
+    <Compile Include="Assets\UITween\Scripts\UITween.cs" />
     <Compile Include="Assets\Unity.IO.Compression\BlockType.cs" />
     <Compile Include="Assets\Unity.IO.Compression\CompressionMode.cs" />
     <Compile Include="Assets\Unity.IO.Compression\CopyEncoder.cs" />

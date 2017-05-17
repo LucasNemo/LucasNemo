@@ -47,7 +47,7 @@ public class IntroBehaviour : MonoBehaviour
 
     private void OnConfirmContinueClick()
     {
-        SceneManager.LoadScene("DetectiveScene");
+        SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
 
     private void OnNewGameClick()

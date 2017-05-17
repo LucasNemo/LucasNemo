@@ -30,18 +30,18 @@ public class MenuBehaviour : MonoBehaviour
 
     public void CreateGameClick()
     {
-        SceneManager.LoadScene("SheriffScene");
+        SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
 
     private void OnConfirmContinueClick()
     {
-        SceneManager.LoadScene("DetectiveScene");
+        SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
 
     private void OnNewGameClick()
     {
         Manager.Instance.MyGameInformation = null;
-        SceneManager.LoadScene("DetectiveScene");
+        SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
 
     public void OnSettingsClick()

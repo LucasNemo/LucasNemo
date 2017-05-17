@@ -13,7 +13,7 @@ public class ARHud : MonoBehaviour {
     {
         deviceCamera.StopWork();
 
-        SceneManager.LoadScene("DetectiveScene");
+        SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
 
     private void FixedUpdate()

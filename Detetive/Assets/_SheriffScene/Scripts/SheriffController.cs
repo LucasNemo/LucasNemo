@@ -36,7 +36,7 @@ public class SheriffController : MonoBehaviour
 
     public void OnBackClick()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
     }
 
     /// <summary>
@@ -44,6 +44,7 @@ public class SheriffController : MonoBehaviour
     /// </summary>
     public void OnFinishAddPlaces()
     {
+        print("Finish AddPlaces");
 
         //todo - adicionar ao menos uma delegacia!!!!
 
@@ -198,7 +199,7 @@ public class SheriffController : MonoBehaviour
         GenericModal.Instance.OpenModal(Manager.Instance.PLAYER_WANNA_PLAY, "Não", "Sim", () =>
         {
             //If player dont wanna play
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
         },
        () =>
        {
@@ -213,7 +214,7 @@ public class SheriffController : MonoBehaviour
                    m_gameInformation.P = myCharacter;
                    Manager.Instance.MyGameInformation = m_gameInformation;
                    Manager.Instance.SaveGameInformation();
-                   SceneManager.LoadScene("DetectiveScene");
+                   SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
                }
                else
                {
@@ -233,7 +234,7 @@ public class SheriffController : MonoBehaviour
 
     public void OnBackHeaderButtonClick()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
     }
     
 }

@@ -17,12 +17,12 @@ public class SelectionBehaviour : MonoBehaviour
 
     public void OnSheriffSelect()
     {
-        SceneManager.LoadScene("SheriffScene");
+        SceneManager.LoadScene(Manager.Instance.SHERIFFE_SCENE);
     }
 
     public void OnDetectiveSelect()
     {
-        SceneManager.LoadScene("DetectiveScene");
+        SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
     
 }

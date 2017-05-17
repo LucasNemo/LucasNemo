@@ -255,4 +255,9 @@ public class Manager
 
     #endregion
 
+
+    public readonly string MENU_SCENE = "Menu";
+    public readonly string DETETIVE_SCENE = "DetectiveScene";
+    public readonly string SHERIFFE_SCENE = "SheriffScene";
+
 }

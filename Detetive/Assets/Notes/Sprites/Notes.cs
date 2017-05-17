@@ -13,8 +13,10 @@ public class Notes : MonoBehaviour {
     
     private void Awake()
     {
+        if (instance != null)
+            Destroy(gameObject);
         instance = this;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
     }
 
     public Animator animator; 

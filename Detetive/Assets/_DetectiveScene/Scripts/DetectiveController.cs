@@ -79,6 +79,7 @@ public class DetectiveController : MonoBehaviour {
             case Enums.DetectiveState.ReadCharacter:
                 ReadQRFromsCene(false, (x) =>
                 {
+                    Notes.instance.gameObject.SetActive(true);
                     Notes.instance.Show();
                     mainCanvas.SetActive(true);
                     DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
@@ -110,7 +111,7 @@ public class DetectiveController : MonoBehaviour {
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)
     {
-        Notes.instance.Hide();
+        Notes.instance.gameObject.SetActive(false);
         mainCanvas.SetActive(false);
         var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
         readQRCodeBehaviour.ReadQrCode(result,  useCompression, title);
@@ -132,7 +133,6 @@ public class DetectiveController : MonoBehaviour {
             var enumTest = Enum.Parse(typeof(Enums.Places), result);
             if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
             {
-
                 Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
 
                 if (Manager.Instance.ActiveRoom.P.IH)

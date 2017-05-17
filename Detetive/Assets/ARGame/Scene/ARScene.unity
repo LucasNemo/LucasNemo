@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 11
+  blueprintMaterial: {fileID: 2100000, guid: bf2d34b841b556746af34284d2107a6f, type: 2}
 --- !u!65 &211876137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 14
+  blueprintMaterial: {fileID: 2100000, guid: f33993c2d3806d74aa49043a4874b212, type: 2}
 --- !u!65 &225907144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -728,6 +730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 15
+  blueprintMaterial: {fileID: 2100000, guid: c5c4e24057398724da9196f694b78cb5, type: 2}
 --- !u!65 &403673805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1078,6 +1081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 16
+  blueprintMaterial: {fileID: 2100000, guid: 5ae612c25e23a764b859251def9a1bdc, type: 2}
 --- !u!65 &615420018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1974,6 +1978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 10
+  blueprintMaterial: {fileID: 0}
 --- !u!65 &1115352803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2095,6 +2100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 12
+  blueprintMaterial: {fileID: 0}
 --- !u!65 &1491217785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2182,6 +2188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 13
+  blueprintMaterial: {fileID: 0}
 --- !u!65 &1505355033
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2607,6 +2614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arType: 0
   weaponType: 9
+  blueprintMaterial: {fileID: 2100000, guid: 3eb864535b4f6864ea887c1f09da7948, type: 2}
 --- !u!65 &2015058621
 BoxCollider:
   m_ObjectHideFlags: 0

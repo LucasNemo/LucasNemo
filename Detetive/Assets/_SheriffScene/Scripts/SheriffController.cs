@@ -142,8 +142,6 @@ public class SheriffController : MonoBehaviour
         var randomPlaces = places.SortList();
 
         //Get random between all tips in game !         
-        var rand = UnityEngine.Random.Range(minRandom, tips.Count);
-
         for (int i = 0; i < places.Count; i++)
         {
             var item = randomPlaces[i];

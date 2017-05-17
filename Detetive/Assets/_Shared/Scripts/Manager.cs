@@ -197,10 +197,10 @@ public class Manager
     public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
     {
         {Enums.Weapons.Arma_Quimica,"Arma Química" },
-        {Enums.Weapons.Espingarda, "Espingarda" },
+        //{Enums.Weapons.Espingarda, "Espingarda" },
         {Enums.Weapons.Faca, "Faca" },
-        {Enums.Weapons.Pa, "Pá" },
-        {Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
+        //{Enums.Weapons.Pa, "Pá" },
+        //{Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
         {Enums.Weapons.Soco_Ingles, "Soco Inglês"},
         {Enums.Weapons.Tesoura, "Tesoura" },
         {Enums.Weapons.Veneno, "Veneno" }
@@ -213,10 +213,10 @@ public class Manager
     {
         Weapons = new List<Weapon>();
         Weapons.Add(new Weapon( Enums.Weapons.Arma_Quimica));
-        Weapons.Add(new Weapon(Enums.Weapons.Espingarda));
+        //Weapons.Add(new Weapon(Enums.Weapons.Espingarda));
         Weapons.Add(new Weapon( Enums.Weapons.Faca));
-        Weapons.Add(new Weapon(Enums.Weapons.Pa));
-        Weapons.Add(new Weapon(Enums.Weapons.Pe_de_Cabra));
+        //Weapons.Add(new Weapon(Enums.Weapons.Pa));
+        //Weapons.Add(new Weapon(Enums.Weapons.Pe_de_Cabra));
         Weapons.Add(new Weapon( Enums.Weapons.Soco_Ingles));
         Weapons.Add(new Weapon(Enums.Weapons.Tesoura));
         Weapons.Add(new Weapon( Enums.Weapons.Veneno));

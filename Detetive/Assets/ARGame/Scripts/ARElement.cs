@@ -20,6 +20,8 @@ public class ARElement : MonoBehaviour {
 
     Material mainMaterial;
 
+    public Material blueprintMaterial;
+
     private void Start() 
     {
         mainMaterial = GetComponent<Renderer>().material;        
@@ -30,6 +32,8 @@ public class ARElement : MonoBehaviour {
 
         if (onElementClicked != null)
         {
+            if (blueprintMaterial)
+                GetComponent<Renderer>().materials[0] = blueprintMaterial;
             onElementClicked.Invoke();
         }
     }

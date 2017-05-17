@@ -62,8 +62,9 @@ public class Manager
     public readonly string SOME_RESULTS = "Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!";
     public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
     public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
-    #endregion  
-    
+    public readonly string REALLY_WANNA_EXIT = "Você deseja realmente sair?";
+    #endregion
+
     #region PATHS
 
     public readonly string HUNCH_PATH = "Hunch/";

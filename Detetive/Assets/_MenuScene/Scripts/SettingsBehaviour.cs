@@ -63,5 +63,15 @@ public class SettingsBehaviour : MonoBehaviour {
     {
         Application.OpenURL(Manager.Instance.DETECTIVE_URL_TALK);
     }
-  
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (m_howToPlay.activeSelf) OnBackFromHowToPlay();
+            else if (m_credits.activeSelf) OnBackFromCredits();
+            else if (m_main.activeSelf) OnBackMainClick();
+        }
+    }
+
 }

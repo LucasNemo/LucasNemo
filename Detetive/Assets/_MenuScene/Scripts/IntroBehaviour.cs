@@ -8,6 +8,8 @@ public class IntroBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject m_visit;
 
+    private bool isOnHome = true;
+
     public void OnVisitClick()
     {
        // m_visit.SetActive(false);
@@ -54,5 +56,23 @@ public class IntroBehaviour : MonoBehaviour
     {
         Manager.Instance.MyGameInformation = null;
         FindObjectOfType<SplashController>().OpenSelection();
+    }
+
+    private void BackFromIntro()
+    {
+        GenericModal.Instance.OpenModal(Manager.Instance.REALLY_WANNA_EXIT, "Não", "Sim", () =>
+        {
+            Application.Quit();
+        },
+        () =>
+        {
+            //dummy
+        });
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            BackFromIntro();
     }
 }

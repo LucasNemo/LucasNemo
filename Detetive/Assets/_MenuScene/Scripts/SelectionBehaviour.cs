@@ -24,5 +24,11 @@ public class SelectionBehaviour : MonoBehaviour
     {
         SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnBackClick();
+    }
+
 }

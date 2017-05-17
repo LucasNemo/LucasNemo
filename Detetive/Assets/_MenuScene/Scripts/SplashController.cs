@@ -16,6 +16,7 @@ public class SplashController : MonoBehaviour {
     
     public void OpenSelection()
     {
+        m_intro.SetActive(false);
         m_selection.SetActive(false);
         m_selection.SetActive(true);
     }

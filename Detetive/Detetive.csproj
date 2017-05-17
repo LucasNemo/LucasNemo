@@ -482,6 +482,7 @@
     <Compile Include="Assets\_Shared\Model\Weapon.cs" />
     <Compile Include="Assets\_Shared\Model\WeaponTip.cs" />
     <Compile Include="Assets\_Shared\Scripts\AES.cs" />
+    <Compile Include="Assets\_Shared\Scripts\CallTweenStart.cs" />
     <Compile Include="Assets\_Shared\Scripts\ChageGameOrientation.cs" />
     <Compile Include="Assets\_Shared\Scripts\Enums.cs" />
     <Compile Include="Assets\_Shared\Scripts\FileManager.cs" />

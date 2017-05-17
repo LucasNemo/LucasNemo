@@ -52,8 +52,15 @@ public class ReadQRCode
         string result = m_zipped ? Helper.DecompressString(str) : str;
         m_callback.Invoke(result);
         m_callback = null;
-        //if (SceneManager.GetActiveScene() == qrCodeSceneName)
-        yield return SceneManager.UnloadSceneAsync(qrCodeSceneName);
+        yield return null;
 
+        try
+        {
+            SceneManager.UnloadScene(qrCodeSceneName);
+        }catch
+        {
+
+        }
+     //   yield return SceneManager.UnloadSceneAsync(qrCodeSceneName);
     }
 }

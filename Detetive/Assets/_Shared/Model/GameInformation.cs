@@ -6,10 +6,13 @@ public class GameInformation  {
     /// Game Rooms created by Sheriff
     /// </summary>
     public List<Room> Rs { get; set; }
+
     /// <summary>
     /// Player choosed
     /// </summary>
+    [Newtonsoft.Json.JsonIgnore]
 	public Character P { get; set; }
+    
     /// <summary>
     /// Correct Hunch 
     /// </summary>

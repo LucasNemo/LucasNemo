@@ -325,6 +325,8 @@ MonoBehaviour:
   m_placesBehaviour: {fileID: 222672396}
   m_setupGame: {fileID: 1573996435}
   m_header: {fileID: 2138874909}
+  m_placesPanel: {fileID: 1242226318}
+  m_setupPanel: {fileID: 1573996432}
 --- !u!1 &139119086
 GameObject:
   m_ObjectHideFlags: 0

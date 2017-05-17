@@ -19,7 +19,7 @@ public class PlaceBehaviour : MonoBehaviour
     private Place m_lastPlace;
     private ReadQRCodeBehaviour m_readQrCodeBehaviour;
     private bool m_hostAlreadyChoosed;
-
+    
     /// <summary>
     /// Get added places
     /// </summary>

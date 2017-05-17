@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ARHud : MonoBehaviour {
 
-    public GameObject notes;
-
     public DeviceCameraController deviceCamera;
 
 	public void OnBackClicked()

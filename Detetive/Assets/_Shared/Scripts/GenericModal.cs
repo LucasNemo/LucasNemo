@@ -17,31 +17,52 @@ public class GenericModal : MonoBehaviour {
 
     public static GenericModal Instance;
 
+    public EasyTween modalTween;
+
+    private bool m_isModalOpen = false;
+
     private void Start()
     {
+        var oldModal = GenericModal.Instance;
+
+        if ( oldModal != null && oldModal.GetInstanceID() != this.GetInstanceID())
+            Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
         Instance = this;
     }
 
     public void OpenModal(string description, string buttonLeft, string buttonRight, Action callbackButtonLeft, Action callbackButtonRight, bool close = true)
     {
+        if (m_isModalOpen) return;
+        m_isModalOpen = true;
+
+        m_leftCallback = null;
+        m_rightCallback = null;
         InvertButtons(true);
         m_description.text = description;
         m_leftText.text = buttonLeft;
         m_rightText.text = buttonRight;
-        this.m_leftCallback = callbackButtonLeft;
-        this.m_rightCallback = callbackButtonRight;
+        m_leftCallback = callbackButtonLeft;
+        m_rightCallback = callbackButtonRight;
         m_close = close;
         m_modal.SetActive(true);
+
+        modalTween.OpenCloseObjectAnimation();
     }
 
     public void OpenAlertMode(string description, string button, Action alertCallback)
     {
+        if (m_isModalOpen) return;
+        m_isModalOpen = true;
+
+        m_alertModeCallback = null;
         InvertButtons(false);
         m_description.text = description;
         m_alertText.text = button;
         m_alertModeCallback = alertCallback;
         m_modal.SetActive(true);
+        modalTween.OpenCloseObjectAnimation();
     }
 
     private void InvertButtons(bool invert)
@@ -62,7 +83,13 @@ public class GenericModal : MonoBehaviour {
 
     public void CloseModal(bool close)
     {
-          m_modal.SetActive(!close);
+        m_isModalOpen = false;
+        modalTween.OpenCloseObjectAnimation();
+    }
+
+    public void Hide()
+    {
+        m_modal.SetActive(false);
     }
 
     public void OnLeftClick()

@@ -44,12 +44,32 @@ public class SheriffController : MonoBehaviour
     /// </summary>
     public void OnFinishAddPlaces()
     {
-        InitializeGameInformation();
 
-        m_placesBehaviour.DisablePlace();
-        m_setupGame.gameObject.SetActive(true);
+        //todo - adicionar ao menos uma delegacia!!!!
 
+        if (AnyPolicyStation())
+        {
+            InitializeGameInformation();
+            m_placesBehaviour.DisablePlace();
+            m_setupGame.gameObject.SetActive(true);
+        }
+
+        else
+        {
+            GenericModal.Instance.OpenAlertMode(Manager.Instance.NO_PD, "Ok", null);
+        }
         //m_placesBehaviour.gameObject.SetActive(false);
+    }
+
+    private bool AnyPolicyStation()
+    {
+        var places = m_placesBehaviour.GetPlaces;
+
+        //No place..no query is necessary
+        if (places.Count == 0)
+            return false;
+
+        return places.Any(x => x.IH);
     }
 
     /// <summary>

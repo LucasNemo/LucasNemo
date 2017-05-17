@@ -151,7 +151,9 @@ public class DetectiveController : MonoBehaviour {
                     //     ((Enums.Weapons)playerhunch.HR.W.MW).ToString(), answer ? "CORRETA!!!" : "ERRADO!"  );
                 }
             }
-        }, Manager.Instance.GO_TO_PD);
+
+            //TODO - conferir nome da delegacia!!
+        }, string.Format( Manager.Instance.GO_TO_PD , Manager.Instance.MyGameInformation.Rs.First(x=>x.P.IH).P.N));
     }
 
     public void OnInvesticateClicked()

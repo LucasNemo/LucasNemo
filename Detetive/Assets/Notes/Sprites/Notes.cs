@@ -9,8 +9,9 @@ public class Notes : MonoBehaviour {
     private List<GameObject> m_pages;
     [SerializeField]
     private GameObject m_notes;
-    public static Notes instance; 
-    
+    public static Notes instance;
+    public EasyTween tween;
+
     private void Awake()
     {
         if (instance != null)
@@ -24,8 +25,8 @@ public class Notes : MonoBehaviour {
     public void NotesClicked()
     {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
+        tween.OpenCloseObjectAnimation();
         m_notes.SetActive(!m_notes.activeSelf);
-        //animator.SetTrigger("ChangeState");
     }
 
     public void Remove()
@@ -36,11 +37,13 @@ public class Notes : MonoBehaviour {
     
     public void Show()
     {
+        tween.OpenCloseObjectAnimation();
         m_notes.SetActive(true);
     }
 
     public void Hide()
     {
+        tween.OpenCloseObjectAnimation();
         m_notes.SetActive(false);
     }
 

@@ -32,6 +32,7 @@ public class DetectiveController : MonoBehaviour {
     {
         if (Notes.instance == null)
         {
+            Debug.Log("SDpawn canvas!!!!!!");
             Instantiate(NotesCanvas);
             Notes.instance.Hide();
         }
@@ -118,7 +119,7 @@ public class DetectiveController : MonoBehaviour {
 
     private void ReadPlayer()
     {
-        ReadQRFromsCene(true, (result) =>
+        ReadQRFromsCene(false, (result) =>
         {
             SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
@@ -128,12 +129,9 @@ public class DetectiveController : MonoBehaviour {
                 myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
             if (myCharacter != null)
             {
-                Debug.Log("Dentro do character lido com sucesso!!");
                 //Add time here
                 Notes.instance.Show();
                 mainCanvas.SetActive(true);
-
-               Debug.Log("\n\nTudo ligado!!\n\n");
 
                 //Saving time
                 PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
@@ -152,7 +150,6 @@ public class DetectiveController : MonoBehaviour {
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)
     {
-        Notes.instance.gameObject.SetActive(false);
         mainCanvas.SetActive(false);
         var readQRCodeBehaviour = FindObjectOfType<ReadQRCodeBehaviour>();
         readQRCodeBehaviour.ReadQrCode(result,  useCompression, title);
@@ -185,11 +182,6 @@ public class DetectiveController : MonoBehaviour {
 
                     m_resultScreen.gameObject.SetActive(true);
                     m_resultScreen.UpdateInformation(answer);
-
-
-                    //m_resultScreen.GetComponentInChildren<Text>().text = string.Format("Seu palpite\nSuspeito{0}\nLocal{1}\nArma{2}\n\nEstá {3}",
-                    //     ((Enums.Characters)playerhunch.HC).ToString(), (playerhunch.HR.P.N),
-                    //     ((Enums.Weapons)playerhunch.HR.W.MW).ToString(), answer ? "CORRETA!!!" : "ERRADO!"  );
                 }
             }
 
@@ -202,20 +194,12 @@ public class DetectiveController : MonoBehaviour {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_menu.SetActive(false);
         mainCanvas.SetActive(false);
-        Notes.instance.Hide();
 
         ReadQRFromsCene(false, (result) =>
         {
-            Debug.Log("Investigando " + result);
-            //SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-            //mainCanvas.SetActive(true);
-            //Notes.instance.Hide();
-
             try
             {
                 var enumTest = Enum.Parse(typeof(Enums.Places), result);
-
-                Debug.Log("Investigando " + result);
 
                 if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
                 {

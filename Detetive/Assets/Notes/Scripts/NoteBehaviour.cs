@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,18 @@ public class NoteBehaviour : MonoBehaviour
     [SerializeField]
     private Material m_grayMaterial;
 
+    /// <summary>
+    /// <seealso cref="Enums.Places"/>
+    /// </summary>
+    public int ID;
+
     private string m_strokeString;
+
+    internal void SetName(string n)
+    {
+        m_text.text = n;
+    }
+
     private string m_normalString;
 
     private void Start()

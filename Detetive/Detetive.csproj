@@ -409,6 +409,7 @@
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
     <Compile Include="Assets\Notes\Scripts\NoteBehaviour.cs" />
     <Compile Include="Assets\Notes\Sprites\Notes.cs" />
+    <Compile Include="Assets\Notes\Sprites\PlacesController.cs" />
     <Compile Include="Assets\QRcode\Plugins\Loom\Loom.cs" />
     <Compile Include="Assets\QRcode\Scripts\CameraPlaneController.cs" />
     <Compile Include="Assets\QRcode\Scripts\ConfirmHunchBehaviour.cs" />

@@ -53,6 +53,7 @@ public class Manager
     public readonly string FINAL_CONFIRM_HUNCH = "{0}, COM {1} {2}, {3} {4}";
     public readonly string WIN_TITLE = "PARABÉNS! \n VOCÊ CONSEGUIU SOLUCIONAR O CRIME!";
     public readonly string WIN_DESCRIPTION = "JOGUE NOVAMENTE PARA INICIAR UM NOVO CASO!";
+    public readonly string PLACE_ALREADY_ADDED = "ESTE LUGAR JÁ FOI ADICIONADO, ADICIONE OUTRO CASO QUEIRA QUE SEJA COMO DELEGACIA";
     public readonly string LOOSE_TITLE = "ERRADO!";
     public readonly string LOOSE_DESCRIPTION = "VOCÊ FALHOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
     public readonly string CORRECT_PLACE = "O resultado da perícia saiu! FOI EXATAMENTE AQUI que acontenceu o crime!!";

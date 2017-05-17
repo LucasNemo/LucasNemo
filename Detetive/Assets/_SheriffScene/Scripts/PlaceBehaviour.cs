@@ -120,12 +120,15 @@ public class PlaceBehaviour : MonoBehaviour
                     m_inputField.text = string.Empty;
                     m_lastPlace = null;
                 }
-
-             
             }
             else
             {
-                //Error modal
+                //Error modal place already added
+                GenericModal.Instance.OpenAlertMode(Manager.Instance.PLACE_ALREADY_ADDED, "Tudo bem!", () =>
+                {
+                    m_inputField.text = string.Empty;
+                    m_lastPlace = null;
+                });
             }
         }
 

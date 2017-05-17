@@ -36,8 +36,8 @@ public class Manager
     public readonly string READ_FROM_PLACE = "Realize a leitura do QRCode da carta do local / ambiente";
     private const string SAVE_NAME = "GameInfo";
     public readonly string DETECTIVE_URL = "http://www.estrela.com.br/brinquedo/detetive-com-aplicativo/";
-    public readonly string DETECTIVE_URL_TERM = "http://www.estrela.com.br/brinquedo/deteti";
-    public readonly string DETECTIVE_URL_TALK = "http://www.estrela.com.br/brinquedo/detetive-com";
+    public readonly string DETECTIVE_URL_TERM = "http://sioux.com.br/apps/termos/1";
+    public readonly string DETECTIVE_URL_TALK = "http://www.estrela.com.br/fale-conosco/";
     public readonly string CONFIRM_VISIT_MODAL_TITLE = @"VOCÊ SERÁ REDIRECIONADO PARA O SITE DA ESTRELA.";
     public readonly string CONTINUE_GAME_MODAL_DESCRIPTION = "VOCÊ TEM UM JOGO SALVO, DESEJA CONTINUAR  OU COMEÇAR UM NOVO?";
     public readonly string TERMS_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Termos de Uso.";

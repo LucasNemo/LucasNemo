@@ -47,7 +47,7 @@ public class GenericModal : MonoBehaviour {
         m_rightCallback = callbackButtonRight;
         m_close = close;
         m_modal.SetActive(true);
-
+        
         modalTween.OpenCloseObjectAnimation();
     }
 

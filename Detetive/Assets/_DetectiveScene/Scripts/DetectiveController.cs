@@ -100,15 +100,9 @@ public class DetectiveController : MonoBehaviour {
                 
                 if (success)
                 {
-                    ReadPlayer();
-
-                    //Notes.instance.Show();
-                    //mainCanvas.SetActive(true);
-
-                    //GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
-                    //{
-                    //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
-                    //});
+                    GenericModal.Instance.OpenAlertMode(Manager.Instance.QR_CODE_READ_CHARACTER, "Ok", () => {
+                        ReadPlayer();
+                    });
                 }
                 else
                 {
@@ -117,22 +111,16 @@ public class DetectiveController : MonoBehaviour {
                         InitializePlayerInfo();
                     });
                 }
-                // GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
-                //{
-                //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
-                //});
-
             });
 
         }, Manager.Instance.READ_FROM_XERIFE);
     }
 
-    private void ReadPlayer(bool unloadScene=false)
+    private void ReadPlayer()
     {
         ReadQRFromsCene(true, (result) =>
         {
-            if(unloadScene)
-                SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
+            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
             int t = 0;
             Character myCharacter = null;
@@ -140,11 +128,13 @@ public class DetectiveController : MonoBehaviour {
                 myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
             if (myCharacter != null)
             {
-                //Manager.Instance.MyGameInformation.P = myCharacter;
-                //Manager.Instance.SaveGameInformatison();
+                Debug.Log("Dentro do character lido com sucesso!!");
                 //Add time here
                 Notes.instance.Show();
                 mainCanvas.SetActive(true);
+
+               Debug.Log("\n\nTudo ligado!!\n\n");
+
                 //Saving time
                 PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
                 PlayerPrefs.Save();
@@ -153,7 +143,7 @@ public class DetectiveController : MonoBehaviour {
             else
             {
                 GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, ()=> {
-                    ReadPlayer(true);
+                    ReadPlayer();
                 });
             }
 
@@ -216,15 +206,29 @@ public class DetectiveController : MonoBehaviour {
 
         ReadQRFromsCene(false, (result) =>
         {
+            Debug.Log("Investigando " + result);
+            //SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
             //mainCanvas.SetActive(true);
             //Notes.instance.Hide();
 
-            var enumTest = Enum.Parse(typeof(Enums.Places), result);
-
-            if (enumTest != null &&   Manager.Instance.Places.Any(x=>x.MP.Equals( enumTest.GetHashCode()  )))
+            try
             {
-                Manager.Instance.ActiveRoom= Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
-                SceneManager.LoadSceneAsync("ARScene");
+                var enumTest = Enum.Parse(typeof(Enums.Places), result);
+
+                Debug.Log("Investigando " + result);
+
+                if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
+                {
+                    Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
+                    SceneManager.LoadSceneAsync("ARScene");
+                }
+            }
+            catch
+            {
+                GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leita uma carta de cenário para iniciar a investigação!", "Ok", ()=>
+                {
+                    OnInvesticateClicked();
+                });
             }
         }, Manager.Instance.READ_FROM_PLACE);
     }

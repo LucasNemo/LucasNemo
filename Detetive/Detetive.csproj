@@ -462,6 +462,11 @@
     <Compile Include="Assets\_DetectiveScene\Scripts\ResultBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\TipBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\WeaponSelectionItem.cs" />
+    <Compile Include="Assets\_MenuScene\Scripts\IntroBehaviour.cs" />
+    <Compile Include="Assets\_MenuScene\Scripts\MenuBehaviour.cs" />
+    <Compile Include="Assets\_MenuScene\Scripts\SelectionBehaviour.cs" />
+    <Compile Include="Assets\_MenuScene\Scripts\SettingsBehaviour.cs" />
+    <Compile Include="Assets\_MenuScene\Scripts\SplashController.cs" />
     <Compile Include="Assets\_Shared\Model\Character.cs" />
     <Compile Include="Assets\_Shared\Model\CharacterTip.cs" />
     <Compile Include="Assets\_Shared\Model\GameInformation.cs" />
@@ -493,11 +498,6 @@
     <Compile Include="Assets\_SheriffScene\Scripts\HunchBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\PlaceBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\SheriffController.cs" />
-    <Compile Include="Assets\_SplashScene\Scripts\IntroBehaviour.cs" />
-    <Compile Include="Assets\_SplashScene\Scripts\MenuBehaviour.cs" />
-    <Compile Include="Assets\_SplashScene\Scripts\SelectionBehaviour.cs" />
-    <Compile Include="Assets\_SplashScene\Scripts\SettingsBehaviour.cs" />
-    <Compile Include="Assets\_SplashScene\Scripts\SplashController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3D Models\Faca\NewUnlitShader.shader" />

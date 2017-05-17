@@ -178,7 +178,7 @@ public class SheriffController : MonoBehaviour
         GenericModal.Instance.OpenModal(Manager.Instance.PLAYER_WANNA_PLAY, "Não", "Sim", () =>
         {
             //If player dont wanna play
-            SceneManager.LoadScene("Splash");
+            SceneManager.LoadScene("Menu");
         },
        () =>
        {
@@ -213,7 +213,7 @@ public class SheriffController : MonoBehaviour
 
     public void OnBackHeaderButtonClick()
     {
-        SceneManager.LoadScene("Splash");
+        SceneManager.LoadScene("Menu");
     }
     
 }

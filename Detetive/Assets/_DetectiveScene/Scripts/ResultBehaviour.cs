@@ -17,7 +17,7 @@ public class ResultBehaviour : MonoBehaviour {
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene("Splash");
+        SceneManager.LoadScene("Menu");
     }
 
 }

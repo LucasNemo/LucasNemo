@@ -32,7 +32,7 @@ public class Manager
 
     #region Constants
     public readonly string NO_PD = "Não foi selecionado nenhum lugar para ser delegacia. Escolha um para continuar!";
-    public readonly string READ_FROM_XERIFE = "Não reconhecemos esse qrcode. Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
+    public readonly string READ_FROM_XERIFE = "Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
     public readonly string GO_TO_PD = "Vá para a DELEGACIA {0} e realize a leitura do QRCode para desvendar esse crime!";
     public readonly string READ_FROM_PLACE = "Realize a leitura do QRCode da carta do local / ambiente";
     private const string SAVE_NAME = "GameInfo";

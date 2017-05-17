@@ -295,6 +295,36 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114304353355279564, guid: d0e0c3ee6c507a74582962367be59695,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 114304353355279564, guid: d0e0c3ee6c507a74582962367be59695,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114304353355279564, guid: d0e0c3ee6c507a74582962367be59695,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 224115542655309872, guid: d0e0c3ee6c507a74582962367be59695,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 114748476161722098, guid: d0e0c3ee6c507a74582962367be59695,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.453
+      objectReference: {fileID: 0}
+    - target: {fileID: 224115542655309872, guid: d0e0c3ee6c507a74582962367be59695,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -94.82
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e0c3ee6c507a74582962367be59695, type: 2}
   m_IsPrefabParent: 0

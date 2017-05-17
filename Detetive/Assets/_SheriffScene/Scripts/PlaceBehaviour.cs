@@ -40,30 +40,39 @@ public class PlaceBehaviour : MonoBehaviour
         {
             SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
-            int t = 0;
-
-            if (int.TryParse(result, out t))
+            if (result != Manager.Instance.RESULT_ERROR_BACK)
             {
-                Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
-                m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
 
-                if (m_lastPlace != null)
+                int t = 0;
+
+                if (int.TryParse(result, out t))
                 {
-                    m_inputField.text = m_lastPlace.N;
-                    ActivePlace();
+                    Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
+                    m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
+
+                    if (m_lastPlace != null)
+                    {
+                        m_inputField.text = m_lastPlace.N;
+                        ActivePlace();
+                    }
+                    else
+                    {
+                        ErrorMessage();
+                    }
                 }
                 else
                 {
                     ErrorMessage();
                 }
+
+                m_mainPlaces.SetActive(true);
+                m_header.SetActive(true);
             }
             else
             {
-                ErrorMessage();
+                m_mainPlaces.SetActive(true);
+                m_header.SetActive(true);
             }
-
-            m_mainPlaces.SetActive(true);
-            m_header.SetActive(true);
 
         }, false, Manager.Instance.QR_READ_PLACE);
     }

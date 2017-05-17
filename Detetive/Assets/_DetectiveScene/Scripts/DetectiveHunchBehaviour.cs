@@ -155,6 +155,11 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         return "A";
     }
 
+    public void ActiveConfirmModal(bool active)
+    {
+        m_confirmHunch.gameObject.SetActive(active);
+    }
+
     //private string GetPlaceArtigo(Enums.Places place)
     //{
     //    switch (place)

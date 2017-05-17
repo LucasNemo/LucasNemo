@@ -23,7 +23,7 @@ public class SheriffController : MonoBehaviour
     private float m_timer = Manager.Instance.COOLDOWN;
 
     #endregion
-    
+
     /// <summary>
     /// Get a game already set information
     /// </summary>
@@ -199,7 +199,7 @@ public class SheriffController : MonoBehaviour
         }
         return listItem;
     }
-    
+
     /// <summary>
     /// Method called when player finish add detectives
     /// </summary>
@@ -219,31 +219,43 @@ public class SheriffController : MonoBehaviour
            FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
            {
                SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-               int t = 0;
-               Character myCharacter = null;
-               if ( int.TryParse(result, out t))
-                   myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
-               if (myCharacter != null)
+
+               if (result != Manager.Instance.RESULT_ERROR_BACK)
                {
-                   m_gameInformation.P = myCharacter;
-                   Manager.Instance.MyGameInformation = m_gameInformation;
-                   Manager.Instance.SaveGameInformation();
-                   SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
+                   int t = 0;
+                   Character myCharacter = null;
+                   if (int.TryParse(result, out t))
+                       myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
+                   if (myCharacter != null)
+                   {
+                       m_gameInformation.P = myCharacter;
+                       Manager.Instance.MyGameInformation = m_gameInformation;
+                       Manager.Instance.SaveGameInformation();
+                       SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
+                   }
+                   else
+                   {
+                       GoBackSheriff();
+
+                       GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
+                   }
                }
                else
                {
-                   //TODO ADD ALERT
-                   m_setupGame.gameObject.SetActive(true);
-                   m_placesBehaviour.DisablePlace();
-                   m_header.SetActive(true);
-
-                   GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
+                   GoBackSheriff();
                }
-
            }, false, Manager.Instance.READ_CHARACTER);
        });
 
         m_setupGame.gameObject.SetActive(false);
+    }
+
+    private void GoBackSheriff()
+    {
+        //TODO ADD ALERT
+        m_setupGame.gameObject.SetActive(true);
+        m_placesBehaviour.DisablePlace();
+        m_header.SetActive(true);
     }
 
     public void OnBackHeaderButtonClick()
@@ -251,5 +263,5 @@ public class SheriffController : MonoBehaviour
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
     }
-    
+
 }

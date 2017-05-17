@@ -30,7 +30,6 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
         m_state = State.readQRCode;
         m_readCallback = callback;
         ReadQR(useCompression);
-        
     }
 
     private void ReadQR(bool useCompression)
@@ -50,5 +49,19 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
                 m_state = State.none;
             }
         }, m_title, useCompression);
+    }
+
+    private void Escape()
+    {
+        if (m_readCallback != null)
+            m_readCallback("-1");
+    }
+
+    private void FixedUpdate()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Escape();
+        }
     }
 }

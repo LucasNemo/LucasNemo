@@ -64,6 +64,7 @@ public class Manager
     public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
     public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
     public readonly string REALLY_WANNA_EXIT = "Você deseja realmente sair?";
+    public readonly string RESULT_ERROR_BACK = "-1";
     #endregion
 
     #region PATHS

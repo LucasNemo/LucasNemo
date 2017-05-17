@@ -97,16 +97,18 @@ public class DetectiveController : MonoBehaviour {
             DetectiveManager.Instance.QRCodeReaded(result, (success) =>
             {
                 SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-
+                
                 if (success)
                 {
-                    Notes.instance.Show();
-                    mainCanvas.SetActive(true);
+                    ReadPlayer();
 
-                   /* GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
-                    {
-                        DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
-                    });*/
+                    //Notes.instance.Show();
+                    //mainCanvas.SetActive(true);
+
+                    //GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
+                    //{
+                    //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
+                    //});
                 }
                 else
                 {
@@ -125,11 +127,12 @@ public class DetectiveController : MonoBehaviour {
         }, Manager.Instance.READ_FROM_XERIFE);
     }
 
-    private void ReadPlayer()
+    private void ReadPlayer(bool unloadScene=false)
     {
         ReadQRFromsCene(true, (result) =>
         {
-            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
+            if(unloadScene)
+                SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
             int t = 0;
             Character myCharacter = null;
@@ -137,13 +140,21 @@ public class DetectiveController : MonoBehaviour {
                 myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
             if (myCharacter != null)
             {
-                Manager.Instance.MyGameInformation.P = myCharacter;
-                Manager.Instance.SaveGameInformation();
-                SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
+                //Manager.Instance.MyGameInformation.P = myCharacter;
+                //Manager.Instance.SaveGameInformatison();
+                //Add time here
+                Notes.instance.Show();
+                mainCanvas.SetActive(true);
+                //Saving time
+                PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
+                PlayerPrefs.Save();
+                DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
             }
             else
             {
-                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
+                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, ()=> {
+                    ReadPlayer(true);
+                });
             }
 
         }, Manager.Instance.READ_CHARACTER);
@@ -177,7 +188,6 @@ public class DetectiveController : MonoBehaviour {
 
                 if (Manager.Instance.ActiveRoom.P.IH == 1)
                 {
-
                     var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
 
                     var answer = Manager.Instance.MyGameInformation.CH == playerhunch;

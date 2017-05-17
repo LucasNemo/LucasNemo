@@ -7,8 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Notes/Notes.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_SplashScene/Splash.unity
+  - enabled: 1
+    path: Assets/_MenuScene/Menu.unity
   - enabled: 1
     path: Assets/ARGame/Scene/ARScene.unity
   - enabled: 1

@@ -51,8 +51,8 @@ public class Manager
     public readonly string ON_READ_CHARACTER_WRONG = "UTILIZE UMA CARTA DE PERSONAGEM PARA LER";
     public readonly string WARNING_BUTTON = "Entendi!";
     public readonly string FINAL_CONFIRM_HUNCH = "{0}, COM {1} {2}, {3} {4}";
-    public readonly string WIN_TITLE = "PARABÉNS! \n VOCÊ CONSEGUIU SOLUCIONAR O CRIME!";
-    public readonly string WIN_DESCRIPTION = "JOGUE NOVAMENTE PARA INICIAR UM NOVO CASO!";
+    public readonly string WIN_TITLE = "PARABÉNS! \n VOCÊ CONSEGUIU SOLUCIONAR O CRIME";
+    public readonly string WIN_DESCRIPTION = "Você completou em {0} horas e {1} minutos! JOGUE NOVAMENTE PARA INICIAR UM NOVO CASO!";
     public readonly string PLACE_ALREADY_ADDED = "ESTE LUGAR JÁ FOI ADICIONADO, ADICIONE OUTRO CASO QUEIRA QUE SEJA COMO DELEGACIA";
     public readonly string LOOSE_TITLE = "ERRADO!";
     public readonly string LOOSE_DESCRIPTION = "VOCÊ FALHOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
@@ -61,10 +61,9 @@ public class Manager
     public readonly string NOT_READY_YET = "O resultado da perícia ainda NÃO saiu!";
     public readonly string SOME_RESULTS = "Sairam alguns resultados de perícia. Volte ao local da perícia para conferir!";
     public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
-
-
+    public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
     #endregion  
-
+    
     #region PATHS
 
     public readonly string HUNCH_PATH = "Hunch/";

@@ -13,7 +13,7 @@ public class SplashController : MonoBehaviour {
     {
         AudioController.Instance.Play(menu, AudioController.SoundType.Music);
     }
- 
+    
     public void OpenSelection()
     {
         m_selection.SetActive(false);

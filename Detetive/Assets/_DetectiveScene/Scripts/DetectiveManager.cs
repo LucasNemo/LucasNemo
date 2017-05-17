@@ -34,7 +34,6 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
         else
         {
             m_detectiveState = Enums.DetectiveState.StartGame;
-            
         }
     }
 

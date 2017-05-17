@@ -93,8 +93,6 @@ public class DetectiveController : MonoBehaviour {
     {
         ReadQRFromsCene(true,(result)=>
         {
-            
-        
             //DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
             DetectiveManager.Instance.QRCodeReaded(result, (success) =>
             {
@@ -116,8 +114,6 @@ public class DetectiveController : MonoBehaviour {
                     {
                         InitializePlayerInfo();
                     });
-
-
                 }
                 // GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
                 //{
@@ -127,6 +123,30 @@ public class DetectiveController : MonoBehaviour {
             });
 
         }, Manager.Instance.READ_FROM_XERIFE);
+    }
+
+    private void ReadPlayer()
+    {
+        ReadQRFromsCene(true, (result) =>
+        {
+            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
+
+            int t = 0;
+            Character myCharacter = null;
+            if (int.TryParse(result, out t))
+                myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
+            if (myCharacter != null)
+            {
+                Manager.Instance.MyGameInformation.P = myCharacter;
+                Manager.Instance.SaveGameInformation();
+                SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
+            }
+            else
+            {
+                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
+            }
+
+        }, Manager.Instance.READ_CHARACTER);
     }
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)

@@ -32,9 +32,7 @@ public class DetectiveController : MonoBehaviour {
     {
         if (Notes.instance == null)
         {
-            Debug.Log("SDpawn canvas!!!!!!");
             Instantiate(NotesCanvas);
-            Notes.instance.Hide();
         }
         
         DetectiveManager.Instance.Dummy();
@@ -80,8 +78,6 @@ public class DetectiveController : MonoBehaviour {
             case Enums.DetectiveState.ReadCharacter:
                 ReadQRFromsCene(false, (x) =>
                 {
-                    Notes.instance.gameObject.SetActive(true);
-                    Notes.instance.Show();
                     mainCanvas.SetActive(true);
                     DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
                 }, Manager.Instance.READ_CHARACTER);
@@ -98,29 +94,22 @@ public class DetectiveController : MonoBehaviour {
             DetectiveManager.Instance.QRCodeReaded(result, (success) =>
             {
                 SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-
-                if (result != Manager.Instance.RESULT_ERROR_BACK)
+                
+                if (success)
                 {
-                    if (success)
-                    {
-                        GenericModal.Instance.OpenAlertMode(Manager.Instance.QR_CODE_READ_CHARACTER, "Ok", () =>
-                        {
-                            ReadPlayer();
-                        });
-                    }
-                    else
-                    {
-                        GenericModal.Instance.OpenAlertMode(Manager.Instance.READ_FROM_XERIFE, "Ok", () =>
-                        {
-                            InitializePlayerInfo();
-                        });
-                    }
+                    GenericModal.Instance.OpenAlertMode(Manager.Instance.QR_CODE_READ_CHARACTER, "Ok", () => {
+                        ReadPlayer();
+                    });
                 }
                 else
                 {
-                    SceneManager.LoadScene("Menu");
+                    GenericModal.Instance.OpenAlertMode(Manager.Instance.READ_FROM_XERIFE, "Ok", () =>
+                    {
+                        InitializePlayerInfo();
+                    });
                 }
             });
+
         }, Manager.Instance.READ_FROM_XERIFE);
     }
 
@@ -130,34 +119,24 @@ public class DetectiveController : MonoBehaviour {
         {
             SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
-            if (result != Manager.Instance.RESULT_ERROR_BACK)
+            int t = 0;
+            Character myCharacter = null;
+            if (int.TryParse(result, out t))
+                myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
+            if (myCharacter != null)
             {
-                int t = 0;
-                Character myCharacter = null;
-                if (int.TryParse(result, out t))
-                    myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
-                if (myCharacter != null)
-                {
-                    //Add time here
-                    Notes.instance.Show();
-                    mainCanvas.SetActive(true);
+                mainCanvas.SetActive(true);
 
-                    //Saving time
-                    PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
-                    PlayerPrefs.Save();
-                    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
-                }
-                else
-                {
-                    GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, () =>
-                    {
-                        ReadPlayer();
-                    });
-                }
+                //Saving time
+                PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
+                PlayerPrefs.Save();
+                DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
             }
             else
             {
-                SceneManager.LoadScene("Menu");
+                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, ()=> {
+                    ReadPlayer();
+                });
             }
 
         }, Manager.Instance.READ_CHARACTER);
@@ -183,50 +162,21 @@ public class DetectiveController : MonoBehaviour {
          
         ReadQRFromsCene(false, (result) =>
         {
-            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-
-            if (result != Manager.Instance.RESULT_ERROR_BACK)
+            mainCanvas.SetActive(true);
+            var enumTest = Enum.Parse(typeof(Enums.Places), result);
+            if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
             {
+                Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
 
-                mainCanvas.SetActive(true);
-                try
+                if (Manager.Instance.ActiveRoom.P.IH == 1)
                 {
-                    var enumTest = Enum.Parse(typeof(Enums.Places), result);
-                    if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
-                    {
-                        Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
+                    var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
 
-                        if (Manager.Instance.ActiveRoom.P.IH == 1)
-                        {
-                            var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
+                    var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
 
-                            var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
-
-                            m_resultScreen.gameObject.SetActive(true);
-                            m_resultScreen.UpdateInformation(answer);
-                        }
-                    }
-                    else
-                    {
-                        GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leia a carta da delegacia", "Ok", () =>
-                        {
-                            OnFinishHunchClicked();
-                        });
-                    }
+                    m_resultScreen.gameObject.SetActive(true);
+                    m_resultScreen.UpdateInformation(answer);
                 }
-                catch
-                {
-                    GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leia a carta da delegacia", "Ok", () =>
-                    {
-                        OnFinishHunchClicked();
-                    });
-                }
-            }
-            else
-            {
-                m_detectiveHunchBehaviour.gameObject.SetActive(true);
-                mainCanvas.gameObject.SetActive(true);
-                m_detectiveHunchBehaviour.GetComponent<DetectiveHunchBehaviour>().ActiveConfirmModal(true);
             }
 
             //TODO - conferir nome da delegacia!!
@@ -241,28 +191,16 @@ public class DetectiveController : MonoBehaviour {
 
         ReadQRFromsCene(false, (result) =>
         {
-            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-
-            if (result != Manager.Instance.RESULT_ERROR_BACK)
+            try
             {
-                try
-                {
-                    var enumTest = Enum.Parse(typeof(Enums.Places), result);
+                var enumTest = Enum.Parse(typeof(Enums.Places), result);
 
-                    if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
-                    {
-                        Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
-                        SceneManager.LoadSceneAsync("ARScene");
-                    }
-                    else
-                    {
-                        GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leita uma carta de cenário para iniciar a investigação!", "Ok", () =>
-                        {
-                            OnInvesticateClicked();
-                        });
-                    }
+                if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
+                {
+                    Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
+                    SceneManager.LoadSceneAsync("ARScene");
                 }
-                catch
+                else
                 {
                     GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leita uma carta de cenário para iniciar a investigação!", "Ok", () =>
                     {
@@ -270,12 +208,13 @@ public class DetectiveController : MonoBehaviour {
                     });
                 }
             }
-            else
+            catch
             {
-                m_menu.SetActive(true);
-                mainCanvas.SetActive(true);
+                GenericModal.Instance.OpenAlertMode("Ops! Não reconhecemos essa carta. Leita uma carta de cenário para iniciar a investigação!", "Ok", ()=>
+                {
+                    OnInvesticateClicked();
+                });
             }
-
         }, Manager.Instance.READ_FROM_PLACE);
     }
 

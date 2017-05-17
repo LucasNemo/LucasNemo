@@ -11,12 +11,21 @@ public class PericiaController : MonoBehaviour {
 
     private void Start()
     {
-        if (DetectiveManager.Instance.PericiaAlreadyRequested((Enums.Places)Manager.Instance.ActiveRoom.P.MP))
+        var activeRoom = Manager.Instance.ActiveRoom;
+
+        DetectiveManager.Instance.ProcessOthersPlacesPericia(activeRoom);
+
+        //Already requyest pericia ?
+        if (DetectiveManager.Instance.PericiaAlreadyRequested((Enums.Places)activeRoom.P.MP))
         {
+            //Hide the button
             periciaButton.SetActive(false);
+
+            //The is a result? 
             if (DetectiveManager.Instance.AlreadGotAResultToThisPlace())
             {
-                if (DetectiveManager.Instance.PericiaResultToThisPlace())
+                var isThisCorrectPlace = DetectiveManager.Instance.PericiaResultToThisPlace();
+                if (isThisCorrectPlace)
                 {
                     status = Manager.Instance.CORRECT_PLACE;
                     AudioController.Instance.Play(sirene, AudioController.SoundType.SoundEffect2D, 1f, false, true);
@@ -29,17 +38,23 @@ public class PericiaController : MonoBehaviour {
                 status = Manager.Instance.NOT_READY_YET;
             }
 
+            //Show the message 
             ShowPericiaModal(status);
             return;
         }
 
+        //any pericia to check
+        HandlePericiastoCheck();
+    }
 
+    private void HandlePericiastoCheck()
+    {
         if (DetectiveManager.Instance.PericiasToCheck.Count > 0)
         {
             if (!DetectiveManager.Instance.PericiasToCheck.Contains((Enums.Places)Manager.Instance.ActiveRoom.P.MP))
             {
-                var x = DetectiveManager.Instance.PericiasToCheck.First(t=>t != (Enums.Places)Manager.Instance.ActiveRoom.P.MP);
-                ShowPericiaModal( string.Format(Manager.Instance.SOME_RESULTS, DetectiveManager.Instance.PericiasToCheck, (Enums.Places)x));
+                var x = DetectiveManager.Instance.PericiasToCheck.First(t => t != (Enums.Places)Manager.Instance.ActiveRoom.P.MP);
+                ShowPericiaModal(string.Format(Manager.Instance.SOME_RESULTS, (Enums.Places)x));
             }
             else
             {
@@ -50,7 +65,7 @@ public class PericiaController : MonoBehaviour {
 
     private void ShowPericiaModal(string text)
     {
-        GenericModal.Instance.OpenAlertMode(Manager.Instance.SOME_RESULTS, "Ok", null);
+        GenericModal.Instance.OpenAlertMode(text, "Ok", null);
     }
 
     public void RequestPericia()

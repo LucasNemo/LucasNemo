@@ -33,6 +33,13 @@ public class HandleInvestigations : MonoBehaviour
         StartCoroutine(EnableModels(roomInfo));
     }
 
+    public void RequestPericia()
+    {
+        DetectiveManager.Instance.RequestPericiaToThisPlace();
+        GenericModal.Instance.OpenAlertMode("Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...", "Ok", null);
+    }
+
+
     public IEnumerator EnableModels(Room roomInfo)
     {
         yield return new WaitForSecondsRealtime(2f);

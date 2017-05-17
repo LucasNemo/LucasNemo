@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
@@ -71,7 +72,6 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
         else
         {
             success.Invoke(false);
-
             Debug.LogError("QrCode is null");
         }
     }
@@ -91,43 +91,44 @@ public class DetectiveManager : SingletonBehaviour<DetectiveManager> {
     {
         var currentPlace = Manager.Instance.ActiveRoom;
 
-        if (IsPericiaRequested.Contains( (Enums.Places) currentPlace.P.MP))
-        {
-            return;
-        }
+        if (IsPericiaRequested.Contains((Enums.Places)currentPlace.P.MP)) return;
 
         IsPericiaRequested.Add( (Enums.Places) currentPlace.P.MP);
     }
 
     public bool AlreadGotAResultToThisPlace()
     {
+        //get the current place
         var currentPlace = Manager.Instance.ActiveRoom;
-
-        foreach (var item in IsPericiaRequested)
-        {
-            if (currentPlace.P.MP != item.GetHashCode())
-            {
-                if (!PericiaResults.ContainsKey(item))
-                {
-                    var correctPlace = Manager.Instance.MyGameInformation.CH.HR.P.MP;
-                    PericiaResults.Add(item, correctPlace == item.GetHashCode());
-
-                    if (!PericiasToCheck.Contains(item))
-                        PericiasToCheck.Add(item);
-                }
-            }
-        }
-
+        
+        //This place has already a result? 
         if (PericiaResults.ContainsKey((Enums.Places)currentPlace.P.MP))
             return true;
 
         return false;
     }
 
+    public void ProcessOthersPlacesPericia(Room currentPlace)
+    {
+        foreach (Enums.Places place in IsPericiaRequested)
+        {
+            if (currentPlace.P.MP != place.GetHashCode())
+            {
+                if (!PericiaResults.ContainsKey(place))
+                {
+                    var correctPlace = Manager.Instance.MyGameInformation.CH.HR.P.MP;
+                    PericiaResults.Add(place, correctPlace == place.GetHashCode());
+
+                    if (!PericiasToCheck.Contains(place))
+                        PericiasToCheck.Add(place);
+                }
+            }
+        }
+    }
+
     public bool PericiaResultToThisPlace()
     {
         var currentPlace = Manager.Instance.ActiveRoom;
-
         return PericiaResults[(Enums.Places)currentPlace.P.MP];
     }
 

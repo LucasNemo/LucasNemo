@@ -16,8 +16,11 @@ public class Notes : MonoBehaviour {
     {
         if (instance != null)
             Destroy(gameObject);
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public Animator animator; 

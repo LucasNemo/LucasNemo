@@ -28,7 +28,7 @@ public class HandleInvestigations : MonoBehaviour
     private void SetCurrentRoom(Room roomInfo)
     {
         //Set the name choosed by player
-        title.text = roomInfo.P.IH ? "DELEGACIA" +  roomInfo.P.N :  roomInfo.P.N;
+        title.text = roomInfo.P.IH == 1 ? "DELEGACIA" +  roomInfo.P.N :  roomInfo.P.N;
 
         StartCoroutine(EnableModels(roomInfo));
     }

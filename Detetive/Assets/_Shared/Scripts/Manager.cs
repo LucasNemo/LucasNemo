@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager
 {
@@ -259,5 +260,5 @@ public class Manager
     public readonly string MENU_SCENE = "Menu";
     public readonly string DETETIVE_SCENE = "DetectiveScene";
     public readonly string SHERIFFE_SCENE = "SheriffScene";
-
+    internal readonly string QRCODE_SCENE = "QRScanScene";
 }

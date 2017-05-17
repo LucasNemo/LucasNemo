@@ -70,7 +70,7 @@ public class SheriffController : MonoBehaviour
         if (places.Count == 0)
             return false;
 
-        return places.Any(x => x.IH);
+        return places.Any(x => x.IH == 1);
     }
 
     /// <summary>
@@ -208,7 +208,11 @@ public class SheriffController : MonoBehaviour
            m_header.SetActive(false);
            FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
            {
-               Character myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
+               SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
+               int t = 0;
+               Character myCharacter = null;
+               if ( int.TryParse(result, out t))
+                   myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
                if (myCharacter != null)
                {
                    m_gameInformation.P = myCharacter;

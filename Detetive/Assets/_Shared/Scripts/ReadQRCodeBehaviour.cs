@@ -37,6 +37,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
     {
         readQRCode.ReadQR(this, (string e) =>
         {
+            Debug.Log("Leitura do qRCODe: " + e);
             qrCodeMessage = e;
             if (!string.IsNullOrEmpty(qrCodeMessage))
             {

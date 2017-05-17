@@ -91,51 +91,6 @@ NavMeshSettings:
     cellSize: 0.16666666
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &203685825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 203685826}
-  - component: {fileID: 203685827}
-  m_Layer: 0
-  m_Name: QRTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &203685826
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 203685825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 13.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &203685827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 203685825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643d9cb83ebc8d84a86fb9f5e88e306f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  e_qrController: {fileID: 909639126}
-  UiText: {fileID: 1392666582}
-  resetBtn: {fileID: 1281641837}
-  scanLineObj: {fileID: 560426645}
-  isOpenBrowserIfUrl: 0
 --- !u!1001 &266892248
 Prefab:
   m_ObjectHideFlags: 0
@@ -184,11 +139,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 266892248}
   m_Script: {fileID: 11500000, guid: dbbc4ec028b703e4fa6b1c2c841018ac, type: 3}
---- !u!1 &560426645 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1151853247703084, guid: d0e0c3ee6c507a74582962367be59695,
-    type: 2}
-  m_PrefabInternal: {fileID: 1204620312}
 --- !u!1 &909639125
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,26 +289,15 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 203685827}
+      objectReference: {fileID: 0}
     - target: {fileID: 114494111063641164, guid: d0e0c3ee6c507a74582962367be59695,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 203685827}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e0c3ee6c507a74582962367be59695, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1281641837 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1396129405935388, guid: d0e0c3ee6c507a74582962367be59695,
-    type: 2}
-  m_PrefabInternal: {fileID: 1204620312}
---- !u!114 &1392666582 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114691576669348296, guid: d0e0c3ee6c507a74582962367be59695,
-    type: 2}
-  m_PrefabInternal: {fileID: 1204620312}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1563185092
 GameObject:
   m_ObjectHideFlags: 0

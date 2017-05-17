@@ -13,13 +13,16 @@ public class GenerateQRCode {
         if(zip)
             newQr = Helper.CompressString(textForEncoding);
         Debug.Log(newQr);
+
         var writer = new BarcodeWriter
         {
             Format = BarcodeFormat.QR_CODE,
             Options = new QrCodeEncodingOptions
             {
                 Height = height,
-                Width = width
+                Width = width,
+                Margin = 10
+              
             }
         };
         

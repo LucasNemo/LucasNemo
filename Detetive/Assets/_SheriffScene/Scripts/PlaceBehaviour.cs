@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlaceBehaviour : MonoBehaviour
 {
@@ -36,25 +37,42 @@ public class PlaceBehaviour : MonoBehaviour
         m_header.SetActive(false);
         m_readQrCodeBehaviour.ReadQrCode((result) =>
         {
-            Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
-            m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
+            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
-            if (m_lastPlace != null)
+            int t = 0;
+
+            if (int.TryParse(result, out t))
             {
-                m_inputField.text = m_lastPlace.N;
-                ActivePlace();
+                Enums.Places place = (Enums.Places)System.Enum.Parse(typeof(Enums.Places), result);
+                m_lastPlace = Manager.Instance.Places.FirstOrDefault(x => ((Enums.Places)x.MP) == place);
+
+                if (m_lastPlace != null)
+                {
+                    m_inputField.text = m_lastPlace.N;
+                    ActivePlace();
+                }
+                else
+                {
+                    ErrorMessage();
+                }
             }
             else
             {
-                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_PLACE_WRONG, Manager.Instance.WARNING_BUTTON, () => {
-                    ActiveReadQr();
-                });
+                ErrorMessage();
             }
 
             m_mainPlaces.SetActive(true);
             m_header.SetActive(true);
 
         }, false, Manager.Instance.QR_READ_PLACE);
+    }
+
+    private void ErrorMessage()
+    {
+        GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_PLACE_WRONG, Manager.Instance.WARNING_BUTTON, () =>
+        {
+            ActiveReadQr();
+        });
     }
 
     private void ActivePlace()

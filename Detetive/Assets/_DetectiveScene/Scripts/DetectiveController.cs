@@ -94,11 +94,31 @@ public class DetectiveController : MonoBehaviour {
         ReadQRFromsCene(true,(result)=>
         {
             
-            Notes.instance.Show();
-            mainCanvas.SetActive(true);
+        
             //DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
             DetectiveManager.Instance.QRCodeReaded(result, (success) =>
             {
+                SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
+
+                if (success)
+                {
+                    Notes.instance.Show();
+                    mainCanvas.SetActive(true);
+
+                   /* GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
+                    {
+                        DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
+                    });*/
+                }
+                else
+                {
+                    GenericModal.Instance.OpenAlertMode(Manager.Instance.READ_FROM_XERIFE, "Ok", () =>
+                    {
+                        InitializePlayerInfo();
+                    });
+
+
+                }
                 // GenericModal.Instance.OpenAlertMode("Agora escolha seu personagem!", "Ok", () =>
                 //{
                 //    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.ReadCharacter);
@@ -135,7 +155,7 @@ public class DetectiveController : MonoBehaviour {
             {
                 Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
 
-                if (Manager.Instance.ActiveRoom.P.IH)
+                if (Manager.Instance.ActiveRoom.P.IH == 1)
                 {
 
                     var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
@@ -153,7 +173,7 @@ public class DetectiveController : MonoBehaviour {
             }
 
             //TODO - conferir nome da delegacia!!
-        }, string.Format( Manager.Instance.GO_TO_PD , Manager.Instance.MyGameInformation.Rs.First(x=>x.P.IH).P.N));
+        }, string.Format( Manager.Instance.GO_TO_PD , Manager.Instance.MyGameInformation.Rs.First(x=>x.P.IH == 1).P.N));
     }
 
     public void OnInvesticateClicked()

@@ -68,6 +68,7 @@ public class Manager
     #region PATHS
 
     public readonly string HUNCH_PATH = "Hunch/";
+    public readonly string SOUND_CLICK = "Audio/Generic/click";
 
     #endregion
 

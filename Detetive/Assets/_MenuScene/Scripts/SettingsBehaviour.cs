@@ -14,30 +14,35 @@ public class SettingsBehaviour : MonoBehaviour {
     
     public void OnCreditsClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_main.SetActive(false);
         m_credits.SetActive(true);
     }
 
     public void OnBackFromCredits()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_credits.SetActive(false);
         m_main.SetActive(true);
     }
 
     public void OnHowToPlayClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_main.SetActive(false);
         m_howToPlay.SetActive(true);
     }
 
     public void OnBackFromHowToPlay()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_main.SetActive(true);
         m_howToPlay.SetActive(false);
     }
     
     public void OnTermClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         GenericModal.Instance.OpenModal(Manager.Instance.TERMS_MODAL_DESCRIPTION, "Voltar", "Continuar", null,
        () =>
        {
@@ -52,6 +57,7 @@ public class SettingsBehaviour : MonoBehaviour {
     
     public void OnTalkWithUsClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         GenericModal.Instance.OpenModal(Manager.Instance.TALK_MODAL_DESCRIPTION, "Voltar", "Continuar",null,
         () =>
         {

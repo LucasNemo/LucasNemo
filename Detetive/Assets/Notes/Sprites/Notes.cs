@@ -23,6 +23,7 @@ public class Notes : MonoBehaviour {
 
     public void NotesClicked()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_notes.SetActive(!m_notes.activeSelf);
         //animator.SetTrigger("ChangeState");
     }

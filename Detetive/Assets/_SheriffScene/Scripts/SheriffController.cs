@@ -36,6 +36,7 @@ public class SheriffController : MonoBehaviour
 
     public void OnBackClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
     }
 
@@ -44,6 +45,7 @@ public class SheriffController : MonoBehaviour
     /// </summary>
     public void OnFinishAddPlaces()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         print("Finish AddPlaces");
 
         //todo - adicionar ao menos uma delegacia!!!!
@@ -205,6 +207,7 @@ public class SheriffController : MonoBehaviour
     /// </summary>
     public void OnFinishAddCharacter()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         GenericModal.Instance.OpenModal(Manager.Instance.PLAYER_WANNA_PLAY, "Não", "Sim", () =>
         {
             //If player dont wanna play
@@ -247,6 +250,7 @@ public class SheriffController : MonoBehaviour
 
     public void OnBackHeaderButtonClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
     }
     

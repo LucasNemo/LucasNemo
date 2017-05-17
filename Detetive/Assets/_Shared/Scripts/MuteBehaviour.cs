@@ -21,6 +21,7 @@ public class MuteBehaviour : MonoBehaviour {
 
     public void OnMuteClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         if (AudioController.Instance.IsMusicMuted)
             AudioController.Instance.UnMuteMusic();
         else

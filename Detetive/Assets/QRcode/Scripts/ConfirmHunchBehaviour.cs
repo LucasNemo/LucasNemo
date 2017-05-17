@@ -26,12 +26,14 @@ public class ConfirmHunchBehaviour : MonoBehaviour {
 
     public void OnCancelClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         if (m_cancel != null)
             m_cancel();
     }
 
     public void OnConfirmClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         if (m_confirm != null)
             m_confirm();
     }

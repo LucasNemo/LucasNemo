@@ -12,7 +12,8 @@ public class IntroBehaviour : MonoBehaviour
 
     public void OnVisitClick()
     {
-       // m_visit.SetActive(false);
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
+        // m_visit.SetActive(false);
         GenericModal.Instance.OpenModal(Manager.Instance.CONFIRM_VISIT_MODAL_TITLE, "Voltar", "Continuar", () =>
         {
             //Dummy
@@ -30,6 +31,7 @@ public class IntroBehaviour : MonoBehaviour
 
     public void OnContinueClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         if (Manager.Instance.isOnGame)
         {
             GenericModal.Instance.OpenModal(Manager.Instance.CONTINUE_GAME_MODAL_DESCRIPTION, "Novo jogo", "Continuar", () =>

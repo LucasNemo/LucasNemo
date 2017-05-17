@@ -74,6 +74,7 @@ public class GenericModal : MonoBehaviour {
 
     public void OnClickAlertButton()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         CloseModal(m_close);
         if (m_alertModeCallback != null)
             m_alertModeCallback();
@@ -94,6 +95,8 @@ public class GenericModal : MonoBehaviour {
 
     public void OnLeftClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
+
         CloseModal(m_close);
 
         if (m_leftCallback != null)
@@ -104,6 +107,7 @@ public class GenericModal : MonoBehaviour {
     
     public void OnRightCallback()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         CloseModal(m_close);
         if (m_rightCallback != null)
             m_rightCallback();

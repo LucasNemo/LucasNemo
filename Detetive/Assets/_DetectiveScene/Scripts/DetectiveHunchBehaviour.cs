@@ -90,6 +90,7 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     private void OnWeaponCallback(Weapon weapon)
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_selectedWeapon = weapon;
         m_panelWeapons.SetActive(false);
         m_panelPlaces.SetActive(true);
@@ -97,6 +98,7 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     private void OnPlaceCallback(Place place)
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_selectedPlace = place;
         m_panelPlaces.SetActive(false);
         m_confirmHunch.gameObject.SetActive(true);
@@ -176,6 +178,7 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
 
     private void OnCharacterCallback(Character character)
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_selectedCharacter = character;
         m_panelCharacters.SetActive(false);
         m_panelWeapons.SetActive(true);

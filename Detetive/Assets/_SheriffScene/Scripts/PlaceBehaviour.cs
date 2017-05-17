@@ -33,6 +33,7 @@ public class PlaceBehaviour : MonoBehaviour
     
     public void OpenQrCodeReader()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_mainPlaces.SetActive(false);
         m_header.SetActive(false);
         m_readQrCodeBehaviour.ReadQrCode((result) =>
@@ -89,6 +90,7 @@ public class PlaceBehaviour : MonoBehaviour
 
     public void OnAddPlaceClick()
     {
+        AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         if (m_lastPlace != null)
         {
             bool isHost = false;

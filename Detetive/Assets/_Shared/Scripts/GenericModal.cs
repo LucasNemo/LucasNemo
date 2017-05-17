@@ -25,7 +25,7 @@ public class GenericModal : MonoBehaviour {
     {
         var oldModal = GenericModal.Instance;
 
-        if ( oldModal != null && oldModal.GetInstanceID() != this.GetInstanceID())
+        if ( oldModal != null && oldModal.GetInstanceID() == this.GetInstanceID())
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);

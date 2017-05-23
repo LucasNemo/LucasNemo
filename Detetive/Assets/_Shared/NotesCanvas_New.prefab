@@ -3491,7 +3491,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dona BRANCA
+  m_Text: 'FLORISTA
+
+    Dona Branca'
 --- !u!114 &114032425150111898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5290,7 +5292,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sargento BIGODE
+  m_Text: 'SARGENTO
+
+    Bigode'
 --- !u!114 &114236471014492738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6172,7 +6176,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Senhor MARINHO
+  m_Text: 'ADVOGADO
+
+    Senhor Marinho'
 --- !u!114 &114393655769838984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6739,7 +6745,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mordomo JAMES
+  m_Text: 'MORDOMO
+
+    James'
 --- !u!114 &114464110665634926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6859,7 +6867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dona VIOLETA
+  m_Text: "M\xC9DICA\nDona Violeta"
 --- !u!114 &114482494410359702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6919,7 +6927,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "S\xE9rgio SOTURNO"
+  m_Text: "COVEIRO\nS\xE9rgio Soturno"
 --- !u!114 &114486181128694322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7210,7 +7218,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tony GOURMET
+  m_Text: 'CHEF DE COZINHA
+
+    Tony Gourmet'
 --- !u!114 &114537893092535766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7363,7 +7373,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Senhorita ROSA
+  m_Text: "DAN\xC7ARINA\nSrta Rosa"
 --- !u!114 &114551378532427136
 MonoBehaviour:
   m_ObjectHideFlags: 1

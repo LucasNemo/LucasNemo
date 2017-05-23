@@ -44,8 +44,7 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         {
             characters[i].UpdateSprite(cards[i]);
         }
-
-
+        
         InitializeGrid(m_gridWeapons, m_weaponItem, Manager.Instance.Weapons, OnWeaponCallback, out weapons);
         for (int i = 0; i < weapons.Count; i++)
         {

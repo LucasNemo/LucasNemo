@@ -22,20 +22,29 @@ public class ARElement : MonoBehaviour {
 
     public Material blueprintMaterial;
 
+    private Notes m_notes; 
+
     private void Start() 
     {
-        mainMaterial = GetComponent<Renderer>().material;        
+        mainMaterial = GetComponent<Renderer>().material;
+
+        m_notes = FindObjectOfType<Notes>();
     }
 
     private void OnMouseDown()
     {
+        if (m_notes)
+        {
+            if (m_notes.IsOpen) return;
 
+        }
         if (onElementClicked != null)
         {
             if (blueprintMaterial)
                 GetComponent<Renderer>().materials[0] = blueprintMaterial;
             onElementClicked.Invoke();
         }
+
     }
 
     private void Update()
@@ -48,7 +57,4 @@ public class ARElement : MonoBehaviour {
         transform.Rotate(new Vector3(Time.deltaTime * 20f, Time.deltaTime * 20f, Time.deltaTime * 20f ));
     }
 
-    private void OnMouseExit()
-    {
-    }
 }

@@ -23,7 +23,14 @@ public class Notes : MonoBehaviour {
         }
     }
 
-    public Animator animator; 
+    public Animator animator;
+
+    public bool IsOpen {
+        get
+        {
+            return m_notes.activeSelf;
+        }
+    }
 
     public void NotesClicked()
     {

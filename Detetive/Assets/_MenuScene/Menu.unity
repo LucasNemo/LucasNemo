@@ -473,7 +473,7 @@ Prefab:
     - target: {fileID: 114894551825377528, guid: c2ae6365fa4f399468ace0e6a3306881,
         type: 2}
       propertyPath: m_Text
-      value: CONTINUAR
+      value: JOGAR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2ae6365fa4f399468ace0e6a3306881, type: 2}

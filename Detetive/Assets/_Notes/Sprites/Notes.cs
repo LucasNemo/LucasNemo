@@ -54,6 +54,7 @@ public class Notes : MonoBehaviour {
 
     private void exitAnimatonCompleted()
     {
+        ChangePage(0);
         m_notes.SetActive(false);
 
         foreach (var item in m_pages)

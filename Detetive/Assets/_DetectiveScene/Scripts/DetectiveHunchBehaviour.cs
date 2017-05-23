@@ -129,10 +129,10 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         string character = Manager.Instance.CharactersName[ (Enums.Characters) m_selectedCharacter.MC ];
         string weaponArtigo = GetArtigoWeapon((Enums.Weapons)m_selectedWeapon.MW);
         string weapon = Manager.Instance.WeaponsName[(Enums.Weapons)m_selectedWeapon.MW ];
-        string placeArtigo = "";
+        string placeArtigo = GetPlaceArtigo((Enums.Places)m_selectedPlace.MP);
         string place = Manager.Instance.PlacesNames[(Enums.Places)m_selectedPlace.MP];
 
-        return string.Format(Manager.Instance.FINAL_CONFIRM_HUNCH, character, weaponArtigo, weapon, placeArtigo, place);
+        return string.Format(Manager.Instance.FINAL_CONFIRM_HUNCH, character, weaponArtigo, weapon, placeArtigo, place).ToUpper();
     }
 
     private string GetArtigoWeapon(Enums.Weapons weapon)
@@ -159,26 +159,26 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         m_confirmHunch.gameObject.SetActive(active);
     }
 
-    //private string GetPlaceArtigo(Enums.Places place)
-    //{
-    //    switch (place)
-    //    {
-    //        case Enums.Places.Cemiterio:
-    //        case Enums.Places.Banco:
-    //        case Enums.Places.Hospital:
-    //        case Enums.Places.Hotel:
-    //        case Enums.Places.Restaurante:
-    //            return "O";
-    //        case Enums.Places.Boate:
-    //        case Enums.Places.Estacao_de_Trem:
-    //        case Enums.Places.Floricultura:
-    //        case Enums.Places.Mansao:
-    //        case Enums.Places.Praca_Central:
-    //        case Enums.Places.Prefeitura:
-    //            return "A";
-    //    }
-    //   return "A";
-    //}
+    private string GetPlaceArtigo(Enums.Places place)
+    {
+        switch (place)
+        {
+            case Enums.Places.Cemiterio:
+            case Enums.Places.Banco:
+            case Enums.Places.Hospital:
+            case Enums.Places.Hotel:
+            case Enums.Places.Restaurante:
+                return "NO";
+            case Enums.Places.Boate:
+            case Enums.Places.Estacao_de_Trem:
+            case Enums.Places.Floricultura:
+            case Enums.Places.Mansao:
+            case Enums.Places.Praca_Central:
+            case Enums.Places.Prefeitura:
+                return "NA";
+        }
+        return "NA";
+    }
 
     private void OnCharacterCallback(Character character)
     {

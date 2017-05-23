@@ -99,10 +99,7 @@ public class DetectiveController : MonoBehaviour {
                 {
                     if (success)
                     {
-                        GenericModal.Instance.OpenAlertMode(Manager.Instance.QR_CODE_READ_CHARACTER, "Ok", () =>
-                        {
-                            ReadPlayer();
-                        });
+                        InitializeGame();
                     }
                     else
                     {
@@ -120,42 +117,14 @@ public class DetectiveController : MonoBehaviour {
 
         }, Manager.Instance.READ_FROM_XERIFE);
     }
-
-    private void ReadPlayer()
+    
+    private void InitializeGame()
     {
-        ReadQRFromsCene(false, (result) =>
-        {
-            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
-
-            if (result != Manager.Instance.RESULT_ERROR_BACK)
-            {
-                int t = 0;
-                Character myCharacter = null;
-                if (int.TryParse(result, out t))
-                    myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
-                if (myCharacter != null)
-                {
-                    mainCanvas.SetActive(true);
-
-                    //Saving time
-                    PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
-                    PlayerPrefs.Save();
-                    DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
-                }
-                else
-                {
-                    GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, () =>
-                    {
-                        ReadPlayer();
-                    });
-                }
-            }
-            else
-            {
-                SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
-            }
-
-        }, Manager.Instance.READ_CHARACTER);
+        mainCanvas.SetActive(true);
+        //Saving time
+        PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
+        PlayerPrefs.Save();
+        DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
     }
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)

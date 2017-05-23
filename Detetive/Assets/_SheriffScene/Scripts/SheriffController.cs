@@ -215,40 +215,46 @@ public class SheriffController : MonoBehaviour
            m_setupGame.gameObject.SetActive(false);
            m_placesBehaviour.DisablePlace();
            m_header.SetActive(false);
-           FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
-           {
-               SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
-               if (result != Manager.Instance.RESULT_ERROR_BACK)
-               {
-                   int t = 0;
-                   Character myCharacter = null;
-                   if (int.TryParse(result, out t))
-                       myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
-                   if (myCharacter != null)
-                   {
-                       m_gameInformation.P = myCharacter;
-                       Manager.Instance.MyGameInformation = m_gameInformation;
-                       Manager.Instance.SaveGameInformation();
-                       SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
-                   }
-                   else
-                   {
-                       GoBackSheriff();
+           Manager.Instance.MyGameInformation = m_gameInformation;
+           Manager.Instance.SaveGameInformation();
+           SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
 
-                       GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
-                   }
-               }
-               else
-               {
-                   GoBackSheriff();
-               }
-           }, false, Manager.Instance.READ_CHARACTER);
+           //    FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>
+           //    {
+           //        SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
+
+           //        if (result != Manager.Instance.RESULT_ERROR_BACK)
+           //        {
+           //            int t = 0;
+           //            Character myCharacter = null;
+           //            if (int.TryParse(result, out t))
+           //                myCharacter = Manager.Instance.Characters.FirstOrDefault(x => x.MC == int.Parse(result));
+           //            if (myCharacter != null)
+           //            {
+           //                m_gameInformation.P = myCharacter;
+           //                Manager.Instance.MyGameInformation = m_gameInformation;
+           //                Manager.Instance.SaveGameInformation();
+           //                SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
+           //            }
+           //            else
+           //            {
+           //                GoBackSheriff();
+
+           //                GenericModal.Instance.OpenAlertMode(Manager.Instance.ON_READ_CHARACTER_WRONG, Manager.Instance.WARNING_BUTTON, null);
+           //            }
+           //        }
+           //        else
+           //        {
+           //            GoBackSheriff();
+           //        }
+           //    }, false, Manager.Instance.READ_CHARACTER);
+           //});
+
+           m_setupGame.gameObject.SetActive(false);
        });
-
-        m_setupGame.gameObject.SetActive(false);
     }
-
+    
     private void GoBackSheriff()
     {
         //TODO ADD ALERT
@@ -265,13 +271,13 @@ public class SheriffController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-        //    if (m_placesPanel.activeSelf)
-        //    {
-        //        OnBackHeaderButtonClick();
-        //    }
-           if (m_setupPanel.activeSelf)
+            //    if (m_placesPanel.activeSelf)
+            //    {
+            //        OnBackHeaderButtonClick();
+            //    }
+            if (m_setupPanel.activeSelf)
             {
                 m_setupPanel.SetActive(false);
                 m_placesPanel.SetActive(true);

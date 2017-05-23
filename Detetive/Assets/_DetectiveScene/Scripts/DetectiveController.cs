@@ -223,7 +223,8 @@ public class DetectiveController : MonoBehaviour {
             }
 
             //TODO - conferir nome da delegacia!!
-        }, string.Format( Manager.Instance.GO_TO_PD , Manager.Instance.MyGameInformation.Rs.First(x=>x.P.IH == 1).P.N));
+        }, string.Format( Manager.Instance.GO_TO_PD ,
+        Manager.Instance.PlacesNames[(Enums.Places) Manager.Instance.MyGameInformation.Rs.First(x => x.P.IH == 1).P.MP]));
     }
 
     public void OnInvesticateClicked()

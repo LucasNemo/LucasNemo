@@ -15,7 +15,7 @@ public class PlaceSelectionItem : GenericSelectItem<Place> {
     public override void UpdateItem(Place Item, Action<Place> callback)
     {
         base.UpdateItem(Item, callback);
-        m_nameText.text = Item.N;
+        m_nameText.text = Manager.Instance.PlacesNames[ (Enums.Places) Item.MP];
     }
 
     public void UpdateSprite(Sprite currentSprite)

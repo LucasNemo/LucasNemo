@@ -51,7 +51,7 @@ public class Manager
     public readonly string CONTINUE_GAME_MODAL_DESCRIPTION = "VOCÊ TEM UM JOGO SALVO, DESEJA CONTINUAR  OU COMEÇAR UM NOVO?";
     public readonly string TERMS_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Termos de Uso.";
     public readonly string TALK_MODAL_DESCRIPTION = "VOCÊ SERÁ REDIRECIONADO PARA: Fale Conosco.";
-    public readonly string IS_HOST_MODAL = "VOCÊ DESEJA QUE LUGAR SEJA A DELEGACIA?";
+    public readonly string IS_HOST_MODAL = "VOCÊ DESEJA QUE {0} SEJA A DELEGACIA?";
     public readonly string QR_READ_PLACE = "Realize a leitura do QRCode do lugar / ambiente";
     public readonly string QR_CODE_READ_CHARACTER = "Jogo carregado! Agora você deve escolher seu personagem.";
     public readonly string PLAYER_WANNA_PLAY = "VOCÊ DESEJA JOGAR TAMBÉM?";
@@ -172,8 +172,20 @@ public class Manager
         {Enums.Characters.Sargento_Bigode, "SARGENTO BIGODE" }
     };
 
- 
-
+    public Dictionary<Enums.Places, string> PlacesNames = new Dictionary<Enums.Places, string> {
+        { Enums.Places.Banco, "Banco"},
+        { Enums.Places.Boate, "Boate"},
+        { Enums.Places.Cemiterio, "Cemitério"},
+        { Enums.Places.Estacao_de_Trem, "Estação de Trem"},
+        { Enums.Places.Floricultura, "Floricultura"},
+        { Enums.Places.Hospital, "Hospital"},
+        { Enums.Places.Hotel, "Hotel"},
+        { Enums.Places.Mansao, "Mansão"},
+        { Enums.Places.Praca_Central, "Praça Central"},
+        { Enums.Places.Prefeitura, "Prefeitura"},
+        { Enums.Places.Restaurante, "Restaurante"}
+    };
+    
     private void InitializeCharacters()
     {
         Characters = new List<Character>();
@@ -190,20 +202,19 @@ public class Manager
     private void InitializePlaces()
     {
         Places = new List<Place>();
-        Places.Add(new Place("Banco", Enums.Places.Banco, false));
-        Places.Add(new Place("Boate", Enums.Places.Boate, false));
-        Places.Add(new Place("Cemitério", Enums.Places.Cemiterio, false));
-        Places.Add(new Place("Estação de Trem", Enums.Places.Estacao_de_Trem, false));
-        Places.Add(new Place("Floricultura", Enums.Places.Floricultura, false));
-        Places.Add(new Place("Hospital", Enums.Places.Hospital, false));
-        Places.Add(new Place("Hotel", Enums.Places.Hotel, false));
-        Places.Add(new Place("Mansão", Enums.Places.Mansao, false));
-        Places.Add(new Place("Praça Central", Enums.Places.Praca_Central, false));
-        Places.Add(new Place("Prefeitura", Enums.Places.Prefeitura, false));
-        Places.Add(new Place("Restaurante", Enums.Places.Restaurante, false));
+        Places.Add(new Place(Enums.Places.Banco, false));
+        Places.Add(new Place(Enums.Places.Boate, false));
+        Places.Add(new Place(Enums.Places.Cemiterio, false));
+        Places.Add(new Place(Enums.Places.Estacao_de_Trem, false));
+        Places.Add(new Place(Enums.Places.Floricultura, false));
+        Places.Add(new Place(Enums.Places.Hospital, false));
+        Places.Add(new Place(Enums.Places.Hotel, false));
+        Places.Add(new Place(Enums.Places.Mansao, false));
+        Places.Add(new Place(Enums.Places.Praca_Central, false));
+        Places.Add(new Place(Enums.Places.Prefeitura, false));
+        Places.Add(new Place(Enums.Places.Restaurante, false));
     }
-
-
+    
     public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
     {
         {Enums.Weapons.Arma_Quimica,"Arma Química" },
@@ -267,40 +278,6 @@ public class Manager
     }
 
     #endregion
-
-
-   static public string PlaceToName (Enums.Places place)
-    {
-        switch (place)
-        {
-            case Enums.Places.Banco:
-                return "Banco";
-            case Enums.Places.Boate:
-                return "Boate";
-            case Enums.Places.Cemiterio:
-                return "Cemitério";
-            case Enums.Places.Estacao_de_Trem:
-                return "Estação de Trem";
-            case Enums.Places.Floricultura:
-                return "Floricultura";
-            case Enums.Places.Hospital:
-                return "Hospital";
-            case Enums.Places.Hotel:
-                return "Hotel";
-            case Enums.Places.Mansao:
-                return "Mansão";
-            case Enums.Places.Praca_Central:
-                return "Praça Central";
-            case Enums.Places.Prefeitura:
-                return "Prefeitura";
-            case Enums.Places.Restaurante:
-                return "Restaurante";
-        }
-
-        return "";
-    }
-
-
-
+    
     
 }

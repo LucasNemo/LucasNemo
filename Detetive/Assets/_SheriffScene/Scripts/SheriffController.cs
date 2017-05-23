@@ -122,7 +122,6 @@ public class SheriffController : MonoBehaviour
             {
                 if (mPlaces.MP == item.MP)
                 {
-                    mPlaces.N = item.N;
                     mPlaces.IH = item.IH;
                     break;
                 }

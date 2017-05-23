@@ -130,7 +130,7 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         string weaponArtigo = GetArtigoWeapon((Enums.Weapons)m_selectedWeapon.MW);
         string weapon = Manager.Instance.WeaponsName[(Enums.Weapons)m_selectedWeapon.MW ];
         string placeArtigo = "";
-        string place = m_selectedPlace.N;
+        string place = Manager.Instance.PlacesNames[(Enums.Places)m_selectedPlace.MP];
 
         return string.Format(Manager.Instance.FINAL_CONFIRM_HUNCH, character, weaponArtigo, weapon, placeArtigo, place);
     }

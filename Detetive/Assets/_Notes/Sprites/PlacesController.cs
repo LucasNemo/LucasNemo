@@ -15,7 +15,7 @@ public class PlacesController : MonoBehaviour {
         foreach (var item in playerPlaces)
         {
             var correct = places.First(x => x.ID == item.P.MP);
-            correct.SetName(item.P.N);
+            correct.SetName(Manager.Instance.PlacesNames[(Enums.Places)item.P.MP]);
         }
     }
 

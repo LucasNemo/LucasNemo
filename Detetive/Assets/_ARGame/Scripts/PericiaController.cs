@@ -54,7 +54,7 @@ public class PericiaController : MonoBehaviour {
             if (!DetectiveManager.Instance.PericiasToCheck.Contains((Enums.Places)Manager.Instance.ActiveRoom.P.MP))
             {
                 var x = DetectiveManager.Instance.PericiasToCheck.First(t => t != (Enums.Places)Manager.Instance.ActiveRoom.P.MP);
-                ShowPericiaModal(string.Format(Manager.Instance.SOME_RESULTS, Manager.PlaceToName(x)));
+                ShowPericiaModal(string.Format(Manager.Instance.SOME_RESULTS, Manager.Instance.PlacesNames[x]));
             }
             else
             {

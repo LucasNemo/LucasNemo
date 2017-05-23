@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Notes : MonoBehaviour {
 
@@ -20,7 +21,14 @@ public class Notes : MonoBehaviour {
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            tween.animationParts.ExitEvents.AddListener(exitAnimatonCompleted);
+            tween.animationParts.CallCallback = UITween.AnimationParts.CallbackCall.END_OF_EXIT_ANIM;
         }
+    }
+
+    private void exitAnimatonCompleted()
+    {
+        m_notes.SetActive(false);
     }
 
     public Animator animator;
@@ -32,11 +40,20 @@ public class Notes : MonoBehaviour {
         }
     }
 
+
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && IsOpen)
+        {
+            Hide();
+        }
+    }
+
     public void NotesClicked()
     {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         tween.OpenCloseObjectAnimation();
-        m_notes.SetActive(!m_notes.activeSelf);
+        m_notes.SetActive(true);
     }
 
     public void Remove()
@@ -54,7 +71,6 @@ public class Notes : MonoBehaviour {
     public void Hide()
     {
         tween.OpenCloseObjectAnimation();
-        m_notes.SetActive(false);
     }
 
     public void ChangePage(int page)

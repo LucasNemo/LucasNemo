@@ -9,13 +9,29 @@ public class Notes : MonoBehaviour {
 
     [SerializeField]
     private List<GameObject> m_pages;
+
+    [Space(10)]
     [SerializeField]
     private GameObject m_notes;
+
+    public GameObject mainPage;
+
     [SerializeField]
     private List<Image> m_buttonsImages;
-
     public static Notes instance;
     public EasyTween tween;
+    public Animator animator;
+
+    private readonly float delay = 0.3f;
+
+    public bool IsOpen
+    {
+        get
+        {
+            return m_notes.activeSelf;
+        }
+    }
+
 
     private void Awake()
     {
@@ -26,21 +42,23 @@ public class Notes : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
             tween.animationParts.ExitEvents.AddListener(exitAnimatonCompleted);
-            tween.animationParts.CallCallback = UITween.AnimationParts.CallbackCall.END_OF_EXIT_ANIM;
+            tween.animationParts.IntroEvents.AddListener(onIntroAnimationCompleted);
+            tween.animationParts.CallCallback = UITween.AnimationParts.CallbackCall.END_OF_INTRO_AND_END_OF_EXIT_ANIM;
         }
+    }
+
+    private void onIntroAnimationCompleted()
+    {
+        mainPage.SetActive(true);
     }
 
     private void exitAnimatonCompleted()
     {
         m_notes.SetActive(false);
-    }
 
-    public Animator animator;
-
-    public bool IsOpen {
-        get
+        foreach (var item in m_pages)
         {
-            return m_notes.activeSelf;
+            item.SetActive(false);
         }
     }
 
@@ -56,8 +74,8 @@ public class Notes : MonoBehaviour {
     public void NotesClicked()
     {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
-        tween.OpenCloseObjectAnimation();
         m_notes.SetActive(true);
+        tween.OpenCloseObjectAnimation();
     }
 
     public void Remove()
@@ -68,8 +86,8 @@ public class Notes : MonoBehaviour {
     
     public void Show()
     {
-        tween.OpenCloseObjectAnimation();
         m_notes.SetActive(true);
+        tween.OpenCloseObjectAnimation();
     }
 
     public void Hide()

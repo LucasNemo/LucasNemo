@@ -466,8 +466,9 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudServicesEnabled:
+    UNet: 1
+  cloudProjectId: f7f8c173-7857-48d8-982c-7b527751878a
+  projectName: Detetive
+  organizationId: gbelinir
   cloudEnabled: 0

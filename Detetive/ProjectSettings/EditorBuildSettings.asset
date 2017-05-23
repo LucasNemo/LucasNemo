@@ -14,4 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_SheriffScene/SheriffScene.unity
   - enabled: 1
-    path: Assets/QRcode/Scene/QRScanScene.unity
+    path: Assets/_QRcode/Scene/QRScanScene.unity

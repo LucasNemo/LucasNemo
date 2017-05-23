@@ -31,6 +31,14 @@ public class Manager
     #endregion
 
     #region Constants
+
+    #region Scenes Names 
+    public readonly string MENU_SCENE = "Menu";
+    public readonly string DETETIVE_SCENE = "DetectiveScene";
+    public readonly string SHERIFFE_SCENE = "SheriffScene";
+    public readonly string QRCODE_SCENE = "QRScanScene";
+    #endregion 
+
     public readonly string NO_PD = "Não foi selecionado nenhum lugar para ser delegacia. Escolha um para continuar!";
     public readonly string READ_FROM_XERIFE = "Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
     public readonly string GO_TO_PD = "Vá para a DELEGACIA {0} e realize a leitura do QRCode para desvendar esse crime!";
@@ -261,8 +269,38 @@ public class Manager
     #endregion
 
 
-    public readonly string MENU_SCENE = "Menu";
-    public readonly string DETETIVE_SCENE = "DetectiveScene";
-    public readonly string SHERIFFE_SCENE = "SheriffScene";
-    internal readonly string QRCODE_SCENE = "QRScanScene";
+   static public string PlaceToName (Enums.Places place)
+    {
+        switch (place)
+        {
+            case Enums.Places.Banco:
+                return "Banco";
+            case Enums.Places.Boate:
+                return "Boate";
+            case Enums.Places.Cemiterio:
+                return "Cemitério";
+            case Enums.Places.Estacao_de_Trem:
+                return "Estação de Trem";
+            case Enums.Places.Floricultura:
+                return "Floricultura";
+            case Enums.Places.Hospital:
+                return "Hospital";
+            case Enums.Places.Hotel:
+                return "Hotel";
+            case Enums.Places.Mansao:
+                return "Mansão";
+            case Enums.Places.Praca_Central:
+                return "Praça Central";
+            case Enums.Places.Prefeitura:
+                return "Prefeitura";
+            case Enums.Places.Restaurante:
+                return "Restaurante";
+        }
+
+        return "";
+    }
+
+
+
+    
 }

@@ -27,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_1;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_1;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_1;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_1;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -73,24 +73,11 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
-    </Reference>
     <Reference Include="QRCode">
-      <HintPath>Assets\QRcode\Plugins\QRCode.dll</HintPath>
+      <HintPath>Assets\_QRcode\Plugins\QRCode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ARGame\ARHud.cs" />
-    <Compile Include="Assets\ARGame\Scripts\ARElement.cs" />
-    <Compile Include="Assets\ARGame\Scripts\AccelerationCamera.cs" />
-    <Compile Include="Assets\ARGame\Scripts\CameraController.cs" />
-    <Compile Include="Assets\ARGame\Scripts\GyroCamera.cs" />
-    <Compile Include="Assets\ARGame\Scripts\HandleInvestigations.cs" />
-    <Compile Include="Assets\ARGame\Scripts\PericiaController.cs" />
-    <Compile Include="Assets\Helpers\Scripts\AudioController.cs" />
-    <Compile Include="Assets\Helpers\Scripts\Extensions.cs" />
-    <Compile Include="Assets\Helpers\Scripts\PlayAndRemove.cs" />
     <Compile Include="Assets\JsonDotNet\Extras\CustomConverters\Matrix4x4Converter.cs" />
     <Compile Include="Assets\JsonDotNet\Extras\CustomConverters\Vector2Converter.cs" />
     <Compile Include="Assets\JsonDotNet\Extras\CustomConverters\Vector3Converter.cs" />
@@ -410,23 +397,6 @@
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ThreadSafeStore.cs" />
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_TypeExtensions.cs" />
     <Compile Include="Assets\JsonDotNet\Source\WinRT\Utilities\RT_ValidationUtils.cs" />
-    <Compile Include="Assets\Notes\Scripts\NoteBehaviour.cs" />
-    <Compile Include="Assets\Notes\Sprites\Notes.cs" />
-    <Compile Include="Assets\Notes\Sprites\PlacesController.cs" />
-    <Compile Include="Assets\QRcode\Plugins\Loom\Loom.cs" />
-    <Compile Include="Assets\QRcode\Scripts\CameraPlaneController.cs" />
-    <Compile Include="Assets\QRcode\Scripts\ConfirmHunchBehaviour.cs" />
-    <Compile Include="Assets\QRcode\Scripts\DecodeByStaticPic.cs" />
-    <Compile Include="Assets\QRcode\Scripts\DeviceCameraController.cs" />
-    <Compile Include="Assets\QRcode\Scripts\QRCodeDecodeController.cs" />
-    <Compile Include="Assets\QRcode\Scripts\QRCodeEncodeController.cs" />
-    <Compile Include="Assets\QRcode\Scripts\QRDecodeTest.cs" />
-    <Compile Include="Assets\QRcode\Scripts\QREncodeTest.cs" />
-    <Compile Include="Assets\QRcode\Scripts\TextureScale.cs" />
-    <Compile Include="Assets\QRcode\Scripts\Utility.cs" />
-    <Compile Include="Assets\ReadQRCodeTest\Scripts\QRCodeTesting.cs" />
-    <Compile Include="Assets\TestManager\TestManager.cs" />
-    <Compile Include="Assets\TestManager\TestSerializes.cs" />
     <Compile Include="Assets\Timer\TimerController.cs" />
     <Compile Include="Assets\UITween\Prefabs\Click Effect Pref\ClickedWaveAnimation.cs" />
     <Compile Include="Assets\UITween\ScenesExamplesScripts\ActivateOnEnable.cs" />
@@ -461,6 +431,13 @@
     <Compile Include="Assets\Unity.IO.Compression\OutputBuffer.cs" />
     <Compile Include="Assets\Unity.IO.Compression\OutputWindow.cs" />
     <Compile Include="Assets\Unity.IO.Compression\SR.cs" />
+    <Compile Include="Assets\_ARGame\ARHud.cs" />
+    <Compile Include="Assets\_ARGame\Scripts\ARElement.cs" />
+    <Compile Include="Assets\_ARGame\Scripts\AccelerationCamera.cs" />
+    <Compile Include="Assets\_ARGame\Scripts\CameraController.cs" />
+    <Compile Include="Assets\_ARGame\Scripts\GyroCamera.cs" />
+    <Compile Include="Assets\_ARGame\Scripts\HandleInvestigations.cs" />
+    <Compile Include="Assets\_ARGame\Scripts\PericiaController.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\DetectiveController.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\DetectiveHunchBehaviour.cs" />
     <Compile Include="Assets\_DetectiveScene\Scripts\DetectiveManager.cs" />
@@ -475,6 +452,23 @@
     <Compile Include="Assets\_MenuScene\Scripts\SelectionBehaviour.cs" />
     <Compile Include="Assets\_MenuScene\Scripts\SettingsBehaviour.cs" />
     <Compile Include="Assets\_MenuScene\Scripts\SplashController.cs" />
+    <Compile Include="Assets\_Notes\Scripts\NoteBehaviour.cs" />
+    <Compile Include="Assets\_Notes\Sprites\Notes.cs" />
+    <Compile Include="Assets\_Notes\Sprites\PlacesController.cs" />
+    <Compile Include="Assets\_QRcode\Plugins\Loom\Loom.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\CameraPlaneController.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\ConfirmHunchBehaviour.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\DecodeByStaticPic.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\DeviceCameraController.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\QRCodeDecodeController.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\QRCodeEncodeController.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\QRDecodeTest.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\QREncodeTest.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\TextureScale.cs" />
+    <Compile Include="Assets\_QRcode\Scripts\Utility.cs" />
+    <Compile Include="Assets\_Shared\Helpers\Scripts\AudioController.cs" />
+    <Compile Include="Assets\_Shared\Helpers\Scripts\Extensions.cs" />
+    <Compile Include="Assets\_Shared\Helpers\Scripts\PlayAndRemove.cs" />
     <Compile Include="Assets\_Shared\Model\Character.cs" />
     <Compile Include="Assets\_Shared\Model\CharacterTip.cs" />
     <Compile Include="Assets\_Shared\Model\GameInformation.cs" />
@@ -509,12 +503,12 @@
     <Compile Include="Assets\_SheriffScene\Scripts\SheriffController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\3D Models\Faca\NewUnlitShader.shader" />
-    <None Include="Assets\3D Models\Faca\ShaderParaOsDoisLados.shader" />
-    <None Include="Assets\3D Models\Faca\SuperShaderManeiro.shader" />
     <None Include="Assets\JsonDotNet\ReadMe.txt" />
-    <None Include="Assets\QRcode\CamMat\WebCam.shader" />
+    <None Include="Assets\_ARGame\3D Models\Faca\NewUnlitShader.shader" />
+    <None Include="Assets\_ARGame\3D Models\Faca\ShaderParaOsDoisLados.shader" />
+    <None Include="Assets\_ARGame\3D Models\Faca\SuperShaderManeiro.shader" />
     <None Include="Assets\_DetectiveScene\Shaders\GrayscaleLol.shader" />
+    <None Include="Assets\_QRcode\CamMat\WebCam.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

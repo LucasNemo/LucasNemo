@@ -3657,7 +3657,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4976,7 +4976,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6176,7 +6176,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ARMAS
+  m_Text: LOCAIS
 --- !u!114 &114389261214375670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7874,8 +7874,8 @@ MonoBehaviour:
   mainPage: {fileID: 1342810503913784}
   m_buttonsImages:
   - {fileID: 114502857045768486}
-  - {fileID: 114189103769914082}
   - {fileID: 114873243550308114}
+  - {fileID: 114189103769914082}
   tween: {fileID: 114216748590543446}
   animator: {fileID: 95034024831745312}
 --- !u!114 &114606855066154308
@@ -8201,7 +8201,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LOCAIS
+  m_Text: ARMAS
 --- !u!114 &114664743451693612
 MonoBehaviour:
   m_ObjectHideFlags: 1

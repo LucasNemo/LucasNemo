@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 using System;
 
 public class Notes : MonoBehaviour {
@@ -10,6 +11,9 @@ public class Notes : MonoBehaviour {
     private List<GameObject> m_pages;
     [SerializeField]
     private GameObject m_notes;
+    [SerializeField]
+    private List<Image> m_buttonsImages;
+
     public static Notes instance;
     public EasyTween tween;
 
@@ -76,6 +80,18 @@ public class Notes : MonoBehaviour {
     public void ChangePage(int page)
     {
         m_pages.ForEach(x => x.SetActive(false));
+        m_buttonsImages.ForEach(x => x.color = GetNormalColor());
+        m_buttonsImages[page].color = GetSelectedColor();
         m_pages[page].SetActive(true);
+    }
+    
+    private Color32 GetSelectedColor()
+    {
+        return new Color32(32, 52, 43, 255);
+    }
+
+    private Color32 GetNormalColor()
+    {
+        return new Color32(56, 107, 92, 255);
     }
 }

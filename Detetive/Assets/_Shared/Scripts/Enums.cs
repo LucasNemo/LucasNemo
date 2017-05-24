@@ -1,6 +1,14 @@
 ﻿public class Enums
 {
 
+    public enum PericiaStatus
+    {
+        Requested,
+        InProgress,
+        Result,
+        Done,
+
+    }
 
     public enum DetectiveState
     {

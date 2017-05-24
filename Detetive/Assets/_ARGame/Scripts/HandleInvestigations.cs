@@ -11,8 +11,6 @@ public class HandleInvestigations : MonoBehaviour
     public ARElement[] arElements;  //List of elements on scene
     public List<Transform> arPos;   //The list of positions 
     public TipBehaviour tipModel;   //The base of any tip!
-    public GameObject murdererPlace;
-    public Text title;
 
     private void Start()
     {
@@ -22,25 +20,9 @@ public class HandleInvestigations : MonoBehaviour
 
         //Randomize the array of positios!
         arPos = arPos.SortList();
-        SetCurrentRoom( Manager.Instance.ActiveRoom );
+        StartCoroutine(EnableModels(Manager.Instance.ActiveRoom));
     }
-
-    private void SetCurrentRoom(Room roomInfo)
-    {
-        string placeName = Manager.Instance.PlacesNames[(Enums.Places)roomInfo.P.MP];
-
-        //Set the name choosed by player
-        title.text = roomInfo.P.IH == 1 ? "DELEGACIA " + placeName : placeName;
-
-        StartCoroutine(EnableModels(roomInfo));
-    }
-
-    public void RequestPericia()
-    {
-        DetectiveManager.Instance.RequestPericiaToThisPlace();
-        GenericModal.Instance.OpenAlertMode("Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...", "Ok", null);
-    }
-
+  
 
     public IEnumerator EnableModels(Room roomInfo)
     {

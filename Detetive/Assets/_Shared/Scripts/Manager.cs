@@ -37,6 +37,13 @@ public class Manager
     public readonly string DETETIVE_SCENE = "DetectiveScene";
     public readonly string SHERIFFE_SCENE = "SheriffScene";
     public readonly string QRCODE_SCENE = "QRScanScene";
+    #endregion
+
+    #region Pericia 
+    public readonly string PERICIA_RESULT = "ATENÇÃO! Saiu o resultado da perícia! É melhor ir até {0} para verificar!";
+    public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
+    public readonly string PERICIA_CORRECT_PLACE = "BOAS NOVAS!! FOI EXATAMENTE AQUI que acontenceu o crime!!";
+    public readonly string PERICIA_WRONG_PLACE = "NÃO FOI DESSA VEZ! Esse NÃO é o local do crime!";
     #endregion 
 
     public readonly string NO_PD = "Não foi selecionado nenhum lugar para ser delegacia. Escolha um para continuar!";
@@ -65,11 +72,8 @@ public class Manager
     public readonly string PLACE_ALREADY_ADDED = "ESTE LUGAR JÁ FOI ADICIONADO, ADICIONE OUTRO CASO QUEIRA QUE SEJA COMO DELEGACIA";
     public readonly string LOOSE_TITLE = "ERRADO!";
     public readonly string LOOSE_DESCRIPTION = "VOCÊ FALHOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
-    public readonly string CORRECT_PLACE = "ENCONTRAMOS!!! FOI EXATAMENTE AQUI que acontenceu o crime!!";
-    public readonly string WRONG_PLACE = "NÃO FOI DESSA VEZ! Esse NÃO é o local do crime!";
     public readonly string NOT_READY_YET = "O resultado da perícia ainda NÃO saiu!";
     public readonly string SOME_RESULTS = "ATENÇÃO!! Volte para {0} para conferir o resultado da perícia!";
-    public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
     public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
     public readonly string REALLY_WANNA_EXIT = "Você deseja realmente sair?";
     public readonly string RESULT_ERROR_BACK = "-1";
@@ -263,7 +267,6 @@ public class Manager
     }
     
     public Room ActiveRoom;
-    
 
     private void InitializeWeapons()
     {

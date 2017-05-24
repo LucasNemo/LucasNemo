@@ -1,78 +1,89 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PericiaController : MonoBehaviour {
+public class PericiaController : SingletonBehaviour<PericiaController> {
 
     public GameObject periciaButton;
-    private string status;
-    public AudioClip sirene;
 
-    private void Start()
+    private List<Pericia> m_pericias;
+
+    private void Awake()
     {
-        var activeRoom = Manager.Instance.ActiveRoom;
-
-        DetectiveManager.Instance.ProcessOthersPlacesPericia(activeRoom);
-
-        //Already requyest pericia ?
-        if (DetectiveManager.Instance.PericiaAlreadyRequested((Enums.Places)activeRoom.P.MP))
-        {
-            //Hide the button
-            periciaButton.SetActive(false);
-
-            //The is a result? 
-            if (DetectiveManager.Instance.AlreadGotAResultToThisPlace())
-            {
-                var isThisCorrectPlace = DetectiveManager.Instance.PericiaResultToThisPlace();
-                if (isThisCorrectPlace)
-                {
-                    status = Manager.Instance.CORRECT_PLACE;
-                    AudioController.Instance.Play(sirene, AudioController.SoundType.SoundEffect2D, 1f, false, true);
-                }
-                else
-                    status = Manager.Instance.WRONG_PLACE;
-            }
-            else
-            {
-                status = Manager.Instance.NOT_READY_YET;
-            }
-
-            //Show the message 
-            ShowPericiaModal(status);
-            return;
-        }
-
-        //any pericia to check
-        HandlePericiastoCheck();
+        m_pericias = new List<Pericia>();
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void HandlePericiastoCheck()
+    /// <summary>
+    /// Request perica to place
+    /// </summary>
+    /// <param name="place">Current place</param>
+    public void RequestPericia(Enums.Places place)
     {
-        if (DetectiveManager.Instance.PericiasToCheck.Count > 0)
+        if (!AlreadyHasPericia(place))
         {
-            if (!DetectiveManager.Instance.PericiasToCheck.Contains((Enums.Places)Manager.Instance.ActiveRoom.P.MP))
+            var pericia = new Pericia();
+            pericia.Place = place;
+            pericia.Status = Enums.PericiaStatus.Requested;
+            m_pericias.Add(pericia);
+        }
+    }
+
+    public void Complete(Pericia pericia)
+    {
+        foreach (var item in m_pericias)
+        {
+            if (item.Equals(pericia))
             {
-                var x = DetectiveManager.Instance.PericiasToCheck.First(t => t != (Enums.Places)Manager.Instance.ActiveRoom.P.MP);
-                ShowPericiaModal(string.Format(Manager.Instance.SOME_RESULTS, Manager.Instance.PlacesNames[x]));
-            }
-            else
-            {
-                DetectiveManager.Instance.PericiasToCheck.Remove((Enums.Places)Manager.Instance.ActiveRoom.P.MP);
+                item.Status = Enums.PericiaStatus.Done;
+                break;
             }
         }
     }
 
-    private void ShowPericiaModal(string text)
+    /// <summary>
+    /// Got a pericia to place
+    /// </summary>
+    /// <param name="place"></param>
+    /// <returns></returns>
+    public Pericia GetPericia(Enums.Places place)
     {
-        GenericModal.Instance.OpenAlertMode(text, "Ok", null);
+        if (AlreadyHasPericia(place))
+        {
+            return m_pericias.First(x => x.Place == place);
+        }
+
+        return null;
     }
 
-    public void RequestPericia()
+    bool AlreadyHasPericia(Enums.Places place)
     {
-        DetectiveManager.Instance.RequestPericiaToThisPlace();
-        GenericModal.Instance.OpenAlertMode(Manager.Instance.PERICIA_START, "Ok", null);
+        return m_pericias.Any(x => x.Place == place);
     }
 
+    /// <summary>
+    /// Run all pericias in progress...
+    /// </summary>
+    /// <param name="place">Current place</param>
+    public Pericia Run(Enums.Places place)
+    {
+        foreach (var pericia in m_pericias.Where(x=>x.Place != place && x.Status == Enums.PericiaStatus.Requested))
+        {
+            pericia.Status = Enums.PericiaStatus.Result;
+
+            return pericia;
+        }
+
+        return null; 
+    }
 
 }
+
+public class Pericia
+{
+    public Enums.PericiaStatus Status { get; set; }
+    public Enums.Places Place { get; set; }
+}
+

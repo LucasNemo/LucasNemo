@@ -6,8 +6,7 @@
         Requested,
         InProgress,
         Result,
-        Done,
-
+        Done
     }
 
     public enum DetectiveState

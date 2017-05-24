@@ -13,7 +13,6 @@ public class PericiaController : SingletonBehaviour<PericiaController> {
     private void Awake()
     {
         m_pericias = new List<Pericia>();
-        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

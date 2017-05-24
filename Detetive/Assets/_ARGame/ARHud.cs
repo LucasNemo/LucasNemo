@@ -18,8 +18,10 @@ public class ARHud : MonoBehaviour {
     {
         m_activePlace = (Enums.Places) Manager.Instance.ActiveRoom.P.MP;
 
+        var name = Manager.Instance.PlacesNames[m_activePlace];
+
         //Set the name choosed by player
-        title.text = Manager.Instance.ActiveRoom.P.IH == 1 ? "DELEGACIA" + Manager.Instance.ActiveRoom.P.N : Manager.Instance.ActiveRoom.P.N;
+        title.text = Manager.Instance.ActiveRoom.P.IH == 1 ? "DELEGACIA" + name : name;
 
         //Check pericia
         UpdatePericia();
@@ -83,7 +85,7 @@ public class ARHud : MonoBehaviour {
         //We got a result!
         if (pericia != null)
         {
-            GenericModal.Instance.OpenAlertMode(string.Format(Manager.Instance.PERICIA_RESULT, Manager.PlaceToName(pericia.Place)), "Ok", () =>
+            GenericModal.Instance.OpenAlertMode(string.Format(Manager.Instance.PERICIA_RESULT, Manager.Instance.PlacesNames[pericia.Place]), "Ok", () =>
            {
                SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
            });

@@ -156,6 +156,28 @@ public class Manager
         }
     }
 
+    public void InitializeTimer()
+    {
+        PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
+    }
+
+    /// <summary>
+    /// Get correct saved time
+    /// </summary>
+    /// <returns></returns>
+    public TimeSpan GetTime()
+    {
+        DateTime oldDate;
+
+        DateTime.TryParse(PlayerPrefs.GetString(Manager.Instance.PLAYER_SAVE_TIME), out oldDate);
+
+        TimeSpan span = new TimeSpan();
+        if (oldDate != null)
+            span = (DateTime.Now - oldDate);
+
+        return span;
+    }
+
     #endregion
     
     #region Cards

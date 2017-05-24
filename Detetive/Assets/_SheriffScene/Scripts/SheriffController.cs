@@ -218,6 +218,7 @@ public class SheriffController : MonoBehaviour
 
            Manager.Instance.MyGameInformation = m_gameInformation;
            Manager.Instance.SaveGameInformation();
+           Manager.Instance.InitializeTimer();
            SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
 
            //    FindObjectOfType<ReadQRCodeBehaviour>().ReadQrCode((result) =>

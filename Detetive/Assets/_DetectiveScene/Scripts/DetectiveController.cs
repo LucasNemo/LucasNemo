@@ -122,7 +122,7 @@ public class DetectiveController : MonoBehaviour {
     {
         mainCanvas.SetActive(true);
         //Saving time
-        PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());
+        Manager.Instance.InitializeTimer();
         PlayerPrefs.Save();
         DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
     }

@@ -13,13 +13,7 @@ public class ResultBehaviour : MonoBehaviour
 
     public void UpdateInformation(bool win)
     {
-        DateTime oldDate;
-
-        DateTime.TryParse(PlayerPrefs.GetString(Manager.Instance.PLAYER_SAVE_TIME), out oldDate);
-
-        TimeSpan span = new TimeSpan();
-        if (oldDate != null)
-            span = (DateTime.Now - oldDate);
+        TimeSpan span = Manager.Instance.GetTime();
 
         m_title.text = win ? Manager.Instance.WIN_TITLE : Manager.Instance.LOOSE_TITLE;
         m_description.text = win ? string.Format(Manager.Instance.WIN_DESCRIPTION, span.Hours, span.Minutes) : Manager.Instance.LOOSE_DESCRIPTION;

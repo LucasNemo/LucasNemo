@@ -156,6 +156,18 @@ public class Manager
         }
     }
 
+    /// <summary>
+    /// Clear all player data
+    /// </summary>
+    public void ClearData()
+    {   
+        FileManager.Delete(Application.persistentDataPath, SAVE_NAME);
+        PlayerPrefs.DeleteAll();
+    }
+
+    /// <summary>
+    /// Initiliaze timer with datetime now
+    /// </summary>
     public void InitializeTimer()
     {
         PlayerPrefs.SetString(Manager.Instance.PLAYER_SAVE_TIME, System.DateTime.Now.ToString());

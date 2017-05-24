@@ -41,8 +41,8 @@ public class GenericModal : MonoBehaviour {
         m_rightCallback = null;
         InvertButtons(true);
         m_description.text = description;
-        m_leftText.text = buttonLeft;
-        m_rightText.text = buttonRight;
+        m_leftText.text = buttonLeft.ToUpper();
+        m_rightText.text = buttonRight.ToUpper();
         m_leftCallback = callbackButtonLeft;
         m_rightCallback = callbackButtonRight;
         m_close = close;
@@ -59,7 +59,7 @@ public class GenericModal : MonoBehaviour {
         m_alertModeCallback = null;
         InvertButtons(false);
         m_description.text = description;
-        m_alertText.text = button;
+        m_alertText.text = button.ToUpper();
         m_alertModeCallback = alertCallback;
         m_modal.SetActive(true);
         modalTween.OpenCloseObjectAnimation();

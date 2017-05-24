@@ -197,30 +197,42 @@ public class Manager
 
     public Dictionary<Enums.Characters, string> CharactersName = new Dictionary<Enums.Characters, string>
     {
-        {Enums.Characters.Advogado_Sr_Marinho, "ADVOGADO SR. MARINHO" },
-        {Enums.Characters.Chef_de_Cozinha_Tony_Gourmet, "CHEF DE COZINHA TONY GOURMET" },
-        {Enums.Characters.Coveiro_Sergio_Soturno, "COVEIRO SÉRGIO SOTURNO" },
-        {Enums.Characters.Dancarina_Srta_Rosa, "DANÇARINA SRTA. ROSA" },
-        {Enums.Characters.Florista_Dona_Branca, "FLORISTA DONA BRANCA" },
-        {Enums.Characters.Medica_Dona_Violeta, "MÉDICA DONA VIOLETA" },
-        {Enums.Characters.Mordomo_James, "MORDOMO JAMES" },
-        {Enums.Characters.Sargento_Bigode, "SARGENTO BIGODE" }
+        {Enums.Characters.Advogado_Sr_Marinho, "Advogado Sr. MARINHO" },
+        {Enums.Characters.Chef_de_Cozinha_Tony_Gourmet, "Chef De Cozinha Tony GOURMET" },
+        {Enums.Characters.Coveiro_Sergio_Soturno, "Coveiro Sérgio SOTURNO" },
+        {Enums.Characters.Dancarina_Srta_Rosa, "Dançarina Srta. ROSA" },
+        {Enums.Characters.Florista_Dona_Branca, "Florista Dona BRANCA" },
+        {Enums.Characters.Medica_Dona_Violeta, "Médica Dona VIOLETA" },
+        {Enums.Characters.Mordomo_James, "Mordomo JAMES" },
+        {Enums.Characters.Sargento_Bigode, "Sargento BIGODE" }
     };
 
     public Dictionary<Enums.Places, string> PlacesNames = new Dictionary<Enums.Places, string> {
-        { Enums.Places.Banco, "Banco"},
-        { Enums.Places.Boate, "Boate"},
-        { Enums.Places.Cemiterio, "Cemitério"},
-        { Enums.Places.Estacao_de_Trem, "Estação de Trem"},
-        { Enums.Places.Floricultura, "Floricultura"},
-        { Enums.Places.Hospital, "Hospital"},
-        { Enums.Places.Hotel, "Hotel"},
-        { Enums.Places.Mansao, "Mansão"},
-        { Enums.Places.Praca_Central, "Praça Central"},
-        { Enums.Places.Prefeitura, "Prefeitura"},
-        { Enums.Places.Restaurante, "Restaurante"}
+        { Enums.Places.Banco, "BANCO"},
+        { Enums.Places.Boate, "BOATE"},
+        { Enums.Places.Cemiterio, "CEMITÉRIO"},
+        { Enums.Places.Estacao_de_Trem, "ESTAÇÃO DE TREM"},
+        { Enums.Places.Floricultura, "FLORICULTURA"},
+        { Enums.Places.Hospital, "HOSPITAL"},
+        { Enums.Places.Hotel, "HOTEL"},
+        { Enums.Places.Mansao, "MANSÃO"},
+        { Enums.Places.Praca_Central, "PRAÇA CENTRAL"},
+        { Enums.Places.Prefeitura, "PREFEITURA"},
+        { Enums.Places.Restaurante, "RESTAURANTE"}
     };
-    
+
+    public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
+    {
+        {Enums.Weapons.Arma_Quimica,"ARMA QUÍMICA" },
+        {Enums.Weapons.Espingarda, "ESPINGARDA" },
+        {Enums.Weapons.Faca, "FACA" },
+        {Enums.Weapons.Pa, "PÁ" },
+        {Enums.Weapons.Pe_de_Cabra, "PÉ DE CABRA" },
+        {Enums.Weapons.Soco_Ingles, "SOCO INGLÊS"},
+        {Enums.Weapons.Tesoura, "TESOURA" },
+        {Enums.Weapons.Veneno, "VENENO" }
+    };
+
     private void InitializeCharacters()
     {
         Characters = new List<Character>();
@@ -250,18 +262,6 @@ public class Manager
         Places.Add(new Place(Enums.Places.Restaurante, false));
     }
     
-    public Dictionary<Enums.Weapons, string> WeaponsName = new Dictionary<Enums.Weapons, string>
-    {
-        {Enums.Weapons.Arma_Quimica,"Arma Química" },
-        {Enums.Weapons.Espingarda, "Espingarda" },
-        {Enums.Weapons.Faca, "Faca" },
-        {Enums.Weapons.Pa, "Pá" },
-        {Enums.Weapons.Pe_de_Cabra, "Pé de Cabra" },
-        {Enums.Weapons.Soco_Ingles, "Soco Inglês"},
-        {Enums.Weapons.Tesoura, "Tesoura" },
-        {Enums.Weapons.Veneno, "Veneno" }
-    };
-
     public Room ActiveRoom;
     
 

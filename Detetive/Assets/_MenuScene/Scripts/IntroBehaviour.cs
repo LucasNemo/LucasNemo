@@ -56,7 +56,7 @@ public class IntroBehaviour : MonoBehaviour
 
     private void OnNewGameClick()
     {
-        Manager.Instance.MyGameInformation = null;
+        Manager.Instance.ClearData();
         FindObjectOfType<SplashController>().OpenSelection();
     }
 

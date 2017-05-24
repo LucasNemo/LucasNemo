@@ -163,6 +163,7 @@ public class Manager
     {   
         FileManager.Delete(Application.persistentDataPath, SAVE_NAME);
         PlayerPrefs.DeleteAll();
+        Manager.Instance.MyGameInformation = null;
     }
 
     /// <summary>

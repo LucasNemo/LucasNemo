@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReadQRCodeBehaviour : MonoBehaviour {
+public class ReadQRCodeBehaviour : MonoBehaviour, IBackButton {
 
     private ReadQRCode readQRCode;
     private string qrCodeMessage;
@@ -25,6 +25,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
 
     public void ReadQrCode(System.Action<string> callback, bool useCompression, string titleText)
     {
+        BackButtonManager.Instance.AddController(this);
         readQRCode = new ReadQRCode();
         m_title = titleText;
         m_state = State.readQRCode;
@@ -44,6 +45,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
                 {
                     m_readCallback(qrCodeMessage);
                     m_readCallback = null;
+                    BackButtonManager.Instance.RemoveBackButton(this);
                 }
 
                 m_state = State.none;
@@ -54,14 +56,14 @@ public class ReadQRCodeBehaviour : MonoBehaviour {
     private void Escape()
     {
         if (m_readCallback != null)
-            m_readCallback("-1");
-    }
-
-    private void FixedUpdate()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Escape();
+            m_readCallback("-1");
+            BackButtonManager.Instance.RemoveBackButton(this);
         }
+    }
+    
+    public void OnAndroidBackButtonClick()
+    {
+        Escape();
     }
 }

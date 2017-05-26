@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenericModal : MonoBehaviour {
+public class GenericModal : MonoBehaviour, IBackButton {
 
     [SerializeField]
     private GameObject m_modal, m_leftButton, m_rightButton, m_alertButton;
@@ -13,7 +13,7 @@ public class GenericModal : MonoBehaviour {
     private Text m_description, m_leftText, m_rightText, m_alertText;
 
     private Action m_leftCallback, m_rightCallback, m_alertModeCallback;
-    private bool m_close;
+    private bool m_close, m_isModal;
 
     public static GenericModal Instance;
 
@@ -37,6 +37,9 @@ public class GenericModal : MonoBehaviour {
         if (m_isModalOpen) return;
         m_isModalOpen = true;
 
+        m_isModal = true;
+        BackButtonManager.Instance.AddController(this);
+
         m_leftCallback = null;
         m_rightCallback = null;
         InvertButtons(true);
@@ -55,6 +58,9 @@ public class GenericModal : MonoBehaviour {
     {
         if (m_isModalOpen) return;
         m_isModalOpen = true;
+
+        m_isModal = false;
+        BackButtonManager.Instance.AddController(this);
 
         m_alertModeCallback = null;
         InvertButtons(false);
@@ -86,6 +92,7 @@ public class GenericModal : MonoBehaviour {
     {
         m_isModalOpen = false;
         modalTween.OpenCloseObjectAnimation();
+        BackButtonManager.Instance.RemoveBackButton(this);
     }
 
     public void Hide()
@@ -122,4 +129,11 @@ public class GenericModal : MonoBehaviour {
         m_alertModeCallback = null;
     }
 
+    public void OnAndroidBackButtonClick()
+    {
+        if (m_isModal)
+            OnLeftClick();
+        else
+            OnClickAlertButton();
+    }
 }

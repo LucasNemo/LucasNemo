@@ -268,22 +268,5 @@ public class SheriffController : MonoBehaviour
     {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
-    }
-
-    private void LateUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            //    if (m_placesPanel.activeSelf)
-            //    {
-            //        OnBackHeaderButtonClick();
-            //    }
-            if (m_setupPanel.activeSelf)
-            {
-                m_setupPanel.SetActive(false);
-                m_placesPanel.SetActive(true);
-            }
-        }
-    }
-
+    }   
 }

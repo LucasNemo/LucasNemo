@@ -290,6 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77515763}
   - component: {fileID: 77515764}
+  - component: {fileID: 77515765}
   m_Layer: 0
   m_Name: _SheriffController
   m_TagString: Untagged
@@ -326,6 +327,20 @@ MonoBehaviour:
   m_header: {fileID: 2138874909}
   m_placesPanel: {fileID: 1242226318}
   m_setupPanel: {fileID: 1573996432}
+--- !u!114 &77515765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 77515762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84af7865fb0d8874794e073d704b9789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_backToGameObject: 0
+  m_objectsToActivate: []
+  m_sceneNameToBack: Menu
 --- !u!1 &77803472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1667,7 @@ GameObject:
   - component: {fileID: 1573996433}
   - component: {fileID: 1573996434}
   - component: {fileID: 1573996435}
+  - component: {fileID: 1573996436}
   m_Layer: 5
   m_Name: Panel_Setup
   m_TagString: Untagged
@@ -1702,6 +1718,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_qrcodeImage: {fileID: 1994479517}
   m_finishButton: {fileID: 632249748}
+--- !u!114 &1573996436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573996432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84af7865fb0d8874794e073d704b9789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_backToGameObject: 1
+  m_objectsToActivate:
+  - {fileID: 1242226318}
+  m_sceneNameToBack: 
 --- !u!1001 &1788308453
 Prefab:
   m_ObjectHideFlags: 0

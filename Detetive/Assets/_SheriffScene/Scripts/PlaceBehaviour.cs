@@ -48,7 +48,6 @@ public class PlaceBehaviour : MonoBehaviour
 
                     if (m_lastPlace != null)
                     {
-                        ActivePlace();
                         AddPoliceStation(m_lastPlace);
                     }
                     else

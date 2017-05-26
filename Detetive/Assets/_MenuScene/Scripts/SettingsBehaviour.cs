@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettingsBehaviour : MonoBehaviour {
+public class SettingsBehaviour : MonoBehaviour, IBackButton {
 
     [SerializeField]
     private GameObject m_main, m_credits, m_howToPlay;
@@ -69,15 +70,21 @@ public class SettingsBehaviour : MonoBehaviour {
     {
         Application.OpenURL(Manager.Instance.DETECTIVE_URL_TALK);
     }
-
-    private void FixedUpdate()
+    
+    public void OnAndroidBackButtonClick()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (m_howToPlay.activeSelf) OnBackFromHowToPlay();
-            else if (m_credits.activeSelf) OnBackFromCredits();
-            else if (m_main.activeSelf) OnBackMainClick();
-        }
+        if (m_howToPlay.activeSelf) OnBackFromHowToPlay();
+        else if (m_credits.activeSelf) OnBackFromCredits();
+        else if (m_main.activeSelf) OnBackMainClick();
     }
 
+    private void OnEnable()
+    {
+        BackButtonManager.Instance.AddController(this);
+    }
+
+    private void OnDisable()
+    {
+        BackButtonManager.Instance.RemoveBackButton(this);
+    }
 }

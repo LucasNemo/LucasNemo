@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class IntroBehaviour : MonoBehaviour
+public class IntroBehaviour : MonoBehaviour, IBackButton
 {
     [SerializeField]
     private GameObject m_visit;
@@ -71,10 +72,19 @@ public class IntroBehaviour : MonoBehaviour
             //dummy
         });
     }
-
-    private void FixedUpdate()
+    
+    public void OnAndroidBackButtonClick()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            BackFromIntro();
+        BackFromIntro();
+    }
+
+    private void OnEnable()
+    {
+        BackButtonManager.Instance.AddController(this);
+    }
+
+    private void OnDisable()
+    {
+        BackButtonManager.Instance.RemoveBackButton(this);
     }
 }

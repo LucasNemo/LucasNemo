@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SelectionBehaviour : MonoBehaviour
+public class SelectionBehaviour : MonoBehaviour, IBackButton
 {
     public void OnBackClick()
     {
@@ -28,11 +29,19 @@ public class SelectionBehaviour : MonoBehaviour
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         SceneManager.LoadScene(Manager.Instance.DETETIVE_SCENE);
     }
-
-    private void FixedUpdate()
+    
+    public void OnAndroidBackButtonClick()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OnBackClick();
+        OnBackClick();
     }
 
+    private void OnEnable()
+    {
+        BackButtonManager.Instance.AddController(this);
+    }
+
+    private void OnDisable()
+    {
+        BackButtonManager.Instance.RemoveBackButton(this);
+    }
 }

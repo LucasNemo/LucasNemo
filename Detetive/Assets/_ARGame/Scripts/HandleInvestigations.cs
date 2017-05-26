@@ -21,6 +21,10 @@ public class HandleInvestigations : MonoBehaviour
         //Randomize the array of positios!
         arPos = arPos.SortList();
         StartCoroutine(EnableModels(Manager.Instance.ActiveRoom));
+
+
+        AudioController.Instance.Play(Resources.Load<AudioClip>("Audio/Investigation"), AudioController.SoundType.Music);
+
     }
   
 

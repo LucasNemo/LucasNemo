@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -61,7 +62,7 @@ public class Manager
     public readonly string IS_HOST_MODAL = "VOCÊ DESEJA QUE {0} SEJA A DELEGACIA?";
     public readonly string QR_READ_PLACE = "Realize a leitura do QRCode do lugar / ambiente";
     public readonly string QR_CODE_READ_CHARACTER = "Jogo carregado! Agora você deve escolher seu personagem.";
-    public readonly string PLAYER_WANNA_PLAY = "VOCÊ DESEJA JOGAR TAMBÉM?";
+    public readonly string PLAYER_WANNA_PLAY = "VOCÊ DESEJA JOGAR TAMBÉM? CASO NÃO QUEIRA VAI PODER VER O RESULTADO AGORA, MAS NÃO CONSEGUIRÁ JOGAR NESSA PARTIDA MAIS!";
     public readonly string READ_CHARACTER = "LEIA UMA CARTA DE PERSONAGEM";
     public readonly string ON_READ_PLACE_WRONG = "UTILIZE UMA CARTA DE LUGAR PARA LER";
     public readonly string ON_READ_CHARACTER_WRONG = "UTILIZE UMA CARTA DE PERSONAGEM PARA LER";
@@ -316,6 +317,74 @@ public class Manager
     }
 
     #endregion
-    
-    
+
+    #region Formats
+
+    public Sprite ReturnCorrectImage(Sprite[] sprites, int correctSprite)
+    {
+        return sprites.First(x => x.name == GetCorrectCard(correctSprite));
+    }
+
+    private string GetCorrectCard(int card)
+    {
+        if (card < 10)
+            return "0" + card.ToString();
+
+        return card.ToString();
+    }
+
+    public string FormatResult(Character character, Weapon weapon, Place place)
+    {
+        string myCharacter = Manager.Instance.CharactersName[(Enums.Characters)character.MC];
+        string weaponArtigo = Manager.Instance.GetArtigoWeapon((Enums.Weapons)weapon.MW);
+        string myWeapon = Manager.Instance.WeaponsName[(Enums.Weapons)weapon.MW];
+        string placeArtigo = Manager.Instance.GetPlaceArtigo((Enums.Places)place.MP);
+        string myPlace = Manager.Instance.PlacesNames[(Enums.Places)place.MP];
+
+        return string.Format(Manager.Instance.FINAL_CONFIRM_HUNCH, myCharacter, weaponArtigo, myWeapon, placeArtigo, myPlace).ToUpper();
+    }
+
+
+    public string GetArtigoWeapon(Enums.Weapons weapon)
+    {
+        switch (weapon)
+        {
+            case Enums.Weapons.Pa:
+            case Enums.Weapons.Faca:
+            case Enums.Weapons.Espingarda:
+            case Enums.Weapons.Tesoura:
+            case Enums.Weapons.Arma_Quimica:
+                return "A";
+            case Enums.Weapons.Pe_de_Cabra:
+            case Enums.Weapons.Soco_Ingles:
+            case Enums.Weapons.Veneno:
+                return "O";
+        }
+
+        return "A";
+    }
+
+    public string GetPlaceArtigo(Enums.Places place)
+    {
+        switch (place)
+        {
+            case Enums.Places.Cemiterio:
+            case Enums.Places.Banco:
+            case Enums.Places.Hospital:
+            case Enums.Places.Hotel:
+            case Enums.Places.Restaurante:
+                return "NO";
+            case Enums.Places.Boate:
+            case Enums.Places.Estacao_de_Trem:
+            case Enums.Places.Floricultura:
+            case Enums.Places.Mansao:
+            case Enums.Places.Praca_Central:
+            case Enums.Places.Prefeitura:
+                return "NA";
+        }
+        return "NA";
+    }
+
+    #endregion
+
 }

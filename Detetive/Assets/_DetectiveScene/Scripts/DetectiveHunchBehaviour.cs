@@ -102,16 +102,15 @@ public class DetectiveHunchBehaviour : MonoBehaviour, IBackButton {
         m_panelPlaces.SetActive(false);
         m_confirmHunch.gameObject.SetActive(true);
 
-        Sprite weaponSprite = cards.First(x => x.name == GetCorrectCard(m_selectedWeapon.MW));
-        Sprite characterSprite = cards.First(x => x.name == GetCorrectCard(m_selectedCharacter.MC));
-        Sprite placeSprite = cards.First(x => x.name == GetCorrectCard(m_selectedPlace.MP));
+        Sprite weaponSprite = Manager.Instance.ReturnCorrectImage(cards, m_selectedWeapon.MW);
+        Sprite characterSprite = Manager.Instance.ReturnCorrectImage(cards, m_selectedCharacter.MC); 
+        Sprite placeSprite = Manager.Instance.ReturnCorrectImage(cards, m_selectedPlace.MP);
 
-        m_confirmHunch.UpdateInformation(characterSprite, weaponSprite, placeSprite, formatResult(), () =>
+        m_confirmHunch.UpdateInformation(characterSprite, weaponSprite, placeSprite, Manager.Instance.FormatResult(m_selectedCharacter, m_selectedWeapon, m_selectedPlace), () =>
         {
             OnBackFromConfirmHunch();
         }, 
         () => {
-
             m_confirmHunch.gameObject.SetActive(false);
             m_detectiveController.OnFinishHunchClicked();
         });
@@ -122,71 +121,12 @@ public class DetectiveHunchBehaviour : MonoBehaviour, IBackButton {
         m_confirmHunch.gameObject.SetActive(false);
         m_panelCharacters.SetActive(true);
     }
-
-    private string GetCorrectCard(int card)
-    {
-        if (card < 10)
-            return "0" + card.ToString();
-
-        return card.ToString();
-    }
-
-    private string formatResult()
-    {
-        string character = Manager.Instance.CharactersName[ (Enums.Characters) m_selectedCharacter.MC ];
-        string weaponArtigo = GetArtigoWeapon((Enums.Weapons)m_selectedWeapon.MW);
-        string weapon = Manager.Instance.WeaponsName[(Enums.Weapons)m_selectedWeapon.MW ];
-        string placeArtigo = GetPlaceArtigo((Enums.Places)m_selectedPlace.MP);
-        string place = Manager.Instance.PlacesNames[(Enums.Places)m_selectedPlace.MP];
-
-        return string.Format(Manager.Instance.FINAL_CONFIRM_HUNCH, character, weaponArtigo, weapon, placeArtigo, place).ToUpper();
-    }
-
-    private string GetArtigoWeapon(Enums.Weapons weapon)
-    {
-        switch (weapon)
-        {
-            case Enums.Weapons.Pa:
-            case Enums.Weapons.Faca:
-            case Enums.Weapons.Espingarda:
-            case Enums.Weapons.Tesoura:
-            case Enums.Weapons.Arma_Quimica:
-                return "A";
-            case Enums.Weapons.Pe_de_Cabra:
-            case Enums.Weapons.Soco_Ingles:
-            case Enums.Weapons.Veneno:
-                return "O";
-        }
-
-        return "A";
-    }
-
+    
     public void ActiveConfirmModal(bool active)
     {
         m_confirmHunch.gameObject.SetActive(active);
     }
-
-    private string GetPlaceArtigo(Enums.Places place)
-    {
-        switch (place)
-        {
-            case Enums.Places.Cemiterio:
-            case Enums.Places.Banco:
-            case Enums.Places.Hospital:
-            case Enums.Places.Hotel:
-            case Enums.Places.Restaurante:
-                return "NO";
-            case Enums.Places.Boate:
-            case Enums.Places.Estacao_de_Trem:
-            case Enums.Places.Floricultura:
-            case Enums.Places.Mansao:
-            case Enums.Places.Praca_Central:
-            case Enums.Places.Prefeitura:
-                return "NA";
-        }
-        return "NA";
-    }
-
+    
     private void OnCharacterCallback(Character character)
     {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);

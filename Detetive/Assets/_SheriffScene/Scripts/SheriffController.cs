@@ -14,7 +14,7 @@ public class SheriffController : MonoBehaviour
     [SerializeField]
     private CharacterBehaviour m_setupGame;
     [SerializeField]
-    private GameObject m_header, m_placesPanel, m_setupPanel;
+    private GameObject m_header, m_placesPanel, m_setupPanel, m_resultPanel;
     #endregion
 
     #region Private Att
@@ -208,7 +208,10 @@ public class SheriffController : MonoBehaviour
         GenericModal.Instance.OpenModal(Manager.Instance.PLAYER_WANNA_PLAY, "Não", "Sim", () =>
         {
             //If player dont wanna play
-            SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
+            //SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
+            Manager.Instance.MyGameInformation = m_gameInformation;
+            m_setupGame.gameObject.SetActive(false);
+            m_resultPanel.SetActive(true);
         },
        () =>
        {

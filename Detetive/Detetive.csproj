@@ -506,6 +506,7 @@
     <Compile Include="Assets\_SheriffScene\Scripts\CharacterSelectionItem.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\HunchBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\PlaceBehaviour.cs" />
+    <Compile Include="Assets\_SheriffScene\Scripts\ResultModalBehaviour.cs" />
     <Compile Include="Assets\_SheriffScene\Scripts\SheriffController.cs" />
   </ItemGroup>
   <ItemGroup>

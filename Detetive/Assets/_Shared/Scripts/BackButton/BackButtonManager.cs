@@ -7,7 +7,7 @@ public class BackButtonManager : SingletonBehaviour<BackButtonManager>
 {
     private List<IBackButton> m_listBacks = new List<IBackButton>();
 
-    public void AddController(IBackButton controller)
+    public void AddBackButton(IBackButton controller)
     {
         m_listBacks.Add(controller);
     }

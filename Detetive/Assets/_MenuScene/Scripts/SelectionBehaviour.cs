@@ -37,7 +37,7 @@ public class SelectionBehaviour : MonoBehaviour, IBackButton
 
     private void OnEnable()
     {
-        BackButtonManager.Instance.AddController(this);
+        BackButtonManager.Instance.AddBackButton(this);
     }
 
     private void OnDisable()

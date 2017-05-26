@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ARHud : MonoBehaviour {
+public class ARHud : MonoBehaviour, IBackButton {
 
     public DeviceCameraController deviceCamera;
     public GameObject periciaButton;
@@ -16,6 +16,8 @@ public class ARHud : MonoBehaviour {
 
     public void Start()
     {
+        BackButtonManager.Instance.AddBackButton(this);
+
         m_activePlace = (Enums.Places) Manager.Instance.ActiveRoom.P.MP;
 
         var name = Manager.Instance.PlacesNames[m_activePlace];
@@ -117,12 +119,13 @@ public class ARHud : MonoBehaviour {
         }
     }
 
-
-    private void FixedUpdate()
+    private void OnDestroy()
     {
-        //TODO is this the best way? =)
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OnBackClicked();    
+        BackButtonManager.Instance.RemoveBackButton(this);
     }
 
+    public void OnAndroidBackButtonClick()
+    {
+        OnBackClicked();
+    }
 }

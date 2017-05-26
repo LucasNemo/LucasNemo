@@ -38,7 +38,7 @@ public class GenericModal : MonoBehaviour, IBackButton {
         m_isModalOpen = true;
 
         m_isModal = true;
-        BackButtonManager.Instance.AddController(this);
+        BackButtonManager.Instance.AddBackButton(this);
 
         m_leftCallback = null;
         m_rightCallback = null;
@@ -60,7 +60,7 @@ public class GenericModal : MonoBehaviour, IBackButton {
         m_isModalOpen = true;
 
         m_isModal = false;
-        BackButtonManager.Instance.AddController(this);
+        BackButtonManager.Instance.AddBackButton(this);
 
         m_alertModeCallback = null;
         InvertButtons(false);

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DetectiveHunchBehaviour : MonoBehaviour {
+public class DetectiveHunchBehaviour : MonoBehaviour, IBackButton {
 
     [SerializeField]
     private GameObject m_panelCharacters, m_panelWeapons, m_panelPlaces;
@@ -106,14 +106,21 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         Sprite characterSprite = cards.First(x => x.name == GetCorrectCard(m_selectedCharacter.MC));
         Sprite placeSprite = cards.First(x => x.name == GetCorrectCard(m_selectedPlace.MP));
 
-        m_confirmHunch.UpdateInformation(characterSprite, weaponSprite, placeSprite, formatResult(), () => {
-            m_confirmHunch.gameObject.SetActive(false);
-            m_panelCharacters.SetActive(true);
+        m_confirmHunch.UpdateInformation(characterSprite, weaponSprite, placeSprite, formatResult(), () =>
+        {
+            OnBackFromConfirmHunch();
         }, 
         () => {
+
             m_confirmHunch.gameObject.SetActive(false);
             m_detectiveController.OnFinishHunchClicked();
         });
+    }
+
+    private void OnBackFromConfirmHunch()
+    {
+        m_confirmHunch.gameObject.SetActive(false);
+        m_panelCharacters.SetActive(true);
     }
 
     private string GetCorrectCard(int card)
@@ -234,5 +241,23 @@ public class DetectiveHunchBehaviour : MonoBehaviour {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_panelPlaces.SetActive(false);
         m_panelWeapons.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        BackButtonManager.Instance.AddBackButton(this);
+    }
+
+    private void OnDisable()
+    {
+        BackButtonManager.Instance.RemoveBackButton(this);
+    }
+
+    public void OnAndroidBackButtonClick()
+    {
+        if (m_panelCharacters.activeSelf) OnBackFromCharacter();
+        else if (m_panelWeapons.activeSelf) OnBackFromWeapon();
+        else if (m_panelPlaces.activeSelf) OnBackFromPlace();
+        else if (m_confirmHunch.isActiveAndEnabled) OnBackFromConfirmHunch();
     }
 }

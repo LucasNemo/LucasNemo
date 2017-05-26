@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 using System;
 
-public class Notes : MonoBehaviour {
+public class Notes : MonoBehaviour, IBackButton {
 
     [SerializeField]
     private List<GameObject> m_pages;
@@ -50,6 +50,7 @@ public class Notes : MonoBehaviour {
     private void onIntroAnimationCompleted()
     {
         mainPage.SetActive(true);
+        BackButtonManager.Instance.AddBackButton(this);
     }
 
     private void exitAnimatonCompleted()
@@ -61,17 +62,10 @@ public class Notes : MonoBehaviour {
         {
             item.SetActive(false);
         }
+
+        BackButtonManager.Instance.RemoveBackButton(this);
     }
-
-
-    private void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && IsOpen)
-        {
-            Hide();
-        }
-    }
-
+    
     public void NotesClicked()
     {
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
@@ -112,5 +106,10 @@ public class Notes : MonoBehaviour {
     private Color32 GetNormalColor()
     {
         return new Color32(56, 107, 92, 255);
+    }
+
+    public void OnAndroidBackButtonClick()
+    {
+        Hide();
     }
 }

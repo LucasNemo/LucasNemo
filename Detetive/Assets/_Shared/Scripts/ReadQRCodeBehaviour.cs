@@ -25,7 +25,7 @@ public class ReadQRCodeBehaviour : MonoBehaviour, IBackButton {
 
     public void ReadQrCode(System.Action<string> callback, bool useCompression, string titleText)
     {
-        BackButtonManager.Instance.AddController(this);
+        BackButtonManager.Instance.AddBackButton(this);
         readQRCode = new ReadQRCode();
         m_title = titleText;
         m_state = State.readQRCode;

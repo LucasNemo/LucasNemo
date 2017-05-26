@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Handle the detective scene only - Not like the manager that handle all the detective actions
 /// </summary>
-public class DetectiveController : MonoBehaviour {
+public class DetectiveController : MonoBehaviour,IBackButton {
 
 
     public Notes NotesCanvas; 
@@ -30,6 +30,8 @@ public class DetectiveController : MonoBehaviour {
 
     private void Awake()
     {
+        BackButtonManager.Instance.AddBackButton(this);
+
         if (Notes.instance == null)
         {
             Instantiate(NotesCanvas);
@@ -147,9 +149,9 @@ public class DetectiveController : MonoBehaviour {
          
         ReadQRFromsCene(false, (result) =>
         {
+            SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
             if (result != Manager.Instance.RESULT_ERROR_BACK)
             {
-
                 mainCanvas.SetActive(true);
                 try
                 {
@@ -245,5 +247,15 @@ public class DetectiveController : MonoBehaviour {
     {
         m_detectiveHunchBehaviour.gameObject.SetActive(false);
         m_menu.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        BackButtonManager.Instance.RemoveBackButton(this);
+    }
+
+    public void OnAndroidBackButtonClick()
+    {
+        SceneManager.LoadScene(Manager.Instance.MENU_SCENE);
     }
 }

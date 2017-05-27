@@ -3343,7 +3343,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1120079005}
   m_HandleRect: {fileID: 1120079004}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4503,7 +4503,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "TEM CERTEZA DO SEU PALPITE PARA O CRIME OU DESEJA REFAZ\xCA-LO?"
+  m_Text: "TEM CERTEZA DO SEU PALPITE? VOC\xCA TEM APENAS UMA CHANCE!"
 --- !u!222 &1580345754
 CanvasRenderer:
   m_ObjectHideFlags: 0

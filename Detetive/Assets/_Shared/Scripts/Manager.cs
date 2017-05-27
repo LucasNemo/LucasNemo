@@ -45,13 +45,16 @@ public class Manager
     public readonly string PERICIA_START = "Perícia em andamento! É melhor não perder tempo e ir investigar outros lugares enquanto isso...";
     public readonly string PERICIA_CORRECT_PLACE = "BOAS NOVAS!! FOI EXATAMENTE AQUI que acontenceu o crime!!";
     public readonly string PERICIA_WRONG_PLACE = "NÃO FOI DESSA VEZ! Esse NÃO é o local do crime!";
-    #endregion 
+    #endregion
+
+    private const string SAVE_NAME = "GameInfo";
+    public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
+    public readonly string PLAYER_INVESTIGATE_ROOMS = "PLAYER_INVESTIGATE_ROOMS";
 
     public readonly string NO_PD = "Não foi selecionado nenhum lugar para ser delegacia. Escolha um para continuar!";
     public readonly string READ_FROM_XERIFE = "Realize a leitura do QRCode do Xerife para receber as informações do jogo!";
     public readonly string GO_TO_PD = "Vá para a DELEGACIA {0} e realize a leitura do QRCode para desvendar esse crime!";
     public readonly string READ_FROM_PLACE = "Realize a leitura do QRCode da carta do local / ambiente";
-    private const string SAVE_NAME = "GameInfo";
     public readonly string DETECTIVE_URL = "http://www.estrela.com.br/brinquedo/detetive-com-aplicativo/";
     public readonly string DETECTIVE_URL_TERM = "http://sioux.com.br/apps/termos/1";
     public readonly string DETECTIVE_URL_TALK = "http://www.estrela.com.br/fale-conosco/";
@@ -75,7 +78,6 @@ public class Manager
     public readonly string LOOSE_DESCRIPTION = "VOCÊ FALHOU EM SOLUCIONAR O CRIME... COMECE OUTRO JOGO COM SEUS AMIGOS E TENTE NOVAMENTE.";
     public readonly string NOT_READY_YET = "O resultado da perícia ainda NÃO saiu!";
     public readonly string SOME_RESULTS = "ATENÇÃO!! Volte para {0} para conferir o resultado da perícia!";
-    public readonly string PLAYER_SAVE_TIME = "PLAYER_SAVE_TIME";
     public readonly string REALLY_WANNA_EXIT = "Você deseja realmente sair?";
     public readonly string RESULT_ERROR_BACK = "-1";
     #endregion

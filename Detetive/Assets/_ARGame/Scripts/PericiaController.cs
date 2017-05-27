@@ -57,11 +57,11 @@ public class PericiaController : SingletonBehaviour<PericiaController> {
         return null;
     }
 
-    bool AlreadyHasPericia(Enums.Places place)
+    private bool AlreadyHasPericia(Enums.Places place)
     {
         return m_pericias.Any(x => x.Place == place);
     }
-
+    
     /// <summary>
     /// Run all pericias in progress...
     /// </summary>

@@ -3623,6 +3623,7 @@ MonoBehaviour:
   m_detectiveHunchBehaviour: {fileID: 2126946931}
   m_resultScreen: {fileID: 1915893131}
   m_menu: {fileID: 1044941587}
+  m_hunchButton: {fileID: 2083703823}
   mainCanvas: {fileID: 1690188082}
   trilha: {fileID: 8300000, guid: 17930c49927892d43a958d1369b32927, type: 3}
 --- !u!1 &1289352644
@@ -5573,9 +5574,18 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1276622066}
+    - target: {fileID: 1559093208880336, guid: e08fb4d3e6d28be41bf21a5677f10c5d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e08fb4d3e6d28be41bf21a5677f10c5d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2083703823 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1559093208880336, guid: e08fb4d3e6d28be41bf21a5677f10c5d,
+    type: 2}
+  m_PrefabInternal: {fileID: 2083703822}
 --- !u!224 &2126946928
 RectTransform:
   m_ObjectHideFlags: 0

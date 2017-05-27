@@ -22,7 +22,7 @@ public class DetectiveController : MonoBehaviour,IBackButton {
     private ResultBehaviour m_resultScreen; 
 
     [SerializeField]
-    private GameObject m_menu;
+    private GameObject m_menu, m_hunchButton;
     TimerController m_timerController;
     private bool m_initialized;
 
@@ -36,7 +36,10 @@ public class DetectiveController : MonoBehaviour,IBackButton {
         {
             Instantiate(NotesCanvas);
         }
-        
+
+        if (PlayerPrefs.HasKey(Manager.Instance.PLAYER_INVESTIGATE_ROOMS))
+            m_hunchButton.SetActive(true);
+
         DetectiveManager.Instance.Dummy();
     }
 
@@ -216,6 +219,10 @@ public class DetectiveController : MonoBehaviour,IBackButton {
 
                     if (enumTest != null && Manager.Instance.Places.Any(x => x.MP.Equals(enumTest.GetHashCode())))
                     {
+                        //Add just a validate for hunch button
+                        PlayerPrefs.SetInt(Manager.Instance.PLAYER_INVESTIGATE_ROOMS, 1);
+                        PlayerPrefs.Save();
+
                         Manager.Instance.ActiveRoom = Manager.Instance.MyGameInformation.Rs.FirstOrDefault(x => x.P.MP == enumTest.GetHashCode());
                         SceneManager.LoadSceneAsync("ARScene");
                     }

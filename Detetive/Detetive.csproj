@@ -469,6 +469,7 @@
     <Compile Include="Assets\_QRcode\Scripts\QREncodeTest.cs" />
     <Compile Include="Assets\_QRcode\Scripts\TextureScale.cs" />
     <Compile Include="Assets\_QRcode\Scripts\Utility.cs" />
+    <Compile Include="Assets\_ResultScene\ResultController.cs" />
     <Compile Include="Assets\_Shared\Helpers\Scripts\AudioController.cs" />
     <Compile Include="Assets\_Shared\Helpers\Scripts\Extensions.cs" />
     <Compile Include="Assets\_Shared\Helpers\Scripts\PlayAndRemove.cs" />

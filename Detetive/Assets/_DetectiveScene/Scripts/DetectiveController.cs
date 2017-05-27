@@ -169,8 +169,10 @@ public class DetectiveController : MonoBehaviour,IBackButton {
 
                             var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
 
-                            m_resultScreen.gameObject.SetActive(true);
-                            m_resultScreen.UpdateInformation(answer);
+                            ResultController.Show(answer);
+
+                            //m_resultScreen.gameObject.SetActive(true);
+                            //m_resultScreen.UpdateInformation(answer);
                         }
                     }
                     else

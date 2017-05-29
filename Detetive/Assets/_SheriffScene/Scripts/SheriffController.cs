@@ -108,11 +108,11 @@ public class SheriffController : MonoBehaviour
 
         //AddWeaponsTips
         List<WeaponTip> weaponsTips = Manager.Instance.WeaponsTips.Where(x => x.W.GetHashCode() != m_corretHunch.HR.W.MW).ToList();
-        AddTip(places, weaponsTips, Manager.Instance.Min_Weapons_Tips);
+        AddTip(places, weaponsTips);
 
         //Add character tips
         List<CharacterTip> characterTips = Manager.Instance.CharacterTips.Where(x => x.CT.GetHashCode() != m_corretHunch.HC).ToList();
-        AddTip(places, characterTips, Manager.Instance.Min_Character_Tips);
+        AddTip(places, characterTips);
     }
 
     private void UpdateManagerPlaces()
@@ -139,7 +139,7 @@ public class SheriffController : MonoBehaviour
     /// <param name="places"></param>
     /// <param name="tips"></param>
     /// <param name="minRandom"></param>
-    private void AddTip<T>(List<Place> places, List<T> tips, int minRandom) where T : TipItem
+    private void AddTip<T>(List<Place> places, List<T> tips) where T : TipItem
     {
         var randomPlaces = places.SortList();
 
@@ -148,8 +148,13 @@ public class SheriffController : MonoBehaviour
         {
             var item = randomPlaces[i];
 
-            var t = ReturnRandomItem<T>(tips);
-            if (t == null || item == null) continue;
+            print(item.MP);
+
+            if (item == null)
+            {
+                print("item nulo!!");
+                continue;
+            }
 
             var room = m_gameInformation.Rs.First(x => x.P.MP == item.MP);
 
@@ -157,10 +162,22 @@ public class SheriffController : MonoBehaviour
             if (room.T == null)
                 room.T = new List<TipItem>();
 
+            var t = ReturnRandomItem(tips);
+
+            if (t == null)
+            {
+                print("Tip nulo!!");
+                continue;
+            }
+
             //Add a unique tip to each room!
             room.T.Add(new TipItem(t.TP));
 
-            if (tips.Count <= 0) return;
+            if (tips.Count <= 0)
+            {
+                print("Acabaram as tips!");
+                return;
+            }
         }
     }
 

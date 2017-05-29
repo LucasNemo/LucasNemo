@@ -25,17 +25,14 @@ public class DetectiveController : MonoBehaviour,IBackButton {
     private GameObject m_menu, m_hunchButton;
     TimerController m_timerController;
     private bool m_initialized;
-
+    public AudioClip trilha;
     public GameObject mainCanvas; 
 
     private void Awake()
     {
         BackButtonManager.Instance.AddBackButton(this);
 
-        if (Notes.instance == null)
-        {
-            Instantiate(NotesCanvas);
-        }
+      
 
         if (PlayerPrefs.HasKey(Manager.Instance.PLAYER_INVESTIGATE_ROOMS))
             m_hunchButton.SetActive(true);
@@ -43,7 +40,6 @@ public class DetectiveController : MonoBehaviour,IBackButton {
         DetectiveManager.Instance.Dummy();
     }
 
-    public AudioClip trilha; 
 
     private void Start()
     {
@@ -129,11 +125,15 @@ public class DetectiveController : MonoBehaviour,IBackButton {
     
     private void InitializeGame()
     {
+       
+
         mainCanvas.SetActive(true);
         //Saving time
         Manager.Instance.InitializeTimer();
         PlayerPrefs.Save();
         DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+
+       
     }
 
     private void ReadQRFromsCene(bool useCompression, Action<string> result, string title)
@@ -209,6 +209,10 @@ public class DetectiveController : MonoBehaviour,IBackButton {
 
     public void OnInvesticateClicked()
     {
+        //Start the notes!
+        if (Notes.instance == null)
+            Instantiate(NotesCanvas);
+
         AudioController.Instance.Play(Manager.Instance.SOUND_CLICK, AudioController.SoundType.SoundEffect2D, 1f, false, true);
         m_menu.SetActive(false);
         mainCanvas.SetActive(false);

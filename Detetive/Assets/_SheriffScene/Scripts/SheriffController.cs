@@ -32,6 +32,9 @@ public class SheriffController : MonoBehaviour
     void Start()
     {
         m_placesBehaviour.gameObject.SetActive(true);
+
+        Manager.Instance.ShowTutorial("Xerife_Delegacia", Manager.Instance.TUTORIAL_DELEGACIA_TEXT);
+
     }
 
     public void OnBackClick()

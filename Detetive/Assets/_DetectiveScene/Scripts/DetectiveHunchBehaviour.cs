@@ -57,6 +57,8 @@ public class DetectiveHunchBehaviour : MonoBehaviour, IBackButton {
         {
             places[i].UpdateSprite( cards[characters.Count + weapons.Count + i]);
         }
+
+        Manager.Instance.ShowTutorial("hunch", Manager.Instance.TUTORIAL_HUNCH_TEXT);
     }
 
     private void Start()

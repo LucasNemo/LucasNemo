@@ -93,11 +93,15 @@ public class DetectiveController : MonoBehaviour,IBackButton {
     
     private void InitializePlayerInfo()
     {
+        Manager.Instance.ShowTutorial("Xerife", Manager.Instance.TUTORIAL_XERIFE_TEXT);
+
         ReadQRFromsCene(true,(result)=>
         {
-            //DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
+           //DetectiveManager.Instance.RequestChangeState(Enums.DetectiveState.StartGame);
             DetectiveManager.Instance.QRCodeReaded(result, (success) =>
             {
+
+
                 SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
                 if (result != Manager.Instance.RESULT_ERROR_BACK)

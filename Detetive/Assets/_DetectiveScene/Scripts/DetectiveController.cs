@@ -97,6 +97,7 @@ public class DetectiveController : MonoBehaviour,IBackButton {
             DetectiveManager.Instance.QRCodeReaded(result, (success) =>
             {
 
+                TutorialController.Close();
 
                 SceneManager.UnloadScene(Manager.Instance.QRCODE_SCENE);
 
@@ -104,6 +105,7 @@ public class DetectiveController : MonoBehaviour,IBackButton {
                 {
                     if (success)
                     {
+                      
                         InitializeGame();
                     }
                     else
@@ -168,6 +170,8 @@ public class DetectiveController : MonoBehaviour,IBackButton {
                         if (Manager.Instance.ActiveRoom.P.IH == 1)
                         {
                             var playerhunch = m_detectiveHunchBehaviour.GetHunch.MH;
+                            var mgh = Manager.Instance.MyGameInformation.CH;
+                            Debug.LogError(string.Format("Comparar! place {0} = {1} :: pessoal {2} = {3} :: arma {4} = {5} ", mgh.HR.P.MP, playerhunch.HR.P.MP, mgh.HC, playerhunch.HC, mgh.HR.W.MW, playerhunch.HR.W.MW));
 
                             var answer = Manager.Instance.MyGameInformation.CH == playerhunch;
 

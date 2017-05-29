@@ -23,7 +23,7 @@ public class ARHud : MonoBehaviour, IBackButton {
         var name = Manager.Instance.PlacesNames[m_activePlace];
 
         //Set the name choosed by player
-        title.text = Manager.Instance.ActiveRoom.P.IH == 1 ? "DELEGACIA" + name : name;
+        title.text = Manager.Instance.ActiveRoom.P.IH == 1 ? "DELEGACIA " + name : name;
 
         //Check pericia
         UpdatePericia();

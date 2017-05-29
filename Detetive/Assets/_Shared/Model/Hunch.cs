@@ -22,7 +22,7 @@ public class Hunch  {
     public static bool operator == (Hunch x, Hunch y)
     {
         //Character/Place/Weapon
-        if (x.HC == y.HC && x.HR.P == y.HR.P && x.HR.W == x.HR.W) return true;
+        if (x.HC == y.HC && x.HR.P.MP == y.HR.P.MP && x.HR.W.MW == y.HR.W.MW) return true;
 
         return false;
     }

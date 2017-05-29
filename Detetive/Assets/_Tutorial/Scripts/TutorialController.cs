@@ -14,6 +14,8 @@ public class TutorialController : MonoBehaviour {
     public EasyTween tween;
     public GameObject perfilPanel, readQRCodePanel, xerifePanel;
 
+    public static TutorialController instance;
+
     public static void Show(string text, TutorialStage stage)
     {
         tutorialStage = stage;
@@ -21,8 +23,16 @@ public class TutorialController : MonoBehaviour {
         SceneManager.LoadSceneAsync("Tutorial", LoadSceneMode.Additive);
     }
 
+    public static void Close()
+    {
+        if (instance)
+        instance.OnClick();
+
+    }
+
     private void Start()
     {
+        instance = this;
         content.text = tutorialText;
         tween.OpenCloseObjectAnimation();
 
@@ -51,9 +61,14 @@ public class TutorialController : MonoBehaviour {
 
     public void OnClick()
     {
+
         TutorialController.tutorialText = "";
+
+        if (!tween) return;
+
         tween.animationParts.ExitEvents.AddListener(OnExitAnimation);
         tween.OpenCloseObjectAnimation();
+        
     }
 
     private void OnExitAnimation()

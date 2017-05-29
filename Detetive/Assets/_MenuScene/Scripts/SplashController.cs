@@ -20,7 +20,7 @@ public class SplashController : MonoBehaviour {
         m_selection.SetActive(false);
         m_selection.SetActive(true);
 
-        Manager.Instance.ShowTutorial("Select", Manager.Instance.TUTORIAL_PERFIL_TEXT);
+        Manager.Instance.ShowTutorial("Select", Manager.Instance.TUTORIAL_PERFIL_TEXT, TutorialController.TutorialStage.Perfil);
     }
 
     public void OpenSettings()

@@ -35,7 +35,7 @@ public class TutorialController : MonoBehaviour {
                 readQRCodePanel.SetActive(true);
                 break;
             case TutorialStage.QRCode_Xerife:
-                xerifePanel.SetActive(true);
+                readQRCodePanel.SetActive(true);
                 break;
         }
     }
@@ -67,7 +67,8 @@ public class TutorialController : MonoBehaviour {
                 readQRCodePanel.SetActive(false);
                 break;
             case TutorialStage.QRCode_Xerife:
-                xerifePanel.SetActive(false);
+                readQRCodePanel.SetActive(false);
+                //xerifePanel.SetActive(false);
                 break;
         }
 

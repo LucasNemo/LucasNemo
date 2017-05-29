@@ -53,7 +53,7 @@ public class Manager
     public readonly string TUTORIAL_PERFIL_TEXT = "Primeira missão: Escolher seu papel no game! Você pode optar por ser Xerife ou Detetive. Xerife deverá configurar o jogo. Ele poderá optar por jogar ou saber a resposta. Detetive são os jogares que irão desvendar o assassinato.";
     public readonly string TUTORIAL_XERIFE_TEXT = "DETETIVE! Receba as instruções do Xerife. Aponte seu celular para o QRCode gerado pelo Xerife!";
     public readonly string TUTORIAL_HUNCH_TEXT = "Agora é hora da verdade! Escolha seu palpite e vá até a carta da delegacia e leia seu QRCOde para saber a verdade!";
-    public readonly string TUTORIAL_DELEGACIA_TEXT = "XERIFE!! Aponte seu celular e lei o QRCode da carta que será a delegacia! Esse será o local aonde os outros jogadores irão descobrir as respostas.";
+    public readonly string TUTORIAL_DELEGACIA_TEXT = "XERIFE!! Aponte seu celular e leia o QRCode da carta que será a delegacia! Esse será o local aonde os outros jogadores irão descobrir as respostas.";
 
 
     #endregion
@@ -403,12 +403,12 @@ public class Manager
 
     #region Tutorial methods
 
-    public void ShowTutorial(string playePrefsText, string text)
+    public void ShowTutorial(string playePrefsText, string text, TutorialController.TutorialStage stage)
     {
         var selection = PlayerPrefs.GetInt(playePrefsText, 0);
         if (selection == 0)
         {
-            TutorialController.Show(text, TutorialController.TutorialStage.Perfil);
+            TutorialController.Show(text, stage);
         }
     }
 

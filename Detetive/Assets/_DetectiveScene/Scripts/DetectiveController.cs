@@ -89,7 +89,7 @@ public class DetectiveController : MonoBehaviour,IBackButton {
     
     private void InitializePlayerInfo()
     {
-        Manager.Instance.ShowTutorial("Xerife", Manager.Instance.TUTORIAL_XERIFE_TEXT);
+        Manager.Instance.ShowTutorial("Xerife", Manager.Instance.TUTORIAL_XERIFE_TEXT, TutorialController.TutorialStage.LER_QR_CODE);
 
         ReadQRFromsCene(true,(result)=>
         {
@@ -125,8 +125,6 @@ public class DetectiveController : MonoBehaviour,IBackButton {
     
     private void InitializeGame()
     {
-       
-
         mainCanvas.SetActive(true);
         //Saving time
         Manager.Instance.InitializeTimer();

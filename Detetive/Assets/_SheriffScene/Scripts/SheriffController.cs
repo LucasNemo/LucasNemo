@@ -33,7 +33,7 @@ public class SheriffController : MonoBehaviour
     {
         m_placesBehaviour.gameObject.SetActive(true);
 
-        Manager.Instance.ShowTutorial("Xerife_Delegacia", Manager.Instance.TUTORIAL_DELEGACIA_TEXT);
+        Manager.Instance.ShowTutorial("Xerife_Delegacia", Manager.Instance.TUTORIAL_DELEGACIA_TEXT, TutorialController.TutorialStage.LER_QR_CODE);
 
     }
 

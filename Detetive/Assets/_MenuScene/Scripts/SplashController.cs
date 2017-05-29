@@ -19,6 +19,13 @@ public class SplashController : MonoBehaviour {
         m_intro.SetActive(false);
         m_selection.SetActive(false);
         m_selection.SetActive(true);
+
+
+        var selection = PlayerPrefs.GetInt("Select", 0);
+        if (selection == 0)
+        {
+            TutorialController.Show("Vamos lá! Sua primeira missão: Escolha seu papel no game! Você pode optar por ser Xerife ou Detetive. Xerife é a pessoal que configura o jogo e pode saber a resposta (se desejar) ou também poderá jogar. Detetive são os jogares que irão desvendar o assassinato.", TutorialController.TutorialStage.Perfil);
+        }
     }
 
     public void OpenSettings()

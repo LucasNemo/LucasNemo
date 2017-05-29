@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/_QRcode/Scene/QRScanScene.unity
   - enabled: 1
     path: Assets/_ResultScene/Result.unity
+  - enabled: 1
+    path: Assets/_Tutorial/Tutorial.unity
